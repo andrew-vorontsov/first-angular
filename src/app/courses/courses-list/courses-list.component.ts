@@ -16,12 +16,7 @@ export class CoursesListComponent implements OnInit {
   ngOnInit() {
       this.coursesItems = this.coursesService.getCoursesItems();
       this.coursesItems.map((item) => {
-        let duration = item.duration;
-        if(duration/1000/60 > 59) {
-          item.duration = duration/1000/3600;
-        } else {
-          item.duration = duration/1000/60
-        }
+        item.duration = Math.round(item.duration/1000/60);
     });
   };
 }

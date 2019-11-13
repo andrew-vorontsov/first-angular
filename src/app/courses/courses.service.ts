@@ -8,17 +8,7 @@ export class CoursesService {
 
   constructor() { }
 
-  // public coursesDates: Date[] = [
-  //   new Date(2019,1,3),
-  //   new Date(2014,6,5),
-  //   new Date(2016,5,8)
-  // ]
-
   public getCoursesItems() : CoursesListItem[] {
-
-    // let coursesDa = this.coursesDates.map((item) => {
-    //   return (`${item.getDay()}.${item.getMonth()}.${item.getFullYear()}`);
-    // });
 
     return [
       {

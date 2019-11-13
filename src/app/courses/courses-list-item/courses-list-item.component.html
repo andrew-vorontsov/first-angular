@@ -2,7 +2,10 @@
     <div class="courses__basic-course-group">
         <div class="courses__header">
             <div class="courses__title">{{coursesItem.title}}</div>
-            <div class="courses__duration">{{coursesItem.duration}}</div>
+            <div class="courses__duration" *ngIf='coursesItem.duration <= 60'>{{coursesItem.duration}} min</div>
+            <div class="courses__duration" *ngIf='coursesItem.duration > 60'>
+                {{(coursesItem.duration - coursesItem.duration%60)/60}} hours {{coursesItem.duration%60}} min
+            </div>
             <div class="courses__creationDate">{{coursesItem.creationDate | date }}</div>
         </div>
         <div class="courses__description">{{coursesItem.description}}</div>
