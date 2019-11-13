@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    background-color:#333;
+    font-family: sans-serif;
+}
+.wrapper {
+    width:1000px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}

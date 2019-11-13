@@ -1,0 +1,18 @@
+.footer {
+    margin: 10px; 
+}
+.footer__showmore {
+    padding: 5px 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-size:15px;
+    font-weight: bold;
+    background-color:cadetblue;
+    color: #ffffff;
+    border: 1px solid grey;
+    cursor: pointer;
+}
+.footer__copyright {
+    text-align: right;
+    padding: 15px 0;
+}

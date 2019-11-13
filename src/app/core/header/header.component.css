@@ -1,0 +1,27 @@
+.header {
+    border-bottom: 2px solid #000000;
+    padding: 25px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.header__logo {
+    font-weight: bold;
+    font-size:25px;
+}
+.header__authorization {
+    text-align: right;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+.header__user-name {
+    margin-right:20px;
+}
+.header__log-off {
+    background-color: cadetblue;
+    border: none;
+    color:#ffffff;
+    padding:10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+}

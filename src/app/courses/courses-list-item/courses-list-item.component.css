@@ -1,0 +1,46 @@
+.courses {
+    border: 1px solid grey;
+    margin: 0px 10px 5px 10px;
+    padding: 10px 15px;
+    display: flex;
+}
+
+.courses__basic-course-group {
+    flex-grow: 3;
+}
+.courses__title {
+    margin-right:auto;
+    font-size:22px;
+}
+.courses__creationDate, .courses__duration {
+    font-weight: bold;
+    font-size: 13px;
+    margin-left:20px;
+}
+.courses__header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.courses__button-group {
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.courses__edit-button {
+    background-color:green;
+}
+.courses__delete-button {
+    background-color: tomato;
+}
+
+.courses__button {
+    margin: 3px 0;
+    border: none;
+    padding:10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #ffffff;
+}

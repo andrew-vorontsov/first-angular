@@ -1,0 +1,25 @@
+.search-panel {
+    padding: 20px 10px;
+    display:flex;
+    justify-content: space-between;
+}
+.search-panel__input {
+    padding: 8px 5px;
+    font-size:15px;
+    border: 1px solid grey;
+}
+.search-panel__add-course-button {
+    margin-left: auto;
+    background-color: green;
+}
+.search-panel__search-button {
+    margin-left: 20px;
+    background-color: cadetblue;
+}
+.search-panel button {
+    color:#ffffff;
+    border: none;
+    padding:10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+}

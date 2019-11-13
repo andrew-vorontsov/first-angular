@@ -1,2 +1,14 @@
-<p>{{coursesItem.title}}</p>
-<p>{{coursesItem.duration}}</p>
+<div class="courses">
+    <div class="courses__basic-course-group">
+        <div class="courses__header">
+            <div class="courses__title">{{coursesItem.title}}</div>
+            <div class="courses__duration">{{coursesItem.duration}}</div>
+            <div class="courses__creationDate">{{coursesItem.creationDate}}</div>
+        </div>
+        <div class="courses__description">{{coursesItem.description}}</div>
+    </div>
+   <div class="courses__button-group">
+       <button class="courses__button courses__edit-button">Edit</button>
+       <button class="courses__button courses__delete-button">Delete</button>
+   </div>
+</div>
