@@ -7,6 +7,7 @@ import { CoursesListItem } from '../courses-list-item.module';
   styleUrls: ['./courses-list-item.component.css']
 })
 export class CoursesListItemComponent implements OnInit {
+
   @Input() public coursesItem: CoursesListItem;
 
   constructor() { }

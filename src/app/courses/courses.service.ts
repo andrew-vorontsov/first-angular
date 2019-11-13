@@ -8,39 +8,38 @@ export class CoursesService {
 
   constructor() { }
 
-  public durations : number[] = [
-    123214213,
-    2132132131,
-    2142132131
-  ]
-
-  // public duration() : string {
-  //   let h = + 'sd'
-  //   return h;
-  // }
+  // public coursesDates: Date[] = [
+  //   new Date(2019,1,3),
+  //   new Date(2014,6,5),
+  //   new Date(2016,5,8)
+  // ]
 
   public getCoursesItems() : CoursesListItem[] {
+
+    // let coursesDa = this.coursesDates.map((item) => {
+    //   return (`${item.getDay()}.${item.getMonth()}.${item.getFullYear()}`);
+    // });
 
     return [
       {
         id : 1,
         title: 'Video course 1',
-        creationDate: '10.12.18',
-        duration: '23 min',
+        creationDate: 1573493111111,
+        duration: 1000*60*20,
         description: 'This is an awesome video!',
       },
       {
         id : 2,
         title: 'Video course 2',
-        creationDate: '11.12.18',
-        duration: "45 min",
+        creationDate: 1573193111111,
+        duration: 1000*60*35,
         description: 'This is an awesome video!',
       },
       {
         id : 3,
         title: 'Video course 3',
-        creationDate: '13.12.18',
-        duration: "23 min",
+        creationDate: 1573041122222,
+        duration: 1000*60*75,
         description: 'This is an awesome video!',
       }
     ]
