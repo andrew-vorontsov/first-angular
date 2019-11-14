@@ -4,7 +4,7 @@
             <div class="courses__title">{{coursesItem.title}}</div>
             <div class="courses__duration" *ngIf='coursesItem.duration <= 60'>{{coursesItem.duration}} min</div>
             <div class="courses__duration" *ngIf='coursesItem.duration > 60'>
-                {{(coursesItem.duration - coursesItem.duration%60)/60}} hours {{coursesItem.duration%60}} min
+                {{(coursesItem.duration - coursesItem.duration%60)/60}} h {{coursesItem.duration%60}} min
             </div>
             <div class="courses__creationDate">{{coursesItem.creationDate | date }}</div>
         </div>
