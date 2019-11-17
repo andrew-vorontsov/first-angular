@@ -1,7 +1,16 @@
 <div class="search-panel">
     <div class="search-panel__search-group">
-        <input type="search" class="search-panel__input" placeholder="Search..">
-        <button class="search-panel__search-button">Search</button>
+        <input 
+            type="search" 
+            class="search-panel__input" 
+            placeholder="Search.." 
+            [value] = "searchValue" 
+            #searchPanel>
+        <button 
+            class="search-panel__search-button" 
+            (click)='onSearchButtonClick(searchPanel.value)'>
+                Search
+        </button>
     </div>
     <button class="search-panel__add-course-button">Add course</button>
 </div>
