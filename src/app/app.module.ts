@@ -5,7 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { CoursesModule } from './courses/courses.module';
+import { FormsModule } from '@angular/forms';
 import { UsersModule } from './users/users.module';
+import { RouterModule } from '@angular/router';
+import { ROUTES } from './app-router';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,9 @@ import { UsersModule } from './users/users.module';
     AppRoutingModule,
     CoreModule,
     CoursesModule,
-    UsersModule
+    FormsModule,
+    UsersModule,
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [],
   bootstrap: [AppComponent]

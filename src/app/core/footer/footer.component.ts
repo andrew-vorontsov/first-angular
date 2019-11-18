@@ -9,10 +9,6 @@ export class FooterComponent implements OnInit {
 
   constructor() { }
 
-  onShowmoreClick(event) {
-    console.log('onShowmoreclick!');
-  }
-
   ngOnInit() {
   }
 

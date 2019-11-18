@@ -9,10 +9,9 @@ export class SearchPanelComponent implements OnInit {
 
   constructor() { }
 
-  public searchValue = '';
+  public searchValue: string = '';
 
-  onSearchButtonClick(value) {
-    this.searchValue = value;
+  onSearchButtonClick() {
     console.log(this.searchValue)
   }
 

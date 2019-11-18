@@ -24,7 +24,7 @@ export class Constants {
           creationDate: 1573041122222,
           duration: 1000*60*75,
           description: 'This is an awesome video!',
-        }
+        },
       ]
 
       public persons : Person[] = [

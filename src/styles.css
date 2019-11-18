@@ -6,9 +6,14 @@ html, body {
     margin: 0;
     padding: 0;
 }
-.wrapper {
+app-root {
     width:1000px;
     margin: 0 auto;
-    min-height: 100%;
     background-color: #ffffff;
+    min-height:100%;
+    display: flex;
+    flex-direction: column;
+}
+app-footer {
+    margin-top:auto;
 }

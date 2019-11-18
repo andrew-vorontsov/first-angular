@@ -18,6 +18,10 @@ export class CoursesListComponent implements OnInit {
     console.log('Delete video course ' + item.id);
   }
 
+  onShowmoreClick(event) {
+    console.log('onShowmoreclick!');
+  }
+
   ngOnInit() {
       this.coursesItems = this.coursesService.getCoursesItems();
       this.coursesItems.map((item) => {

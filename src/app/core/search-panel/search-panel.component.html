@@ -4,11 +4,12 @@
             type="search" 
             class="search-panel__input" 
             placeholder="Search.." 
-            [value] = "searchValue" 
+            [value]='searchValue'
+            [(ngModel)]='searchValue'
             #searchPanel>
         <button 
             class="search-panel__search-button" 
-            (click)='onSearchButtonClick(searchPanel.value)'>
+            (click)='onSearchButtonClick()'>
                 Search
         </button>
     </div>
