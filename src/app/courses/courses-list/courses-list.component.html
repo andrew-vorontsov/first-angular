@@ -1,2 +1,6 @@
-<app-courses-list-item *ngFor='let item of coursesItems' [coursesItem] = 'item'></app-courses-list-item>
+<app-courses-list-item 
+    *ngFor='let item of coursesItems' 
+    [coursesItem] = 'item'
+    (onDeleteButtonItemClick) = 'onDeleteButtonClick(item)'>
+</app-courses-list-item>
 
