@@ -14,14 +14,14 @@ export class Constants {
         {
           id : 2,
           title: 'Video course 2',
-          creationDate: 1573193111111,
+          creationDate: 1575193111111,
           duration: 1000*60*35,
           description: 'This is an awesome video!',
         },
         {
           id : 3,
           title: 'Video course 3',
-          creationDate: 1573041122222,
+          creationDate: 1572041122222,
           duration: 1000*60*75,
           description: 'This is an awesome video!',
         },

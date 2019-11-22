@@ -1,4 +1,4 @@
-<div class="courses">
+<div CoursesBorderDirective [creationDate] = 'coursesItem.creationDate' class="courses">
     <div class="courses__basic-course-group">
         <div class="courses__header">
             <div class="courses__title">{{coursesItem.title}}</div>
@@ -16,6 +16,6 @@
             class="courses__button courses__delete-button"
             (click) = 'onDelButClick()'>
                 Delete
-            </button>
+        </button>
    </div>
 </div>

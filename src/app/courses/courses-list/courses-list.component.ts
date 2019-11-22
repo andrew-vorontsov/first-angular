@@ -9,7 +9,6 @@ import { format } from 'date-fns';
   styleUrls: ['./courses-list.component.css']
 })
 export class CoursesListComponent implements OnInit {
-
   public coursesItems: CoursesListItem[] = []
 
   constructor(private coursesService : CoursesService) { }
