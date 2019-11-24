@@ -1,6 +1,10 @@
+<app-search-panel
+    (onSearchButtonItemClick) = 'onSearchButtonFilterClick($event)'
+></app-search-panel>
 <app-courses-list-item 
-    *ngFor='let item of coursesItems' 
+    *ngFor='let item of coursesItems | orderBy | coursesFilter:searchValue' 
     [coursesItem] = 'item'
     (onDeleteButtonItemClick) = 'onDeleteButtonClick(item)'>
 </app-courses-list-item>
-<div class="courses__showmore" (click)='onShowmoreClick($event)'>Show more</div>
+<div *ngIf='coursesShow' class="courses__showmore" (click)='onShowmoreClick($event)'>Show more</div>
+<div *ngIf='!coursesShow' class="courses__showmore">No data</div>

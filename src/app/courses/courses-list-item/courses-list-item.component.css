@@ -46,3 +46,11 @@
     cursor: pointer;
     color: #ffffff;
 }
+
+.courses__star {
+    color: yellow;
+}
+
+.courses__topRated {
+    background-color: #e6f8ff;
+}

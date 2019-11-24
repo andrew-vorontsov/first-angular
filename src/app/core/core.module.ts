@@ -3,17 +3,13 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
-import { SearchPanelComponent } from './search-panel/search-panel.component';
-import { FormsModule } from '@angular/forms';
-
 
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, BreadcrumbsComponent, SearchPanelComponent,],
+  declarations: [HeaderComponent, FooterComponent, BreadcrumbsComponent],
   imports: [
-    CommonModule,
-    FormsModule
+    CommonModule
   ],
-  exports: [HeaderComponent, FooterComponent, BreadcrumbsComponent, SearchPanelComponent]
+  exports: [HeaderComponent, FooterComponent, BreadcrumbsComponent]
 })
 export class CoreModule { }

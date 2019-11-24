@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CoursesListItem } from '../courses-list-item.module';
 import { CoursesService } from '../courses.service';
-import { format } from 'date-fns';
 
 @Component({
   selector: 'app-courses-list',
@@ -9,10 +8,16 @@ import { format } from 'date-fns';
   styleUrls: ['./courses-list.component.css']
 })
 export class CoursesListComponent implements OnInit {
-  public coursesItems: CoursesListItem[] = []
+  public coursesItems: CoursesListItem[] = [];
+  public coursesShow: boolean = false;
+  public searchValue = 'asdf';
 
   constructor(private coursesService : CoursesService) { }
 
+  onSearchButtonFilterClick(searchValue) {
+    return searchValue;
+  }
+  
   onDeleteButtonClick(item) {
     console.log('Delete video course ' + item.id);
   }
@@ -23,9 +28,6 @@ export class CoursesListComponent implements OnInit {
 
   ngOnInit() {
       this.coursesItems = this.coursesService.getCoursesItems();
-      this.coursesItems.map((item) => {
-        item.duration = Math.round(item.duration/1000/60);
-        //item.creationDate = format(new Date(item.creationDate), 'dd:MM:yy');
-    });
+      this.coursesShow = this.coursesItems.length > 0 ? true : false;
   };
 }

@@ -1,12 +1,19 @@
-<div CoursesBorderDirective [creationDate] = 'coursesItem.creationDate' class="courses">
+<div 
+    CoursesBorderDirective [creationDate] = 'coursesItem.creationDate' 
+    [ngClass]='{courses__topRated:coursesItem.topRated}' 
+    class="courses">
     <div class="courses__basic-course-group">
         <div class="courses__header">
-            <div class="courses__title">{{coursesItem.title}}</div>
-            <div class="courses__duration" *ngIf='coursesItem.duration <= 60'>{{coursesItem.duration}} min</div>
-            <div class="courses__duration" *ngIf='coursesItem.duration > 60'>
-                {{(coursesItem.duration - coursesItem.duration%60)/60}} h {{coursesItem.duration%60}} min
+            <div class="courses__title">
+                {{coursesItem.title | uppercase}}
+                <i 
+                    *ngIf='coursesItem.topRated' 
+                    class='fa fa-star courses__star' 
+                    aria-hidden="true">
+                </i>
             </div>
-            <div class="courses__creationDate">{{coursesItem.creationDate | date }}</div>
+            <div class="courses__duration">{{ coursesItem.duration | duration }}</div>
+            <div class="courses__creationDate">{{ coursesItem.creationDate | date }}</div>
         </div>
         <div class="courses__description">{{coursesItem.description}}</div>
     </div>

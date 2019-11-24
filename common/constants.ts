@@ -6,24 +6,27 @@ export class Constants {
     public courses : CoursesListItem[] = [
         {
           id : 1,
-          title: `Video course 1`,
+          title: `first course`,
           creationDate: 1573493111111,
-          duration: 1000*60*20,
+          duration: 1000*61*20,
           description: 'This is an awesome video!',
+          topRated: true,
         },
         {
           id : 2,
-          title: 'Video course 2',
+          title: 'second course',
           creationDate: 1575193111111,
-          duration: 1000*60*35,
+          duration: 1000*62*35,
           description: 'This is an awesome video!',
+          topRated: false,
         },
         {
           id : 3,
-          title: 'Video course 3',
+          title: 'third course 3',
           creationDate: 1572041122222,
-          duration: 1000*60*75,
+          duration: 1000*63*75,
           description: 'This is an awesome video!',
+          topRated: true,
         },
       ]
 
