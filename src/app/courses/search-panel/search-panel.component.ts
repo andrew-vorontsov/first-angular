@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-search-panel',
@@ -6,11 +6,10 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./search-panel.component.css']
 })
 export class SearchPanelComponent implements OnInit {
+  @Input() public searchValue: string = '';
   @Output() public onSearchButtonItemClick : EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
-
-  public searchValue: string = '';
 
   onSearchButtonClick() {
     this.onSearchButtonItemClick.emit(this.searchValue);

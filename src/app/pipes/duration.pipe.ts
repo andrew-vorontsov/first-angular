@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class DurationPipe implements PipeTransform {
 
   transform(duration: number)  {
-    //Преобазование в минуты
+    //Преобразование в минуты
     duration = duration/1000/60;
 
     if (duration > 60) {

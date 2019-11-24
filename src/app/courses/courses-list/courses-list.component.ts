@@ -10,12 +10,10 @@ import { CoursesService } from '../courses.service';
 export class CoursesListComponent implements OnInit {
   public coursesItems: CoursesListItem[] = [];
   public coursesShow: boolean = false;
-  public searchValue = 'asdf';
-
-  constructor(private coursesService : CoursesService) { }
+  public searchValue: string = '';
 
   onSearchButtonFilterClick(searchValue) {
-    return searchValue;
+    this.searchValue = searchValue;
   }
   
   onDeleteButtonClick(item) {
@@ -25,6 +23,8 @@ export class CoursesListComponent implements OnInit {
   onShowmoreClick(event) {
     console.log('onShowmoreclick!');
   }
+
+  constructor(private coursesService : CoursesService) { }
 
   ngOnInit() {
       this.coursesItems = this.coursesService.getCoursesItems();
