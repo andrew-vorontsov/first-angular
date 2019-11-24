@@ -6,8 +6,8 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
   styleUrls: ['./search-panel.component.css']
 })
 export class SearchPanelComponent implements OnInit {
-  @Input() public searchValue: string = '';
   @Output() public onSearchButtonItemClick : EventEmitter<string> = new EventEmitter<string>();
+  private searchValue: string;
 
   constructor() { }
 
