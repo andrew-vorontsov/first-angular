@@ -7,7 +7,6 @@ export class CoursesFilterPipe implements PipeTransform {
 
   transform(coursesItems, searchValue) {
     if (searchValue === '') return coursesItems;
-
     coursesItems = coursesItems.filter((item) => {
       return item.title.toLowerCase().includes(searchValue.toLowerCase());
     })

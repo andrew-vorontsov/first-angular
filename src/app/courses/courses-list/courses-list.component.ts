@@ -9,25 +9,15 @@ import { CoursesService } from '../courses.service';
 })
 export class CoursesListComponent implements OnInit {
   public coursesItems: CoursesListItem[] = [];
-  public coursesShow: boolean = false;
   public searchValue: string = '';
 
   onSearchButtonFilterClick(searchValue) {
     this.searchValue = searchValue;
   }
   
-  onDeleteButtonClick(item) {
-    console.log('Delete video course ' + item.id);
-  }
-
-  onShowmoreClick(event) {
-    console.log('onShowmoreclick!');
-  }
-
   constructor(private coursesService : CoursesService) { }
 
   ngOnInit() {
       this.coursesItems = this.coursesService.getCoursesItems();
-      this.coursesShow = this.coursesItems.length > 0 ? true : false;
   };
 }

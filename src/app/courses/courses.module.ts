@@ -8,6 +8,7 @@ import { OrderByPipe } from '../pipes/order-by.pipe';
 import { SearchPanelComponent } from './search-panel/search-panel.component';
 import { FormsModule } from '@angular/forms';
 import { CoursesFilterPipe } from '../pipes/courses-filter.pipe';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { CoursesFilterPipe } from '../pipes/courses-filter.pipe';
     CoursesListItemComponent,
     SearchPanelComponent,
     CoursesBorderDirective, 
+    ListComponent,
     DurationPipe,
     OrderByPipe,
     CoursesFilterPipe
