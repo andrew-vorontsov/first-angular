@@ -5,12 +5,14 @@ export class Constants {
 
     public courses : CoursesListItem[] = [
         {
+
           id : 1,
           title: `first course`,
-          creationDate: 1573793111111,
+              creationDate: 1573793111111,
           duration: 1000*60*20,
           description: 'This is an awesome video!',
           topRated: true,
+
         },
         {
           id : 2,
@@ -47,7 +49,7 @@ export class Constants {
       ]
 
       public persons : Person[] = [
-        {id: 1, firstname: "bob", lastname: 'smith'},
+        {id: 1, firstname: 'bob', lastname: 'smith'},
         {id: 2, firstname: 'maria', lastname: 'wolf'},
         {id: 3, firstname: 'habib', lastname: 'nurmur'}
       ]

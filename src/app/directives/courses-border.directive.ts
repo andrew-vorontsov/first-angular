@@ -1,9 +1,9 @@
-import { Directive, ElementRef, Renderer2, OnInit, Input } from "@angular/core";
-import { CoursesService } from "../courses/courses.service";
-import { CoursesListItem } from "../courses/courses-list-item.module";
+import { Directive, ElementRef, Renderer2, OnInit, Input } from '@angular/core';
+import { CoursesService } from '../courses/courses.service';
+import { CoursesListItem } from '../courses/courses-list-item.module';
 
 @Directive({
-  selector: "[CoursesBorderDirective]"
+  selector: '[appCoursesBorderDirective]',
 })
 export class CoursesBorderDirective implements OnInit {
   @Input() creationDate: number;
@@ -20,15 +20,15 @@ export class CoursesBorderDirective implements OnInit {
     ) {
       this.renderer.setStyle(
         this.element.nativeElement,
-        "border-color",
-        "green"
+        'border-color',
+        'green'
       );
     }
     if (this.creationDate > this.currentTime) {
       this.renderer.setStyle(
         this.element.nativeElement,
-        "border-color",
-        "blue"
+        'border-color',
+        'blue'
       );
     }
   }
