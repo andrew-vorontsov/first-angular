@@ -6,6 +6,7 @@ export class AppPage {
   }
 
   getTitleText() {
+    // tslint:disable-next-line:prettier
     return element(by.css('app-root .content span')).getText() as Promise<string>;
   }
 }

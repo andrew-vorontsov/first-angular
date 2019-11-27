@@ -8,7 +8,9 @@ import { CoursesListItem } from '../courses-list-item.module';
 })
 export class CoursesListItemComponent implements OnInit {
   @Input() public coursesItem: CoursesListItem;
-  @Output() public onDeleteButtonItemClick: EventEmitter<number> = new EventEmitter<number>();
+  @Output() public onDeleteButtonItemClick: EventEmitter<
+    number
+  > = new EventEmitter<number>();
 
   onDelButClick() {
     this.onDeleteButtonItemClick.emit();

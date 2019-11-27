@@ -1,6 +1,4 @@
 import { Directive, ElementRef, Renderer2, OnInit, Input } from '@angular/core';
-import { CoursesService } from '../courses/courses.service';
-import { CoursesListItem } from '../courses/courses-list-item.module';
 
 @Directive({
   selector: '[appCoursesBorderDirective]',
