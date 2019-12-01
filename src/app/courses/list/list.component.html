@@ -1,7 +1,8 @@
 <app-courses-list-item 
-    *ngFor='let item of courses'
+    *ngFor='let item of courses | orderBy'
     [coursesItem] = 'item'
-    (onDeleteButtonItemClick) = 'onDeleteButtonClick(item)'>
+    (onDeleteButtonItemClick) = 'onDeleteButtonClick(item)'
+    (onEditButtonItemClick) = 'onEditButtonClick(item)'>
 </app-courses-list-item>
 <div *ngIf='courses && courses.length && !searchValue' class="courses__showmore" (click)='onShowmoreClick($event)'>Show more</div>
 <div *ngIf='courses && !courses.length' class="courses__showmore">No data</div>

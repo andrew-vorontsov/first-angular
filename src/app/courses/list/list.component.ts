@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CoursesListItem } from '../courses-list-item.module';
+import { CoursesService } from '../courses.service';
 
 @Component({
   selector: 'app-list',
@@ -9,15 +10,19 @@ import { CoursesListItem } from '../courses-list-item.module';
 export class ListComponent implements OnInit {
   @Input() public courses: CoursesListItem;
 
+  constructor(private coursesService: CoursesService) {}
+
   onDeleteButtonClick(item) {
-    console.log('Delete video course ' + item.id);
+    this.coursesService.deleteItem(item.id)
+  }
+
+  onEditButtonClick(item) {
+    this.coursesService.updateItem(item.id)
   }
 
   onShowmoreClick(event) {
     console.log('onShowmoreclick!');
   }
-
-  constructor() {}
 
   ngOnInit() {}
 }

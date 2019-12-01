@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { CoursesService } from '../courses.service';
 
 @Component({
   selector: 'app-search-panel',
@@ -9,12 +10,17 @@ export class SearchPanelComponent implements OnInit {
   @Output() public onSearchButtonItemClick: EventEmitter<
     string
   > = new EventEmitter<string>();
+
   private searchValue: string;
 
-  constructor() {}
+  constructor(private coursesService: CoursesService) {}
 
   onSearchButtonClick() {
     this.onSearchButtonItemClick.emit(this.searchValue);
+  }
+
+  onAddCourseButtonClick() {
+    this.coursesService.addCourseItem();
   }
 
   ngOnInit() {}

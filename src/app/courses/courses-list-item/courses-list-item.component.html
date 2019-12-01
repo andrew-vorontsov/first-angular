@@ -18,10 +18,14 @@
         <div class="courses__description">{{coursesItem.description}}</div>
     </div>
    <div class="courses__button-group">
-       <button class="courses__button courses__edit-button">Edit</button>
+       <button 
+            class="courses__button courses__edit-button"
+            (click) = "onEditClick()">
+                Edit
+        </button>
        <button 
             class="courses__button courses__delete-button"
-            (click) = 'onDelButClick()'>
+            (click) = 'onDelClick()'>
                 Delete
         </button>
    </div>

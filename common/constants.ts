@@ -6,7 +6,7 @@ export class Constants {
     {
       id: 1,
       title: `first course`,
-      creationDate: 1573793111111,
+      creationDate: 1575793111111,
       duration: 1000 * 60 * 20,
       description: 'This is an awesome video!',
       topRated: true,
@@ -14,7 +14,7 @@ export class Constants {
     {
       id: 2,
       title: 'second course',
-      creationDate: 1575193111111,
+      creationDate: 1577193111111,
       duration: 1000 * 60 * 35,
       description: 'This is an awesome video!',
       topRated: false,
@@ -22,7 +22,7 @@ export class Constants {
     {
       id: 3,
       title: 'third course',
-      creationDate: 1571041122222,
+      creationDate: 1579041122222,
       duration: 1000 * 60 * 75,
       description: 'This is an awesome video!',
       topRated: true,

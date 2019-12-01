@@ -1,4 +1,4 @@
 <app-search-panel
     (onSearchButtonItemClick) = 'onSearchButtonFilterClick($event)'
 ></app-search-panel>
-<app-list [courses]="coursesItems | orderBy | coursesFilter:searchValue"></app-list>
+<app-list [courses]="coursesItems | coursesFilter:searchValue"></app-list>
