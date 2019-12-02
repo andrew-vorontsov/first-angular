@@ -1,8 +1,9 @@
 <header class="header">
     <div class="header__logo">Logo</div>
     <div class="header__authorization">
-        <div class="header__user-name">User name</div>
-        <button (click) = "onLogoffClick()" class="header__log-off">Log off</button>
+        <div *ngIf="setUserName()" class="header__user-name">{{ setUserName() }}</div>
+        <div *ngIf="!setUserName()" class="header__user-name">{{ setNameFromLocalStore() }}</div>
+        <button *ngIf="isAuth()" (click) = "onLogoffClick()" class="header__log-off">Log off</button>
     </div>
     <div class="clear"></div>
 </header>

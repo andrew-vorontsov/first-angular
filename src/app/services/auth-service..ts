@@ -1,32 +1,36 @@
 import { Injectable } from '@angular/core';
 import { Constants } from 'common/constants';
+import { Person } from '../users/person.module';
 
-@Injectable({
-  providedIn: 'root',
-})
 export class AuthService {
   constructor() {}
 
   public auth = false;
+
+  public user: Person = {
+    id: -1,
+    firstname: '',
+    lastname: '',
+  };
+
   public personsStatic = new Constants();
 
-  private createToken(): number {
-    const token = Math.round(Math.random() * 1000);
-    return token;
+  private changeUserName(name) {
+    this.user.firstname = name;
+    return this.user.firstname;
   }
 
-  private checkUserName(name) {
+  private createToken(): string {
+    const token = Math.round(Math.random() * 1000);
+    return token.toString();
+  }
+
+  public getUserInfo(name): Person {
     if (name) {
-      const userName = this.personsStatic.persons.find(
+      const person = this.personsStatic.persons.find(
         user => user.firstname === name.toLowerCase()
       );
-      return userName;
-    }
-  }
-
-  public getUserInfo() {
-    if (this.isAuthenticated()) {
-
+      return person;
     }
   }
 
@@ -40,12 +44,14 @@ export class AuthService {
   }
 
   public login(name) {
-    if (!this.isAuthenticated() && this.checkUserName(name)) {
+    if (!this.isAuthenticated() && this.getUserInfo(name)) {
       console.log('Login successful');
-      localStorage.setItem('token', this.createToken().toString());
+      localStorage.setItem('token', this.createToken());
+      localStorage.setItem('userName', this.getUserInfo(name).firstname);
+      this.changeUserName(name);
       this.auth = true;
     } else {
-      console.log('Введите имя из списка пользователей');
+      alert('Введите имя из списка пользователей (Bob, Maria, Habib)');
     }
   }
 
@@ -53,7 +59,9 @@ export class AuthService {
     if (this.isAuthenticated()) {
       console.log('Logout');
       localStorage.removeItem('token');
+      localStorage.removeItem('userName');
       this.auth = false;
+      this.user.firstname = '';
     }
   }
 }

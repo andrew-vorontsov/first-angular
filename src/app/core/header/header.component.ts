@@ -6,12 +6,22 @@ import { AuthService } from 'src/app/services/auth-service.';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  public name = this.authServise.getUserInfo();
+  constructor(private authService: AuthService) {}
 
-  constructor(private authServise: AuthService) {}
+  isAuth() {
+    return this.authService.isAuthenticated();
+  }
+
+  setUserName() {
+    return this.authService.user.firstname;
+  }
+
+  setNameFromLocalStore() {
+    return localStorage.getItem('userName');
+  }
 
   onLogoffClick() {
-    this.authServise.logout();
+    this.authService.logout();
   }
 
   ngOnInit() {}

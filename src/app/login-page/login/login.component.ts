@@ -12,7 +12,9 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   onLoginClick() {
-    this.authService.login(this.name);
+    if (this.name) {
+      this.authService.login(this.name.toLowerCase());
+    }
   }
 
   ngOnInit() {}

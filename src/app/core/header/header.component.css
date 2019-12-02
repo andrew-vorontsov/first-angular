@@ -16,6 +16,7 @@
 }
 .header__user-name {
     margin-right:20px;
+    text-transform: capitalize;
 }
 .header__log-off {
     background-color: cadetblue;

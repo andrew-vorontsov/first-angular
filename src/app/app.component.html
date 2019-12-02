@@ -1,9 +1,9 @@
 <app-header></app-header>
 
-<app-breadcrumbs *ngIf='auth()'></app-breadcrumbs>
+<app-breadcrumbs *ngIf='isAuth()'></app-breadcrumbs>
 
-<app-courses-list *ngIf='auth()'></app-courses-list>
+<app-courses-list *ngIf='isAuth()'></app-courses-list>
 
-<app-login *ngIf='!auth()'></app-login>
+<app-login *ngIf='!isAuth()'></app-login>
 
 <app-footer></app-footer>
