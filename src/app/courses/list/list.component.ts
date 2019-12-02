@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CoursesListItem } from '../courses-list-item.module';
-import { CoursesService } from '../courses.service';
+import { CoursesService } from '../../services/courses.service';
 
 @Component({
   selector: 'app-list',
@@ -13,11 +13,11 @@ export class ListComponent implements OnInit {
   constructor(private coursesService: CoursesService) {}
 
   onDeleteButtonClick(item) {
-    this.coursesService.deleteItem(item.id)
+    this.coursesService.deleteItem(item.id);
   }
 
   onEditButtonClick(item) {
-    this.coursesService.updateItem(item.id)
+    this.coursesService.updateItem(item.id);
   }
 
   onShowmoreClick(event) {

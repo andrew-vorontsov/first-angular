@@ -9,9 +9,10 @@ import { FormsModule } from '@angular/forms';
 import { UsersModule } from './users/users.module';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './app-router';
+import { LoginComponent } from './login-page/login/login.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

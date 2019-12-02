@@ -1,0 +1,25 @@
+.login-form {
+    width:300px;
+    margin: 75px auto;
+    border: 2px solid grey;
+    padding:5px 10px;
+}
+.login-form__header {
+    font-size: 25px;
+    padding:5px 0px;
+    border-bottom: 2px solid grey;
+}
+.input-container {
+    padding: 15px 0;
+}
+.input-container input {
+    margin-bottom: 10px;
+}
+.login-button {
+    background-color: cadetblue;
+    border: none;
+    color:#ffffff;
+    padding:10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+}

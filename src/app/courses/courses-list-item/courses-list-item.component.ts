@@ -11,7 +11,9 @@ export class CoursesListItemComponent implements OnInit {
   @Output() public onDeleteButtonItemClick: EventEmitter<
     number
   > = new EventEmitter<number>();
-  @Output() public onEditButtonItemClick: EventEmitter<number> = new EventEmitter<number>();
+  @Output() public onEditButtonItemClick: EventEmitter<
+    number
+  > = new EventEmitter<number>();
 
   onDelClick() {
     this.onDeleteButtonItemClick.emit();

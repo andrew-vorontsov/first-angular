@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { CoursesService } from '../courses.service';
+import { CoursesService } from '../../services/courses.service';
 
 @Component({
   selector: 'app-search-panel',
