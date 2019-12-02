@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Constants } from 'common/constants';
 import { Person } from '../users/person.module';
 
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthService {
   constructor() {}
 
