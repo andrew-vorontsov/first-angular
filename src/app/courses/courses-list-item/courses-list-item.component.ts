@@ -4,7 +4,7 @@ import { CoursesListItem } from '../courses-list-item.module';
 @Component({
   selector: 'app-courses-list-item',
   templateUrl: './courses-list-item.component.html',
-  styleUrls: ['./courses-list-item.component.css'],
+  styleUrls: ['./courses-list-item.component.scss'],
 })
 export class CoursesListItemComponent implements OnInit {
   @Input() public coursesItem: CoursesListItem;

@@ -4,7 +4,7 @@ import { CoursesService } from '../../services/courses.service';
 @Component({
   selector: 'app-search-panel',
   templateUrl: './search-panel.component.html',
-  styleUrls: ['./search-panel.component.css'],
+  styleUrls: ['./search-panel.component.scss'],
 })
 export class SearchPanelComponent implements OnInit {
   @Output() public onSearchButtonItemClick: EventEmitter<
