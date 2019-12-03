@@ -1,30 +1,30 @@
 <div 
     appCoursesBorderDirective [creationDate] = 'coursesItem.creationDate' 
     [ngClass]='{courses__topRated:coursesItem.topRated}' 
-    class="courses">
-    <div class="courses__basic-course-group">
+    class="courses__elem">
+    <div class="courses__base-course-group">
         <div class="courses__header">
             <div class="courses__title">
                 {{coursesItem.title | uppercase}}
                 <i 
                     *ngIf='coursesItem.topRated' 
-                    class='fa fa-star courses__star' 
+                    class='courses__star fa fa-star' 
                     aria-hidden="true">
                 </i>
             </div>
             <div class="courses__duration">{{ coursesItem.duration | duration }}</div>
-            <div class="courses__creationDate">{{ coursesItem.creationDate | date }}</div>
+            <div class="courses__creation-date">{{ coursesItem.creationDate | date }}</div>
         </div>
         <div class="courses__description">{{coursesItem.description}}</div>
     </div>
    <div class="courses__button-group">
        <button 
-            class="courses__button courses__edit-button"
+            class="courses__button courses__button_edit-button"
             (click) = "onEditClick()">
                 Edit
         </button>
        <button 
-            class="courses__button courses__delete-button"
+            class="courses__button courses__button_delete-button"
             (click) = 'onDelClick()'>
                 Delete
         </button>

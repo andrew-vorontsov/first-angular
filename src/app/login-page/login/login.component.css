@@ -9,13 +9,13 @@
     padding:5px 0px;
     border-bottom: 2px solid grey;
 }
-.input-container {
+.login-form__input-container {
     padding: 15px 0;
 }
-.input-container input {
+.login-form__input {
     margin-bottom: 10px;
 }
-.login-button {
+.login-form__button {
     background-color: cadetblue;
     border: none;
     color:#ffffff;

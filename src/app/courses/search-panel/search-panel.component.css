@@ -8,15 +8,15 @@
     font-size:15px;
     border: 1px solid grey;
 }
-.search-panel__add-course-button {
+.search-panel__button_add-course {
     margin-left: auto;
     background-color: green;
 }
-.search-panel__search-button {
+.search-panel__button_search {
     margin-left: 20px;
     background-color: cadetblue;
 }
-.search-panel button {
+.search-panel__button {
     color:#ffffff;
     border: none;
     padding:10px 15px;

@@ -1,14 +1,14 @@
 <div class="login-form">
     <div class="login-form__header">Login</div>
-    <div class="input-container">
+    <div class="login-form__input-container">
         <input 
             type="text" 
-            class="input-name" 
+            class="login-form__input login-form__input_name" 
             placeholder="Your name"
             [value]='name'
             [(ngModel)]='name'>
         <br>
-        <input type="password" class="input-password" placeholder="Пока без пароля"><br>
-        <button (click)='onLoginClick()' class="login-button">Login</button>
+        <input type="password" class="login-form__input login-form__input_password" placeholder="Пока без пароля"><br>
+        <button (click)='onLoginClick()' class="login-form__button">Login</button>
     </div>
 </div>

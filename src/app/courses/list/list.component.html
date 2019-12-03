@@ -4,5 +4,5 @@
     (onDeleteButtonItemClick) = 'onDeleteButtonClick(item)'
     (onEditButtonItemClick) = 'onEditButtonClick(item)'>
 </app-courses-list-item>
-<div *ngIf='courses && courses.length && !searchValue' class="courses__showmore" (click)='onShowmoreClick($event)'>Show more</div>
-<div *ngIf='courses && !courses.length' class="courses__showmore">No data</div>
+<div *ngIf='courses && courses.length && !searchValue' class="courses__showmore-button" (click)='onShowmoreClick($event)'>Show more</div>
+<div *ngIf='courses && !courses.length' class="courses__showmore-button">No data</div>

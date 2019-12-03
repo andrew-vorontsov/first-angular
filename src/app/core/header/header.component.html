@@ -5,5 +5,4 @@
         <div *ngIf="!setUserName()" class="header__user-name">{{ setNameFromLocalStore() }}</div>
         <button *ngIf="isAuth()" (click) = "onLogoffClick()" class="header__log-off">Log off</button>
     </div>
-    <div class="clear"></div>
 </header>
