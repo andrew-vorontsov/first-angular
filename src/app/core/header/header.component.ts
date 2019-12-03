@@ -17,7 +17,10 @@ export class HeaderComponent implements OnInit {
   }
 
   setNameFromLocalStore() {
-    return localStorage.getItem('userName');
+    const userInfo = localStorage.getItem('userInfo');
+    if (userInfo) {
+      return JSON.parse(userInfo).firstname;
+    }
   }
 
   onLogoffClick() {

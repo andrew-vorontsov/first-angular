@@ -50,7 +50,7 @@ export class AuthService {
     if (!this.isAuthenticated() && this.getUserInfo(name)) {
       console.log('Login successful');
       localStorage.setItem('token', this.createToken());
-      localStorage.setItem('userName', this.getUserInfo(name).firstname);
+      localStorage.setItem('userInfo', JSON.stringify(this.getUserInfo(name)));
       this.changeUserName(name);
       this.auth = true;
     } else {
@@ -62,7 +62,7 @@ export class AuthService {
     if (this.isAuthenticated()) {
       console.log('Logout');
       localStorage.removeItem('token');
-      localStorage.removeItem('userName');
+      localStorage.removeItem('userInfo');
       this.auth = false;
       this.user.firstname = '';
     }
