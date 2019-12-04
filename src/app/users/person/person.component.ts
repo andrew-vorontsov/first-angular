@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Person } from '../person.module';
 import { Constants } from 'common/constants';
 
@@ -7,12 +7,10 @@ import { Constants } from 'common/constants';
   templateUrl: './person.component.html',
   styleUrls: ['./person.component.scss'],
 })
-export class PersonComponent implements OnInit {
+export class PersonComponent {
   public personsStatic = new Constants();
 
   public persons: Person[] = this.personsStatic.persons;
 
   constructor() {}
-
-  ngOnInit() {}
 }

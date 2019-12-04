@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { CoursesService } from '../../services/courses.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { CoursesService } from '../../services/courses.service';
   templateUrl: './search-panel.component.html',
   styleUrls: ['./search-panel.component.scss'],
 })
-export class SearchPanelComponent implements OnInit {
+export class SearchPanelComponent {
   @Output() public onSearchButtonItemClick: EventEmitter<
     string
   > = new EventEmitter<string>();
@@ -22,6 +22,4 @@ export class SearchPanelComponent implements OnInit {
   onAddCourseButtonClick() {
     this.coursesService.addCourseItem();
   }
-
-  ngOnInit() {}
 }

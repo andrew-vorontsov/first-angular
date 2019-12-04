@@ -1,4 +1,5 @@
 import { Directive, ElementRef, Renderer2, OnInit, Input } from '@angular/core';
+import { Constants } from 'common/constants';
 
 @Directive({
   selector: '[appCoursesBorderDirective]',
@@ -6,15 +7,17 @@ import { Directive, ElementRef, Renderer2, OnInit, Input } from '@angular/core';
 export class CoursesBorderDirective implements OnInit {
   @Input() creationDate: number;
 
-  private currentTime = new Date().getTime();
-  private twoWeeksTime = this.currentTime - 14 * 24 * 60 * 60 * 1000;
+  private constants = new Constants();
+
+  private currentDate = this.constants.currentDate;
+  private twoWeeksAgoDate = this.constants.twoWeeksAgoDate;
 
   constructor(private element: ElementRef, private renderer: Renderer2) {}
 
   ngOnInit() {
     if (
-      this.creationDate < this.currentTime &&
-      this.creationDate >= this.twoWeeksTime
+      this.creationDate < this.currentDate &&
+      this.creationDate >= this.twoWeeksAgoDate
     ) {
       this.renderer.setStyle(
         this.element.nativeElement,
@@ -22,7 +25,7 @@ export class CoursesBorderDirective implements OnInit {
         'green'
       );
     }
-    if (this.creationDate > this.currentTime) {
+    if (this.creationDate > this.currentDate) {
       this.renderer.setStyle(
         this.element.nativeElement,
         'border-color',

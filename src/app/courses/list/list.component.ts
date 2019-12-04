@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CoursesListItem } from '../courses-list-item.module';
 import { CoursesService } from '../../services/courses.service';
 
@@ -7,7 +7,7 @@ import { CoursesService } from '../../services/courses.service';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
 })
-export class ListComponent implements OnInit {
+export class ListComponent {
   @Input() public courses: CoursesListItem;
 
   constructor(private coursesService: CoursesService) {}
@@ -23,6 +23,4 @@ export class ListComponent implements OnInit {
   onShowmoreClick(event) {
     console.log('onShowmoreclick!');
   }
-
-  ngOnInit() {}
 }

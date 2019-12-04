@@ -2,6 +2,9 @@ import { CoursesListItem } from 'src/app/courses/courses-list-item.module';
 import { Person } from 'src/app/users/person.module';
 
 export class Constants {
+  public currentDate = new Date().getTime();
+  public twoWeeksAgoDate = this.currentDate - 14 * 24 * 60 * 60 * 1000;
+
   public courses: CoursesListItem[] = [
     {
       id: 1,

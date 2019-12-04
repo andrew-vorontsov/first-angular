@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CoursesListItem } from '../courses-list-item.module';
 
 @Component({
@@ -6,7 +6,7 @@ import { CoursesListItem } from '../courses-list-item.module';
   templateUrl: './courses-list-item.component.html',
   styleUrls: ['./courses-list-item.component.scss'],
 })
-export class CoursesListItemComponent implements OnInit {
+export class CoursesListItemComponent {
   @Input() public coursesItem: CoursesListItem;
   @Output() public onDeleteButtonItemClick: EventEmitter<
     number
@@ -24,6 +24,4 @@ export class CoursesListItemComponent implements OnInit {
   }
 
   constructor() {}
-
-  ngOnInit() {}
 }
