@@ -1,3 +1,4 @@
+@import '../../../../common/styles.scss';
 .courses__elem {
     border-style: solid;
     border-width: 2px;
@@ -49,7 +50,7 @@
     color: #ffffff;
 }
 .courses__star {
-    color: #333;
+    color: $dgrey;
 }
 .courses__topRated {
     background-color: #e6f8ff;
