@@ -22,10 +22,6 @@ import { ListComponent } from './list/list.component';
     CoursesFilterPipe,
   ],
   imports: [CommonModule, FormsModule],
-  exports: [
-    CoursesListComponent,
-    CoursesListItemComponent,
-    SearchPanelComponent,
-  ],
+  exports: [CoursesListComponent],
 })
 export class CoursesModule {}
