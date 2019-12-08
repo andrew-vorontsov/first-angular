@@ -6,19 +6,15 @@ describe('CoursesListItemComponent', () => {
   let component: CoursesListItemComponent;
   let fixture: ComponentFixture<CoursesListItemComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [CoursesListItemComponent],
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CoursesListItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
 });

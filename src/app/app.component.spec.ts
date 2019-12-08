@@ -1,33 +1,20 @@
 import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { CoreModule } from './core/core.module';
+import { CoursesModule } from './courses/courses.module';
+import { LoginModule } from './login-page/login.module';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
       declarations: [AppComponent],
+      imports: [CoreModule, CoursesModule, LoginModule],
     }).compileComponents();
-  }));
-
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'first-angular'`, () => {
+  it('should be ok', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('first-angular');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain(
-      'first-angular app is running!'
-    );
+    const component = fixture.debugElement.componentInstance;
+    expect(component).toBeTruthy();
   });
 });

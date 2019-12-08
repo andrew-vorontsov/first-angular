@@ -10,14 +10,16 @@ import { UsersModule } from './users/users.module';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './app-router';
 import { LoginComponent } from './login-page/login/login.component';
+import { LoginModule } from './login-page/login.module';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CoreModule,
     CoursesModule,
+    LoginModule,
     FormsModule,
     UsersModule,
     RouterModule.forRoot(ROUTES),
