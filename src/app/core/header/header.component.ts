@@ -16,7 +16,7 @@ export class HeaderComponent {
     return this.authService.user.firstname;
   }
 
-  setNameFromLocalStore() {
+  getNameFromLocalStore() {
     const userInfo = localStorage.getItem('userInfo');
     if (userInfo) {
       return JSON.parse(userInfo).firstname;

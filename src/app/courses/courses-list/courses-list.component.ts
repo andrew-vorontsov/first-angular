@@ -11,7 +11,7 @@ import { AuthService } from '../../services/auth-service.';
 export class CoursesListComponent implements OnInit {
   public coursesItems: CoursesListItem[] = [];
   public searchValue = '';
-  public auth = false;
+  public auth: boolean;
 
   onSearchButtonFilterClick(searchValue) {
     this.searchValue = searchValue;

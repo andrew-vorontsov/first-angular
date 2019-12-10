@@ -9,6 +9,8 @@ import { CoursesListItemComponent } from '../courses-list-item/courses-list-item
 import { FormsModule } from '@angular/forms';
 import { CoursesBorderDirective } from 'src/app/directives/courses-border.directive';
 import { DurationPipe } from 'src/app/pipes/duration.pipe';
+import { AuthService } from 'src/app/services/auth-service.';
+import { CoursesService } from 'src/app/services/courses.service';
 
 describe('CoursesListComponent', () => {
   let component: CoursesListComponent;
@@ -36,7 +38,27 @@ describe('CoursesListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('shoulde create CoursesListComponent', () => {
-    expect(component).toBeTruthy();
+  describe('when component onload', () => {
+    it('shoulde create CoursesListComponent', () => {
+      expect(component).toBeTruthy();
+    });
+
+    it('shoulde assign auth value', () => {
+      const service = fixture.debugElement.injector.get(AuthService);
+      expect(component.auth).toEqual(service.isAuthenticated());
+    });
+
+    it('shoulde assign coursesItems values', () => {
+      const service = fixture.debugElement.injector.get(CoursesService);
+      expect(component.coursesItems).toEqual(service.getCoursesItems());
+    });
+  });
+
+  describe('when onSearchButtonFilterClick is called', () => {
+    it('shoulde searchValue change', () => {
+      const searchValue = 'test';
+      component.onSearchButtonFilterClick(searchValue);
+      expect(searchValue).toEqual(component.searchValue);
+    });
   });
 });

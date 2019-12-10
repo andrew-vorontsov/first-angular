@@ -12,6 +12,8 @@ import { CoursesListItem } from '../courses-list-item.module';
 describe('CoursesListItemComponent', () => {
   let component: CoursesListItemComponent;
   let fixture: ComponentFixture<CoursesListItemComponent>;
+  let onDeleteButtonItemClick: any;
+  let onEditButtonItemClick: any;
   const coursesItem: CoursesListItem = {
     id: 1,
     title: `first course`,
@@ -41,7 +43,37 @@ describe('CoursesListItemComponent', () => {
     fixture.detectChanges();
   });
 
-  it('shoulde create CoursesListItemComponent', () => {
-    expect(component).toBeTruthy();
+  describe('when onDelClick is called', () => {
+    beforeEach(() => {
+      onDeleteButtonItemClick = {
+        emit: () => {},
+      };
+    });
+
+    it('shoulde create CoursesListItemComponent', () => {
+      expect(component).toBeTruthy();
+    });
+
+    it('shoulde onDeleteButtonItemClick is emit data', () => {
+      spyOn(onDeleteButtonItemClick, 'emit');
+      component.onDeleteButtonItemClick = onDeleteButtonItemClick;
+      component.onDelClick();
+      expect(onDeleteButtonItemClick.emit).toHaveBeenCalled();
+    });
+  });
+
+  describe('When onEditClick is called', () => {
+    beforeEach(() => {
+      onEditButtonItemClick = {
+        emit: () => {},
+      };
+    });
+
+    it('should onEditButtonClick is emit data', () => {
+      spyOn(onEditButtonItemClick, 'emit');
+      component.onEditButtonItemClick = onEditButtonItemClick;
+      component.onEditClick();
+      expect(onEditButtonItemClick.emit).toHaveBeenCalled();
+    });
   });
 });
