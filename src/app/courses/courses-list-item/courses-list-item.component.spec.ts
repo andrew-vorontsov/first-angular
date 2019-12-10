@@ -6,7 +6,6 @@ import { DurationPipe } from 'src/app/pipes/duration.pipe';
 import { OrderByPipe } from 'src/app/pipes/order-by.pipe';
 import { FormsModule } from '@angular/forms';
 import { CoursesFilterPipe } from 'src/app/pipes/courses-filter.pipe';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { CoursesListItem } from '../courses-list-item.module';
 
 describe('CoursesListItemComponent', () => {

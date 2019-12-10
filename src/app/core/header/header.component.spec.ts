@@ -2,11 +2,13 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
 import { Person } from 'src/app/users/person.module';
+import { AuthService } from 'src/app/services/auth-service.';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
   let user: Person;
+  let service: AuthService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -18,10 +20,26 @@ describe('HeaderComponent', () => {
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    service = fixture.debugElement.injector.get(AuthService);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('When HeaderComponent is onload', () => {
+    it('should create', () => {
+      expect(component).toBeTruthy();
+    });
+
+    it('shoulde assign auth value', () => {
+      expect(component.isAuth()).toEqual(service.isAuthenticated());
+    });
+
+    it('shoulde assign username value', () => {
+      service.user = {
+        id: -1,
+        firstname: 'test',
+        lastname: '',
+      };
+      expect(component.setUserName()).toEqual(service.user.firstname);
+    });
   });
 
   describe('When setNameFromLocalStore is called', () => {
@@ -38,6 +56,14 @@ describe('HeaderComponent', () => {
       expect(component.getNameFromLocalStore()).toEqual(
         JSON.parse(localStorage.getItem('userInfo')).firstname
       );
+    });
+  });
+
+  describe('When onLogoffClick is called', () => {
+    it('should assign auth value with false', () => {
+      service.auth = true;
+      component.onLogoffClick();
+      expect(component.isAuth()).toEqual(service.isAuthenticated());
     });
   });
 });

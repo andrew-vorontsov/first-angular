@@ -38,24 +38,24 @@ describe('CoursesListComponent', () => {
     fixture.detectChanges();
   });
 
-  describe('when component onload', () => {
-    it('shoulde create CoursesListComponent', () => {
+  describe('when CoursesListComponent onload', () => {
+    it('should create CoursesListComponent', () => {
       expect(component).toBeTruthy();
     });
 
-    it('shoulde assign auth value', () => {
+    it('should assign auth value', () => {
       const service = fixture.debugElement.injector.get(AuthService);
       expect(component.auth).toEqual(service.isAuthenticated());
     });
 
-    it('shoulde assign coursesItems values', () => {
+    it('should assign coursesItems values', () => {
       const service = fixture.debugElement.injector.get(CoursesService);
       expect(component.coursesItems).toEqual(service.getCoursesItems());
     });
   });
 
   describe('when onSearchButtonFilterClick is called', () => {
-    it('shoulde searchValue change', () => {
+    it('should searchValue change', () => {
       const searchValue = 'test';
       component.onSearchButtonFilterClick(searchValue);
       expect(searchValue).toEqual(component.searchValue);

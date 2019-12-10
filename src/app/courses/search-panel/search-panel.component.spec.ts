@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchPanelComponent } from './search-panel.component';
 import { FormsModule } from '@angular/forms';
+import { CoursesService } from 'src/app/services/courses.service';
 
 describe('SearchPanelComponent', () => {
   let component: SearchPanelComponent;
@@ -37,6 +38,15 @@ describe('SearchPanelComponent', () => {
       component.onSearchButtonItemClick = onSearchButtonItemClick;
       component.onSearchButtonClick();
       expect(onSearchButtonItemClick.emit).toHaveBeenCalled();
+    });
+  });
+
+  describe('When onAddCourseButtonClick is called', () => {
+    it('should onAddCourseButtonClick is add data to service', () => {
+      const service = fixture.debugElement.injector.get(CoursesService);
+      const giverCoursesLength = service.getCoursesItems().length;
+      component.onAddCourseButtonClick();
+      expect(giverCoursesLength).toBeLessThan(service.getCoursesItems().length);
     });
   });
 });
