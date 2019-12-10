@@ -44,9 +44,9 @@ describe('SearchPanelComponent', () => {
   describe('When onAddCourseButtonClick is called', () => {
     it('should onAddCourseButtonClick is add data to service', () => {
       const service = fixture.debugElement.injector.get(CoursesService);
-      const giverCoursesLength = service.getCoursesItems().length;
+      const spy = spyOn(service, 'addCourseItem');
       component.onAddCourseButtonClick();
-      expect(giverCoursesLength).toBeLessThan(service.getCoursesItems().length);
+      expect(spy).toHaveBeenCalled();
     });
   });
 });

@@ -28,17 +28,10 @@ describe('HeaderComponent', () => {
       expect(component).toBeTruthy();
     });
 
-    it('shoulde assign auth value', () => {
-      expect(component.isAuth()).toEqual(service.isAuthenticated());
-    });
-
-    it('shoulde assign username value', () => {
-      service.user = {
-        id: -1,
-        firstname: 'test',
-        lastname: '',
-      };
-      expect(component.setUserName()).toEqual(service.user.firstname);
+    it('shoulde call isAuth method', () => {
+      const spy = spyOn(service, 'isAuthenticated');
+      component.isAuth();
+      expect(spy).toHaveBeenCalled();
     });
   });
 
@@ -61,9 +54,9 @@ describe('HeaderComponent', () => {
 
   describe('When onLogoffClick is called', () => {
     it('should assign auth value with false', () => {
-      service.auth = true;
+      const spy = spyOn(service, 'logout');
       component.onLogoffClick();
-      expect(component.isAuth()).toEqual(service.isAuthenticated());
+      expect(spy).toHaveBeenCalled();
     });
   });
 });

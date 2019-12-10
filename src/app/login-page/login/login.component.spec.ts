@@ -28,10 +28,10 @@ describe('LoginComponent', () => {
   describe('When onLoginClick is called', () => {
     it('should onLoginClick is change auth flag in authService', () => {
       const service = fixture.debugElement.injector.get(AuthService);
-      service.auth = false;
-      component.name = 'Maria';
+      const spy = spyOn(service, 'login');
+      component.name = 'bob';
       component.onLoginClick();
-      expect(service.isAuthenticated()).toBeTruthy();
+      expect(spy).toHaveBeenCalled();
     });
   });
 });

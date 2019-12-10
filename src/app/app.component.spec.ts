@@ -28,8 +28,9 @@ describe('AppComponent', () => {
   describe('When isAuth is called', () => {
     it('should assign auth value', () => {
       const service = fixture.debugElement.injector.get(AuthService);
-      service.auth = true;
-      expect(component.isAuth()).toBeTruthy();
+      const spy = spyOn(service, 'isAuthenticated');
+      component.isAuth();
+      expect(spy).toHaveBeenCalled();
     });
   });
 });

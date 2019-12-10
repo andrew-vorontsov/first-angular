@@ -12,7 +12,7 @@ import { CoursesListItem } from '../courses-list-item.module';
 describe('ListComponent', () => {
   let component: ListComponent;
   let fixture: ComponentFixture<ListComponent>;
-  let service: CoursesService;
+  let coursesService: CoursesService;
   let coursesItem: CoursesListItem;
 
   beforeEach(async(() => {
@@ -31,7 +31,7 @@ describe('ListComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ListComponent);
     component = fixture.componentInstance;
-    service = fixture.debugElement.injector.get(CoursesService);
+    coursesService = fixture.debugElement.injector.get(CoursesService);
     fixture.detectChanges();
   });
 
@@ -51,6 +51,16 @@ describe('ListComponent', () => {
         description: 'This is an awesome video!',
         topRated: true,
       };
+    });
+    it('should call deleteItem method', () => {
+      const spy = spyOn(coursesService, 'deleteItem');
+      component.onDeleteButtonClick(coursesItem);
+      expect(spy).toHaveBeenCalled();
+    });
+    it('should call updateItem method', () => {
+      const spy = spyOn(coursesService, 'updateItem');
+      component.onEditButtonClick(coursesItem);
+      expect(spy).toHaveBeenCalled();
     });
   });
 });
