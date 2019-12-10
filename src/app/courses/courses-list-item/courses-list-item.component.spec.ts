@@ -13,14 +13,7 @@ describe('CoursesListItemComponent', () => {
   let fixture: ComponentFixture<CoursesListItemComponent>;
   let onDeleteButtonItemClick: any;
   let onEditButtonItemClick: any;
-  const coursesItem: CoursesListItem = {
-    id: 1,
-    title: `first course`,
-    creationDate: 1575793111111,
-    duration: 1000 * 60 * 20,
-    description: 'This is an awesome video!',
-    topRated: true,
-  };
+  let coursesItem: CoursesListItem;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -37,6 +30,14 @@ describe('CoursesListItemComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CoursesListItemComponent);
+    coursesItem = {
+      id: 1,
+      title: `first course`,
+      creationDate: 1575793111111,
+      duration: 1000 * 60 * 20,
+      description: 'This is an awesome video!',
+      topRated: true,
+    };
     component = fixture.componentInstance;
     component.coursesItem = coursesItem;
     fixture.detectChanges();
