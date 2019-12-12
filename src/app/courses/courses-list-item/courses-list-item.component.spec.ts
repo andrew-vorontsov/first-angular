@@ -57,7 +57,10 @@ describe('CoursesListItemComponent', () => {
     it('shoulde onDeleteButtonItemClick is emit data', () => {
       spyOn(onDeleteButtonItemClick, 'emit');
       component.onDeleteButtonItemClick = onDeleteButtonItemClick;
-      component.onDelClick();
+      const button = fixture.debugElement.nativeElement.querySelector(
+        '.courses__button_delete-button'
+      );
+      button.click();
       expect(onDeleteButtonItemClick.emit).toHaveBeenCalled();
     });
   });
@@ -72,7 +75,10 @@ describe('CoursesListItemComponent', () => {
     it('should onEditButtonClick is emit data', () => {
       spyOn(onEditButtonItemClick, 'emit');
       component.onEditButtonItemClick = onEditButtonItemClick;
-      component.onEditClick();
+      const button = fixture.debugElement.nativeElement.querySelector(
+        '.courses__button_edit-button'
+      );
+      button.click();
       expect(onEditButtonItemClick.emit).toHaveBeenCalled();
     });
   });

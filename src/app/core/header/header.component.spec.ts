@@ -54,8 +54,12 @@ describe('HeaderComponent', () => {
 
   describe('When onLogoffClick is called', () => {
     it('should assign auth value with false', () => {
+      service.login('bob');
       const spy = spyOn(service, 'logout');
-      component.onLogoffClick();
+      const button = fixture.debugElement.nativeElement.querySelector(
+        '.header__log-off'
+      );
+      button.click();
       expect(spy).toHaveBeenCalled();
     });
   });

@@ -14,10 +14,10 @@ describe('AuthService', () => {
   });
 
   describe('when getUserInfo is called', () => {
-    it('should getUserInfo return user info', () => {
+    it('should return user info', () => {
       expect(service.getUserInfo('bob')).toBeTruthy();
     });
-    it('should not getUserInfo return user info', () => {
+    it('should not return user info', () => {
       expect(service.getUserInfo('test')).toBeFalsy();
     });
   });
@@ -27,18 +27,18 @@ describe('AuthService', () => {
       localStorage.clear();
       service.auth = false;
     });
-    it('should isAuthenticated return auth flag', () => {
+    it('should return true auth flag', () => {
       service.auth = true;
       expect(service.isAuthenticated()).toBeTruthy();
     });
-    it('should not isAuthenticated return auth flag', () => {
+    it('should not return true auth flag', () => {
       expect(service.isAuthenticated()).toBeFalsy();
     });
-    it('should isAuthenticated return auth flag with token', () => {
+    it('should return true auth flag with token', () => {
       localStorage.setItem('token', '123');
       expect(service.isAuthenticated()).toBeTruthy();
     });
-    it('should not isAuthenticated return auth flag with empty token', () => {
+    it('should not return true auth flag with empty token', () => {
       localStorage.setItem('token', '');
       expect(service.isAuthenticated()).toBeFalsy();
     });
@@ -49,11 +49,11 @@ describe('AuthService', () => {
       localStorage.clear();
       service.auth = false;
     });
-    it('should login changes auth flag with registred name', () => {
+    it('should changes auth flag with registred name', () => {
       service.login('bob');
       expect(service.auth).toBeTruthy();
     });
-    it('should not login changes auth flag with not registred name', () => {
+    it('should not changes auth flag with not registred name', () => {
       service.login('ivan');
       expect(service.auth).toBeFalsy();
     });
@@ -64,11 +64,11 @@ describe('AuthService', () => {
       localStorage.clear();
       service.auth = true;
     });
-    it('should logout changes auth flag', () => {
+    it('should changes auth flag', () => {
       service.logout();
       expect(service.auth).toBeFalsy();
     });
-    it('should logout not changes auth flag', () => {
+    it('should not changes auth flag', () => {
       service.auth = false;
       service.logout();
       expect(service.auth).toBeFalsy();

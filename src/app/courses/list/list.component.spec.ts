@@ -41,22 +41,25 @@ describe('ListComponent', () => {
     });
   });
 
+  beforeEach(() => {
+    coursesItem = {
+      id: 1,
+      title: `first course`,
+      creationDate: 1575793111111,
+      duration: 1000 * 60 * 20,
+      description: 'This is an awesome video!',
+      topRated: true,
+    };
+  });
+
   describe('when onDeleteButtonClick is called', () => {
-    beforeEach(() => {
-      coursesItem = {
-        id: 1,
-        title: `first course`,
-        creationDate: 1575793111111,
-        duration: 1000 * 60 * 20,
-        description: 'This is an awesome video!',
-        topRated: true,
-      };
-    });
     it('should call deleteItem method', () => {
       const spy = spyOn(coursesService, 'deleteItem');
       component.onDeleteButtonClick(coursesItem);
       expect(spy).toHaveBeenCalled();
     });
+  });
+  describe('when onEditButtonClick is called', () => {
     it('should call updateItem method', () => {
       const spy = spyOn(coursesService, 'updateItem');
       component.onEditButtonClick(coursesItem);
