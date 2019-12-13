@@ -9,7 +9,7 @@ describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
   let user: Person;
-  let authService: Partial<AuthService>;
+  let authServiceMock: Partial<AuthService>;
   const localStorageService = jasmine.createSpyObj('StorageService', [
     'getLocStorage',
     'setTokenToLocStorage',
@@ -17,7 +17,7 @@ describe('HeaderComponent', () => {
   ]);
   localStorageService.getLocStorage.and.returnValue('bob');
 
-  authService = {
+  authServiceMock = {
     isAuthenticated: () => true,
     logout: () => {},
   };
@@ -26,7 +26,7 @@ describe('HeaderComponent', () => {
     TestBed.configureTestingModule({
       declarations: [HeaderComponent],
       providers: [
-        { provide: AuthService, useValue: authService },
+        { provide: AuthService, useValue: authServiceMock },
         { provide: StorageService, useValue: localStorageService },
       ],
     }).compileComponents();
@@ -44,6 +44,7 @@ describe('HeaderComponent', () => {
     });
 
     it('shoulde call isAuth method', () => {
+      const authService = TestBed.get(AuthService);
       const spy = spyOn(authService, 'isAuthenticated');
       component.isAuth();
       expect(spy).toHaveBeenCalled();
@@ -68,6 +69,7 @@ describe('HeaderComponent', () => {
 
   describe('When onLogoffClick is called', () => {
     it('should assign auth value with false', () => {
+      const authService = TestBed.get(AuthService);
       const spy = spyOn(authService, 'logout');
       component.onLogoffClick();
       expect(spy).toHaveBeenCalled();

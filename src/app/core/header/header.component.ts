@@ -17,8 +17,11 @@ export class HeaderComponent {
   }
 
   setUserName() {
-    console.log(this.authService.user);
-    return this.authService.user.firstname;
+    if (this.isAuth()) {
+      return this.storageService.getLocStorage('userInfo');
+    } else {
+      return this.authService.user.firstname;
+    }
   }
 
   getDataFromLocalStore() {
