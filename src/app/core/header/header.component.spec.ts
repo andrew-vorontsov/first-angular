@@ -45,16 +45,14 @@ describe('HeaderComponent', () => {
     });
 
     it('should setNameFromLocalStore return user firstname', () => {
-      localStorage.setItem('userInfo', JSON.stringify(user));
-      expect(component.getNameFromLocalStore()).toEqual(
-        JSON.parse(localStorage.getItem('userInfo')).firstname
-      );
+      const spy = spyOn(service, 'getNameFromLocalStorage');
+      component.getDataFromLocalStore();
+      expect(spy).toHaveBeenCalled();
     });
   });
 
   describe('When onLogoffClick is called', () => {
     it('should assign auth value with false', () => {
-      service.login('bob');
       const spy = spyOn(service, 'logout');
       component.onLogoffClick();
       expect(spy).toHaveBeenCalled();
