@@ -24,17 +24,17 @@ export class AuthService {
     return this.user.firstname;
   }
 
-  public getUserInfo(name): Person {
+  public getUserInfo(name) {
     if (name) {
       const person = this.personsStatic.persons.find(
         user => user.firstname === name.toLowerCase()
       );
-      return person;
+      return person.firstname;
     }
   }
 
   public isAuthenticated() {
-    if (this.locStorage.getLocStorage('token') === this.locStorage.tok) {
+    if (this.locStorage.getLocStorage('token')) {
       this.auth = true;
       return this.auth;
     } else {

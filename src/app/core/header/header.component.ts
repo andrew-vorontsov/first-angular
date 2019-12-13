@@ -17,21 +17,17 @@ export class HeaderComponent {
   }
 
   setUserName() {
-    if (this.isAuth) {
-      return this.authService.user.firstname;
-    } else {
-      return '';
-    }
+    console.log(this.authService.user);
+    return this.authService.user.firstname;
   }
 
   getDataFromLocalStore() {
-    const person = this.storageService.getLocStorage('userInfo');
-    const user = JSON.parse(person);
-    return user.firstname;
+    console.log(this.storageService.getLocStorage('userInfo'));
+    return this.storageService.getLocStorage('userInfo');
   }
 
   onLogoffClick() {
-    this.setUserName();
     this.authService.logout();
+    this.getDataFromLocalStore();
   }
 }

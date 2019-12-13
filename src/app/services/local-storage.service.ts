@@ -17,7 +17,7 @@ export class StorageService {
   }
 
   public setUserInfoToLocStorage(person) {
-    localStorage.setItem('userInfo', JSON.stringify(person));
+    localStorage.setItem('userInfo', person);
   }
 
   public setTokenToLocStorage() {
