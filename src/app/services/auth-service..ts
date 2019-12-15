@@ -29,7 +29,9 @@ export class AuthService {
       const person = this.personsStatic.persons.find(
         user => user.firstname === name.toLowerCase()
       );
-      return person.firstname;
+      if (person) {
+        return person.firstname;
+      }
     }
   }
 

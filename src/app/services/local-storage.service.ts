@@ -5,7 +5,7 @@ import { AuthService } from './auth-service.';
   providedIn: 'root',
 })
 export class StorageService {
-  public tok = this.createToken();
+  public tok = this.createToken().toString();
 
   public getLocStorage(data) {
     if (data === 'userInfo') {
@@ -26,6 +26,7 @@ export class StorageService {
 
   public createToken(): string {
     const token = Math.round(Math.random() * 1000);
+    this.tok = token.toString();
     return token.toString();
   }
 

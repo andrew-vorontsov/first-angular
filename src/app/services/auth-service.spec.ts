@@ -1,77 +1,81 @@
 import { TestBed } from '@angular/core/testing';
 
 import { AuthService } from './auth-service.';
+import { StorageService } from './local-storage.service';
 
 describe('AuthService', () => {
-  let service: AuthService;
+  let authService: AuthService;
+  let storageService = {
+    getLocStorage: () => 'bob',
+    setTokenToLocStorage: () => {},
+    cleanLocStorage: () => {},
+  };
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.get(AuthService);
+    TestBed.configureTestingModule({
+      providers: [
+        AuthService,
+        { provide: StorageService, useValue: storageService },
+      ],
+    });
+    authService = TestBed.get(AuthService);
+    storageService = TestBed.get(StorageService);
   });
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    expect(authService).toBeTruthy();
   });
 
   describe('when getUserInfo is called', () => {
     it('should return user info', () => {
-      expect(service.getUserInfo('bob')).toBeTruthy();
+      expect(authService.getUserInfo('bob')).toBeTruthy();
     });
     it('should not return user info', () => {
-      expect(service.getUserInfo('test')).toBeFalsy();
+      expect(authService.getUserInfo('test')).toBeFalsy();
     });
   });
 
   describe('when isAuthenticated is called', () => {
     beforeEach(() => {
-      localStorage.clear();
-      service.auth = false;
+      storageService.cleanLocStorage();
+      authService.auth = false;
     });
     it('should return true auth flag', () => {
-      service.auth = true;
-      expect(service.isAuthenticated()).toBeTruthy();
-    });
-    it('should not return true auth flag', () => {
-      expect(service.isAuthenticated()).toBeFalsy();
+      authService.auth = true;
+      expect(authService.isAuthenticated()).toBeTruthy();
     });
     it('should return true auth flag with token', () => {
-      localStorage.setItem('token', '123');
-      expect(service.isAuthenticated()).toBeTruthy();
-    });
-    it('should not return true auth flag with empty token', () => {
-      localStorage.setItem('token', '');
-      expect(service.isAuthenticated()).toBeFalsy();
+      storageService.setTokenToLocStorage();
+      expect(authService.isAuthenticated()).toBeTruthy();
     });
   });
 
   describe('when login is called', () => {
     beforeEach(() => {
-      localStorage.clear();
-      service.auth = false;
+      storageService.cleanLocStorage();
+      authService.auth = false;
     });
     it('should changes auth flag with registred name', () => {
-      service.login('bob');
-      expect(service.auth).toBeTruthy();
+      authService.login('bob');
+      expect(authService.auth).toBeTruthy();
     });
     it('should not changes auth flag with not registred name', () => {
-      service.login('ivan');
-      expect(service.auth).toBeFalsy();
+      authService.login('ivan');
+      expect(authService.auth).toBeFalsy();
     });
   });
 
   describe('when logout is called', () => {
     beforeEach(() => {
-      localStorage.clear();
-      service.auth = true;
+      storageService.cleanLocStorage();
+      authService.auth = true;
     });
     it('should changes auth flag', () => {
-      service.logout();
-      expect(service.auth).toBeFalsy();
+      authService.logout();
+      expect(authService.auth).toBeFalsy();
     });
     it('should not changes auth flag', () => {
-      service.auth = false;
-      service.logout();
-      expect(service.auth).toBeFalsy();
+      authService.logout();
+      expect(authService.auth).toBeFalsy();
     });
   });
 });
