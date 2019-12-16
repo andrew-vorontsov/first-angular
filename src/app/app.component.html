@@ -2,8 +2,10 @@
 
 <app-breadcrumbs *ngIf='isAuth()'></app-breadcrumbs>
 
-<app-courses-list *ngIf='isAuth()'></app-courses-list>
+<app-edit-page *ngIf='isEditPageShow()'></app-edit-page>
 
-<app-login *ngIf='!isAuth()'></app-login>
+<app-courses-list *ngIf='isAuth() && !isEditPageShow()'></app-courses-list>
+
+<app-login *ngIf='!isAuth() && !isEditPageShow()'></app-login>
 
 <app-footer></app-footer>

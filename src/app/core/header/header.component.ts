@@ -25,7 +25,6 @@ export class HeaderComponent {
   }
 
   getDataFromLocalStore() {
-    console.log(this.storageService.getLocStorage('userInfo'));
     return this.storageService.getLocStorage('userInfo');
   }
 

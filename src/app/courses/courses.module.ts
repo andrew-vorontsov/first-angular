@@ -9,12 +9,14 @@ import { SearchPanelComponent } from './search-panel/search-panel.component';
 import { FormsModule } from '@angular/forms';
 import { CoursesFilterPipe } from '../pipes/courses-filter.pipe';
 import { ListComponent } from './list/list.component';
+import { EditPageComponent } from '../edit-page/edit-page.component';
 
 @NgModule({
   declarations: [
     CoursesListComponent,
     CoursesListItemComponent,
     SearchPanelComponent,
+    EditPageComponent,
     CoursesBorderDirective,
     ListComponent,
     DurationPipe,
@@ -22,6 +24,6 @@ import { ListComponent } from './list/list.component';
     CoursesFilterPipe,
   ],
   imports: [CommonModule, FormsModule],
-  exports: [CoursesListComponent],
+  exports: [CoursesListComponent, EditPageComponent],
 })
 export class CoursesModule {}

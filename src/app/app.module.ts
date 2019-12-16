@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { ROUTES } from './app-router';
 import { LoginComponent } from './login-page/login/login.component';
 import { LoginModule } from './login-page/login.module';
+import { EditPageComponent } from './edit-page/edit-page.component';
 
 @NgModule({
   declarations: [AppComponent],

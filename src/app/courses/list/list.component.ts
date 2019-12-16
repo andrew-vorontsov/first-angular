@@ -8,7 +8,7 @@ import { CoursesService } from '../../services/courses.service';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent {
-  @Input() public courses: CoursesListItem;
+  @Input() public courses: CoursesListItem[];
 
   constructor(private coursesService: CoursesService) {}
 

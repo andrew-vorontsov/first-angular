@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class CoursesFilterPipe implements PipeTransform {
   transform(coursesItems, searchValue) {
-    if (searchValue === '') {
+    if (!searchValue) {
       return coursesItems;
     }
     coursesItems = coursesItems.filter(item => {

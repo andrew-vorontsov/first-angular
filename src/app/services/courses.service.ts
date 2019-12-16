@@ -10,6 +10,8 @@ export class CoursesService {
 
   public coursesStatic = new Constants();
 
+  public addCourseShow = false;
+
   private idGenerator(): number {
     const idCourse = Math.round(Math.random() * 1000);
     if (this.coursesStatic.courses.find(item => item.id === idCourse)) {
@@ -23,16 +25,8 @@ export class CoursesService {
     return this.coursesStatic.courses;
   }
 
-  public addCourseItem(): CoursesListItem[] {
-    this.coursesStatic.courses.push({
-      id: this.idGenerator(),
-      title: 'new course ' + this.idGenerator(),
-      creationDate: new Date().getTime(),
-      duration: Math.floor(Math.random() * 140) * 1000 * 60,
-      description: 'This is an awesome video!',
-      topRated: Boolean(Math.round(Math.random())),
-    });
-    return this.coursesStatic.courses;
+  public addCourseItem() {
+    console.log('add course or not ^_^');
   }
 
   public getItemById(id): CoursesListItem {

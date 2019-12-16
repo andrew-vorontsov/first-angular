@@ -11,7 +11,7 @@ export class SearchPanelComponent {
     string
   > = new EventEmitter<string>();
 
-  private searchValue: string;
+  public searchValue: string;
 
   constructor(private coursesService: CoursesService) {}
 
@@ -20,6 +20,6 @@ export class SearchPanelComponent {
   }
 
   onAddCourseButtonClick() {
-    this.coursesService.addCourseItem();
+    this.coursesService.addCourseShow = !this.coursesService.addCourseShow;
   }
 }

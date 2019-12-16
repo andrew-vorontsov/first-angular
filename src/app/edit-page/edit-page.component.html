@@ -1,0 +1,18 @@
+<div class="edit-page">
+  <h3>Add course</h3>
+  <input type="text" placeholder="title" class="edit-page__input-title"><br>
+  <textarea placeholder="description" class="edit-page__description" rows="5"></textarea><br>
+  <input type="date" class="edit-page__input-date"><br>
+  <input 
+    type="text" 
+    class="edit-page__input-duration"
+    [value] = 'duration' 
+    [(ngModel)] = 'duration'>
+  <span class="edit-page__duration-value">{{ durationInMinutes() | duration }}</span><br>
+  <div class="edit-page__authors">authors</div>
+  <div class="edit-page__buttons">
+    <button class="edit-page__save-btn" (click) = 'onSaveBtnClick()'>Submit</button>
+    <button class="edit-page__close-btn" (click) = 'onSaveBtnClick()'>Cancel</button>
+  </div>
+</div>
+
