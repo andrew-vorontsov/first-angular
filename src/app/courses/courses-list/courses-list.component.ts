@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CoursesListItem } from '../courses-list-item.module';
 import { CoursesService } from '../../services/courses.service';
 import { AuthService } from '../../services/auth-service.';
+import { ListComponent } from '../list/list.component';
 
 @Component({
   selector: 'app-courses-list',
@@ -13,8 +14,18 @@ export class CoursesListComponent implements OnInit {
   public searchValue = '';
   public auth: boolean;
 
+  @ViewChild(ListComponent, { static: false })
+  private listComponent: ListComponent;
+
   onSearchButtonFilterClick(searchValue) {
     this.searchValue = searchValue;
+  }
+
+  deleteItem() {
+    if (this.listComponent.getId) {
+      console.log('click');
+      this.coursesService.deleteItem(this.listComponent.getId);
+    }
   }
 
   constructor(

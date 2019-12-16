@@ -3,5 +3,6 @@
 </app-search-panel>
 <app-list 
     [courses]="coursesItems | coursesFilter:searchValue" 
+    (click) = "deleteItem()"
     class="courses">
 </app-list>
