@@ -24,6 +24,6 @@ import { EditPageComponent } from '../edit-page/edit-page.component';
     CoursesFilterPipe,
   ],
   imports: [CommonModule, FormsModule],
-  exports: [CoursesListComponent, EditPageComponent],
+  exports: [CoursesListComponent, EditPageComponent, SearchPanelComponent],
 })
 export class CoursesModule {}

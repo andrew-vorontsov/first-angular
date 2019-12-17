@@ -2,6 +2,8 @@
 
 <app-breadcrumbs *ngIf='isAuth()'></app-breadcrumbs>
 
+<app-search-panel *ngIf='isAuth() && !isEditPageShow()'></app-search-panel>
+
 <app-edit-page *ngIf='isEditPageShow()'></app-edit-page>
 
 <app-courses-list *ngIf='isAuth() && !isEditPageShow()'></app-courses-list>

@@ -53,12 +53,4 @@ describe('CoursesListComponent', () => {
       expect(component.coursesItems).toEqual(service.getCoursesItems());
     });
   });
-
-  describe('when onSearchButtonFilterClick is called', () => {
-    it('should searchValue change', () => {
-      const searchValue = 'test';
-      component.onSearchButtonFilterClick(searchValue);
-      expect(searchValue).toEqual(component.searchValue);
-    });
-  });
 });

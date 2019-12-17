@@ -45,15 +45,15 @@ export class AuthService {
   }
 
   public login(name) {
-    if (!this.isAuthenticated() && this.getUserInfo(name)) {
-      console.log('Login successful');
-      this.locStorage.setUserInfoToLocStorage(this.getUserInfo(name));
-      this.locStorage.setTokenToLocStorage();
-      this.changeUserName(name);
-      this.auth = true;
-    } else {
+    if (!this.getUserInfo(name) || this.isAuthenticated()) {
       alert('Введите имя из списка пользователей (Bob, Maria, Habib)');
+      return null;
     }
+    console.log('Login successful');
+    this.locStorage.setUserInfoToLocStorage(this.getUserInfo(name));
+    this.locStorage.setTokenToLocStorage();
+    this.changeUserName(name);
+    this.auth = true;
   }
 
   public logout() {

@@ -7,7 +7,6 @@ import { CoursesService } from 'src/app/services/courses.service';
 describe('SearchPanelComponent', () => {
   let component: SearchPanelComponent;
   let fixture: ComponentFixture<SearchPanelComponent>;
-  let onSearchButtonItemClick: any;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -27,22 +26,16 @@ describe('SearchPanelComponent', () => {
   });
 
   describe('When onSearchButtonClick is called', () => {
-    beforeEach(() => {
-      onSearchButtonItemClick = {
-        emit: () => {},
-      };
-    });
-
-    it('should onSearchButtonItemClick is emit data', () => {
-      spyOn(onSearchButtonItemClick, 'emit');
-      component.onSearchButtonItemClick = onSearchButtonItemClick;
+    it('should onSearchButtonItemClick call service method', () => {
+      const service = fixture.debugElement.injector.get(CoursesService);
+      const spy = spyOn(service, 'changeSearchValue');
       component.onSearchButtonClick();
-      expect(onSearchButtonItemClick.emit).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalled();
     });
   });
 
   describe('When onAddCourseButtonClick is called', () => {
-    it('should onAddCourseButtonClick is add data to service', () => {
+    it('should onAddCourseButtonClick call service method', () => {
       const service = fixture.debugElement.injector.get(CoursesService);
       const spy = spyOn(service, 'addCourseItem');
       component.onAddCourseButtonClick();

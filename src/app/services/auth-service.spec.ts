@@ -51,15 +51,16 @@ describe('AuthService', () => {
 
   describe('when login is called', () => {
     beforeEach(() => {
-      storageService.cleanLocStorage();
-      authService.auth = false;
+      authService.logout();
     });
     it('should changes auth flag with registred name', () => {
       authService.login('bob');
       expect(authService.auth).toBeTruthy();
     });
     it('should not changes auth flag with not registred name', () => {
+      console.log('auth ' + authService.auth);
       authService.login('ivan');
+      console.log('auth ' + authService.auth);
       expect(authService.auth).toBeFalsy();
     });
   });
