@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { CoursesService } from '../../services/courses.service';
 
 @Component({
@@ -7,16 +7,12 @@ import { CoursesService } from '../../services/courses.service';
   styleUrls: ['./search-panel.component.scss'],
 })
 export class SearchPanelComponent {
-  @Output() public onSearchButtonItemClick: EventEmitter<
-    string
-  > = new EventEmitter<string>();
-
   public searchValue: string;
 
   constructor(private coursesService: CoursesService) {}
 
   onSearchButtonClick() {
-    this.onSearchButtonItemClick.emit(this.searchValue);
+    this.coursesService.changeSearchValue(this.searchValue);
   }
 
   onAddCourseButtonClick() {

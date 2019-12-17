@@ -10,7 +10,13 @@ export class CoursesService {
 
   public coursesStatic = new Constants();
 
+  public searchValue = '';
+
   public addCourseShow = false;
+
+  public changeSearchValue(value) {
+    this.searchValue = value;
+  }
 
   private idGenerator(): number {
     const idCourse = Math.round(Math.random() * 1000);

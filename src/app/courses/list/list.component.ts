@@ -15,7 +15,6 @@ export class ListComponent {
   constructor(private coursesService: CoursesService) {}
 
   onDeleteButtonClick(item) {
-    console.log(item.id);
     this.getId = item.id;
   }
 

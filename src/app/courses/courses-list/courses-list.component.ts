@@ -3,34 +3,43 @@ import { CoursesListItem } from '../courses-list-item.module';
 import { CoursesService } from '../../services/courses.service';
 import { AuthService } from '../../services/auth-service.';
 import { ListComponent } from '../list/list.component';
+import { CoursesFilterPipe } from 'src/app/pipes/courses-filter.pipe';
 
 @Component({
   selector: 'app-courses-list',
   templateUrl: './courses-list.component.html',
   styleUrls: ['./courses-list.component.scss'],
+  providers: [CoursesFilterPipe],
 })
 export class CoursesListComponent implements OnInit {
   public coursesItems: CoursesListItem[] = [];
-  public searchValue = '';
   public auth: boolean;
 
-  @ViewChild(ListComponent, { static: false })
-  private listComponent: ListComponent;
-
-  onSearchButtonFilterClick(searchValue) {
-    this.searchValue = searchValue;
+  getCourses() {
+    this.coursesItems = this.coursesService.getCoursesItems();
+    this.coursesItems = this.filteredCourses.transform(
+      this.coursesItems,
+      this.coursesService.searchValue
+    );
+    return this.coursesItems;
   }
 
-  deleteItem() {
-    if (this.listComponent.getId) {
-      console.log('click');
-      this.coursesService.deleteItem(this.listComponent.getId);
-    }
+  onDeleteButtonClick(item) {
+    this.coursesService.deleteItem(item.id);
+  }
+
+  onEditButtonClick(item) {
+    this.coursesService.updateItem(item.id);
+  }
+
+  onShowmoreClick(event) {
+    console.log('showmore click');
   }
 
   constructor(
     private coursesService: CoursesService,
-    private authService: AuthService
+    private authService: AuthService,
+    private filteredCourses: CoursesFilterPipe
   ) {}
 
   ngOnInit() {
