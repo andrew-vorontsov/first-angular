@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CoursesService } from '../../services/courses.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-panel',
@@ -9,7 +10,7 @@ import { CoursesService } from '../../services/courses.service';
 export class SearchPanelComponent {
   public searchValue: string;
 
-  constructor(private coursesService: CoursesService) {}
+  constructor(private coursesService: CoursesService, private router: Router) {}
 
   onSearchButtonClick() {
     this.coursesService.changeSearchValue(this.searchValue);
@@ -18,5 +19,6 @@ export class SearchPanelComponent {
   onAddCourseButtonClick() {
     this.coursesService.addCourseShow = !this.coursesService.addCourseShow;
     this.coursesService.addCourseItem();
+    this.router.navigate(['/new-page']);
   }
 }

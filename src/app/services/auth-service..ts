@@ -44,6 +44,14 @@ export class AuthService {
     }
   }
 
+  public isAuth() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(this.auth);
+      }, 100);
+    });
+  }
+
   public login(name) {
     if (!this.getUserInfo(name) || this.isAuthenticated()) {
       alert('Введите имя из списка пользователей (Bob, Maria, Habib)');

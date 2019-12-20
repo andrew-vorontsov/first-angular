@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth-service.';
 import { StorageService } from 'src/app/services/local-storage.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -9,7 +10,8 @@ import { StorageService } from 'src/app/services/local-storage.service';
 export class HeaderComponent {
   constructor(
     private authService: AuthService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private router: Router
   ) {}
 
   isAuth() {
@@ -30,6 +32,7 @@ export class HeaderComponent {
 
   onLogoffClick() {
     this.authService.logout();
+    this.router.navigate(['/login-page']);
     this.getDataFromLocalStore();
   }
 }

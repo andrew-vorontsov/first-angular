@@ -1,13 +1,11 @@
 <app-header></app-header>
 
-<app-breadcrumbs *ngIf='isAuth()'></app-breadcrumbs>
+<!-- <app-edit-page></app-edit-page>
 
-<app-search-panel *ngIf='isAuth() && !isEditPageShow()'></app-search-panel>
+<app-courses-list></app-courses-list>
 
-<app-edit-page *ngIf='isEditPageShow()'></app-edit-page>
+<app-login></app-login> -->
 
-<app-courses-list *ngIf='isAuth() && !isEditPageShow()'></app-courses-list>
-
-<app-login *ngIf='!isAuth() && !isEditPageShow()'></app-login>
+<router-outlet></router-outlet>
 
 <app-footer></app-footer>

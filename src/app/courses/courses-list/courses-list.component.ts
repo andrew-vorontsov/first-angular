@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { CoursesListItem } from '../courses-list-item.module';
 import { CoursesService } from '../../services/courses.service';
 import { AuthService } from '../../services/auth-service.';
-import { ListComponent } from '../list/list.component';
 import { CoursesFilterPipe } from 'src/app/pipes/courses-filter.pipe';
 
 @Component({

@@ -1,8 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CoursesListComponent } from './courses-list.component';
-import { ListComponent } from '../list/list.component';
-import { SearchPanelComponent } from '../search-panel/search-panel.component';
+import { SearchPanelComponent } from '../../core/search-panel/search-panel.component';
 import { CoursesFilterPipe } from 'src/app/pipes/courses-filter.pipe';
 import { OrderByPipe } from 'src/app/pipes/order-by.pipe';
 import { CoursesListItemComponent } from '../courses-list-item/courses-list-item.component';
@@ -20,7 +19,6 @@ describe('CoursesListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         CoursesListComponent,
-        ListComponent,
         SearchPanelComponent,
         CoursesListItemComponent,
         CoursesFilterPipe,

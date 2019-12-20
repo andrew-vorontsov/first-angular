@@ -2,28 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CoursesListComponent } from './courses-list/courses-list.component';
 import { CoursesListItemComponent } from './courses-list-item/courses-list-item.component';
-import { CoursesBorderDirective } from '../directives/courses-border.directive';
-import { DurationPipe } from '../pipes/duration.pipe';
-import { OrderByPipe } from '../pipes/order-by.pipe';
-import { SearchPanelComponent } from './search-panel/search-panel.component';
-import { FormsModule } from '@angular/forms';
-import { CoursesFilterPipe } from '../pipes/courses-filter.pipe';
-import { ListComponent } from './list/list.component';
-import { EditPageComponent } from '../edit-page/edit-page.component';
+import { SharedModule } from '../shared/shared.module';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
-  declarations: [
-    CoursesListComponent,
-    CoursesListItemComponent,
-    SearchPanelComponent,
-    EditPageComponent,
-    CoursesBorderDirective,
-    ListComponent,
-    DurationPipe,
-    OrderByPipe,
-    CoursesFilterPipe,
-  ],
-  imports: [CommonModule, FormsModule],
-  exports: [CoursesListComponent, EditPageComponent, SearchPanelComponent],
+  declarations: [CoursesListComponent, CoursesListItemComponent],
+  imports: [CommonModule, SharedModule, CoreModule],
+  exports: [CoursesListComponent],
 })
 export class CoursesModule {}
