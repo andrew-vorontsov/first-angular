@@ -14,16 +14,7 @@ export class AppComponent implements OnInit {
     return this.authService.isAuthenticated();
   }
 
-  isEditPageShow() {
-    if (this.authService.isAuthenticated()) {
-      return this.coursesService.addCourseShow;
-    }
-  }
-
-  constructor(
-    private authService: AuthService,
-    private coursesService: CoursesService
-  ) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
     console.log('The token is ' + localStorage.getItem('token'));

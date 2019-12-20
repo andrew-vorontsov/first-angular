@@ -12,8 +12,6 @@ export class CoursesService {
 
   public searchValue = '';
 
-  public addCourseShow = false;
-
   public changeSearchValue(value) {
     this.searchValue = value;
   }
@@ -31,8 +29,16 @@ export class CoursesService {
     return this.coursesStatic.courses;
   }
 
-  public addCourseItem() {
-    console.log('add course or not ^_^');
+  public addCourseItem(newCourse): CoursesListItem[] {
+    this.coursesStatic.courses.push({
+      id: this.idGenerator(),
+      title: newCourse.title,
+      creationDate: +new Date(newCourse.date),
+      duration: +newCourse.duration * 1000 * 60,
+      description: newCourse.description,
+      topRated: false,
+    });
+    return this.coursesStatic.courses;
   }
 
   public getItemById(id): CoursesListItem {

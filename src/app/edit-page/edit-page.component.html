@@ -1,14 +1,32 @@
 <app-breadcrumbs></app-breadcrumbs>
 <div class="edit-page">
   <h3>Add course</h3>
-  <input type="text" placeholder="title" class="edit-page__input-title"><br>
-  <textarea placeholder="description" class="edit-page__description" rows="5"></textarea><br>
-  <input type="date" class="edit-page__input-date"><br>
   <input 
+    required
+    type="text" 
+    placeholder="title" 
+    class="edit-page__input-title"
+    [value] = 'newCourse.title'
+    [(ngModel)] = 'newCourse.title'><br>
+  <textarea 
+    placeholder="description" 
+    class="edit-page__description" 
+    rows="5"
+    [(ngModel)] = 'newCourse.description'>
+    {{ newCourse.description }}
+  </textarea><br>
+  <input 
+    required
+    type="date" 
+    class="edit-page__input-date"
+    [value] = 'newCourse.date'
+    [(ngModel)] = 'newCourse.date'><br>
+  <input 
+    required
     type="text" 
     class="edit-page__input-duration"
-    [value] = 'duration' 
-    [(ngModel)] = 'duration'>
+    [value] = 'newCourse.duration' 
+    [(ngModel)] = 'newCourse.duration'>
   <span class="edit-page__duration-value">{{ durationInMinutes() | duration }}</span><br>
   <div class="edit-page__authors">authors</div>
   <div class="edit-page__buttons">

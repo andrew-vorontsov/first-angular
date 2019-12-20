@@ -19,7 +19,7 @@ export class HeaderComponent {
   }
 
   setUserName() {
-    if (this.isAuth()) {
+    if (this.authService.isAuthenticated()) {
       return this.storageService.getLocStorage('userInfo');
     } else {
       return this.authService.user.firstname;
