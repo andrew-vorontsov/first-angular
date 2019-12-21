@@ -12,14 +12,14 @@ export class LoginComponent {
 
   constructor(private authService: AuthService, private router: Router) {
     if (this.authService.isAuthenticated()) {
-      this.router.navigate(['/courses-page']);
+      this.router.navigate(['/courses']);
     }
   }
 
   onLoginClick() {
     if (this.name) {
       this.authService.login(this.name.toLowerCase());
-      this.router.navigate(['/courses-page']);
+      this.router.navigate(['/courses']);
     }
   }
 }

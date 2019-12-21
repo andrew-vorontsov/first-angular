@@ -1,26 +1,59 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CoursesService } from '../services/courses.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { CoursesListItem } from '../courses/courses-list-item.module';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-edit-page',
   templateUrl: './edit-page.component.html',
   styleUrls: ['./edit-page.component.scss'],
+  providers: [DatePipe],
 })
-export class EditPageComponent {
-  constructor(private coursesService: CoursesService, private router: Router) {}
+export class EditPageComponent implements OnInit {
+  constructor(
+    private coursesService: CoursesService,
+    private datePipe: DatePipe,
+    private activeRoute: ActivatedRoute,
+    private router: Router
+  ) {}
 
-  public newCourse = {
+  public title = 'Add course';
+  public creationDate = '';
+  private id = this.activeRoute.snapshot.params.id;
+
+  public newCourse: CoursesListItem = {
+    id: -1,
     title: '',
     description: '',
-    date: 0,
-    duration: '',
+    creationDate: 0,
+    duration: 0,
+    topRated: false,
   };
+
+  public setCourseUpdate() {
+    const coursesItem = this.coursesService.getItemById(+this.id);
+    this.newCourse = { ...coursesItem };
+    this.newCourse.duration = this.newCourse.duration / 1000 / 60;
+    this.creationDate = this.datePipe.transform(
+      this.newCourse.creationDate,
+      'yyyy-MM-dd'
+    );
+  }
+
+  public isNewCourse() {
+    if (!+this.id) {
+      this.newCourse.creationDate = +new Date(this.creationDate);
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   private isNewCourseFilled() {
     if (
       this.newCourse.title &&
-      this.newCourse.date &&
+      this.creationDate &&
       this.newCourse.description &&
       +this.newCourse.duration
     ) {
@@ -34,16 +67,33 @@ export class EditPageComponent {
     return +this.newCourse.duration * 1000 * 60;
   }
 
-  onSaveBtnClick() {
-    if (this.isNewCourseFilled()) {
+  public onSaveBtnClick() {
+    if (this.isNewCourseFilled() && this.isNewCourse()) {
       this.coursesService.addCourseItem(this.newCourse);
-      this.router.navigate(['/courses-page']);
+      this.router.navigate(['/courses']);
     } else {
       alert('Заполните все поля корректно');
     }
   }
 
-  onCloseBtnClick() {
-    this.router.navigate(['/courses-page']);
+  public onUpdateBtnClick() {
+    if (this.isNewCourseFilled() && !this.isNewCourse()) {
+      this.newCourse.creationDate = +new Date(this.creationDate);
+      this.coursesService.updateItem(this.newCourse);
+      this.router.navigate(['/courses']);
+    } else {
+      alert('Заполните все поля корректно');
+    }
+  }
+
+  public onCloseBtnClick() {
+    this.router.navigate(['/courses']);
+  }
+
+  ngOnInit() {
+    if (!this.isNewCourse()) {
+      this.title = 'Update course';
+      this.setCourseUpdate();
+    }
   }
 }

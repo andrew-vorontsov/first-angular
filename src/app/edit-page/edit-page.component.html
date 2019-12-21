@@ -1,6 +1,6 @@
 <app-breadcrumbs></app-breadcrumbs>
 <div class="edit-page">
-  <h3>Add course</h3>
+  <h3>{{ title }}</h3>
   <input 
     required
     type="text" 
@@ -19,8 +19,8 @@
     required
     type="date" 
     class="edit-page__input-date"
-    [value] = 'newCourse.date'
-    [(ngModel)] = 'newCourse.date'><br>
+    [value] = 'creationDate'
+    [(ngModel)] = 'creationDate'><br>
   <input 
     required
     type="text" 
@@ -28,10 +28,14 @@
     [value] = 'newCourse.duration' 
     [(ngModel)] = 'newCourse.duration'>
   <span class="edit-page__duration-value">{{ durationInMinutes() | duration }}</span><br>
+  <p>
+    Top Rate
+    <input type="checkbox" [checked] = "newCourse.topRated" [(ngModel)] = "newCourse.topRated">
+  </p>
   <div class="edit-page__authors">authors</div>
   <div class="edit-page__buttons">
-    <button class="edit-page__save-btn" (click) = 'onSaveBtnClick()'>Submit</button>
+    <button *ngIf = 'isNewCourse()' class="edit-page__save-btn" (click) = 'onSaveBtnClick()'>{{ title }}</button>
+    <button *ngIf = '!isNewCourse()' class="edit-page__save-btn" (click) = 'onUpdateBtnClick()'>{{ title }}</button>
     <button class="edit-page__close-btn" (click) = 'onCloseBtnClick()'>Cancel</button>
   </div>
 </div>
-

@@ -3,6 +3,7 @@ import { CoursesListItem } from '../courses-list-item.module';
 import { CoursesService } from '../../services/courses.service';
 import { AuthService } from '../../services/auth-service.';
 import { CoursesFilterPipe } from 'src/app/pipes/courses-filter.pipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses-list',
@@ -28,7 +29,7 @@ export class CoursesListComponent implements OnInit {
   }
 
   onEditButtonClick(item) {
-    this.coursesService.updateItem(item.id);
+    this.router.navigate(['/courses/' + item.id]);
   }
 
   onShowmoreClick(event) {
@@ -38,7 +39,8 @@ export class CoursesListComponent implements OnInit {
   constructor(
     private coursesService: CoursesService,
     private authService: AuthService,
-    private filteredCourses: CoursesFilterPipe
+    private filteredCourses: CoursesFilterPipe,
+    private router: Router
   ) {}
 
   ngOnInit() {

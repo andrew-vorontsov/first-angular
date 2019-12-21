@@ -6,11 +6,20 @@ import { AuthGuard } from './services/auth-guard.service';
 
 export const ROUTES: Route[] = [
   {
-    path: 'courses-page',
+    path: 'courses',
     component: CoursesListComponent,
     canActivate: [AuthGuard],
   },
-  { path: 'new-page', component: EditPageComponent, canActivate: [AuthGuard] },
-  { path: 'login-page', component: LoginComponent },
-  { path: '', redirectTo: 'login-page', pathMatch: 'full' },
+  {
+    path: 'courses/:id',
+    component: EditPageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'courses/new',
+    component: EditPageComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];

@@ -32,7 +32,7 @@ export class HeaderComponent {
 
   onLogoffClick() {
     this.authService.logout();
-    this.router.navigate(['/login-page']);
+    this.router.navigate(['/login']);
     this.getDataFromLocalStore();
   }
 }

@@ -17,6 +17,6 @@ export class SearchPanelComponent {
   }
 
   onAddCourseButtonClick() {
-    this.router.navigate(['/new-page']);
+    this.router.navigate(['/courses/new']);
   }
 }

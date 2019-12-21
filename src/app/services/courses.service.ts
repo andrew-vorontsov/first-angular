@@ -29,18 +29,6 @@ export class CoursesService {
     return this.coursesStatic.courses;
   }
 
-  public addCourseItem(newCourse): CoursesListItem[] {
-    this.coursesStatic.courses.push({
-      id: this.idGenerator(),
-      title: newCourse.title,
-      creationDate: +new Date(newCourse.date),
-      duration: +newCourse.duration * 1000 * 60,
-      description: newCourse.description,
-      topRated: false,
-    });
-    return this.coursesStatic.courses;
-  }
-
   public getItemById(id): CoursesListItem {
     const ItemById = this.coursesStatic.courses.find(item => item.id === id);
     return ItemById;
@@ -53,9 +41,25 @@ export class CoursesService {
     return indexItemById;
   }
 
-  public updateItem(id): CoursesListItem {
-    const item = this.getItemById(id);
-    console.log(`${item.title} was updated!`);
+  public addCourseItem(newCourse): CoursesListItem[] {
+    this.coursesStatic.courses.push({
+      id: this.idGenerator(),
+      title: newCourse.title,
+      creationDate: +new Date(newCourse.creationDate),
+      duration: +newCourse.duration * 1000 * 60,
+      description: newCourse.description,
+      topRated: newCourse.topRated,
+    });
+    return this.coursesStatic.courses;
+  }
+
+  public updateItem(newCourse): CoursesListItem {
+    const item = this.getItemById(newCourse.id);
+    item.title = newCourse.title;
+    item.duration = newCourse.duration * 1000 * 60;
+    item.description = newCourse.description;
+    item.creationDate = newCourse.creationDate;
+    item.topRated = newCourse.topRated;
     return item;
   }
 
