@@ -67,7 +67,7 @@ export class EditPageComponent implements OnInit {
   }
 
   public onSaveBtnClick() {
-    if (this.isNewCourseFilled() && this.isNewCourse()) {
+    if (this.isNewCourseFilled()) {
       this.transformDateAndRediretion();
       this.coursesService.addCourseItem(this.newCourse);
     } else {
@@ -76,7 +76,7 @@ export class EditPageComponent implements OnInit {
   }
 
   public onUpdateBtnClick() {
-    if (this.isNewCourseFilled() && !this.isNewCourse()) {
+    if (this.isNewCourseFilled()) {
       this.transformDateAndRediretion();
       this.coursesService.updateItem(this.newCourse);
     } else {
