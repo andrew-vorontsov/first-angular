@@ -27,15 +27,35 @@
     class="edit-page__input-duration"
     [value] = 'newCourse.duration' 
     [(ngModel)] = 'newCourse.duration'>
-  <span class="edit-page__duration-value">{{ durationInMinutes() | duration }}</span><br>
+  <span 
+    class="edit-page__duration-value">
+    {{ newCourse.duration * 1000 * 60 | duration }}
+  </span><br>
   <p>
     Top Rate
-    <input type="checkbox" [checked] = "newCourse.topRated" [(ngModel)] = "newCourse.topRated">
+    <input 
+      type="checkbox" 
+      [checked] = "newCourse.topRated" 
+      [(ngModel)] = "newCourse.topRated">
   </p>
   <div class="edit-page__authors">authors</div>
   <div class="edit-page__buttons">
-    <button *ngIf = 'isNewCourse()' class="edit-page__save-btn" (click) = 'onSaveBtnClick()'>{{ title }}</button>
-    <button *ngIf = '!isNewCourse()' class="edit-page__save-btn" (click) = 'onUpdateBtnClick()'>{{ title }}</button>
-    <button class="edit-page__close-btn" (click) = 'onCloseBtnClick()'>Cancel</button>
+    <button 
+      *ngIf = 'isNewCourse()' 
+      class="edit-page__save-btn" 
+      (click) = 'onSaveBtnClick()'>
+      {{ title }}
+    </button>
+    <button 
+      *ngIf = '!isNewCourse()' 
+      class="edit-page__save-btn" 
+      (click) = 'onUpdateBtnClick()'>
+      {{ title }}
+    </button>
+    <button 
+      class="edit-page__close-btn" 
+      (click) = 'onCloseBtnClick()'>
+      Cancel
+    </button>
   </div>
 </div>

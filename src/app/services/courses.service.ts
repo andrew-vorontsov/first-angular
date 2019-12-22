@@ -56,7 +56,7 @@ export class CoursesService {
   public updateItem(newCourse): CoursesListItem {
     const item = this.getItemById(newCourse.id);
     item.title = newCourse.title;
-    item.duration = newCourse.duration * 1000 * 60;
+    item.duration = +newCourse.duration * 1000 * 60;
     item.description = newCourse.description;
     item.creationDate = newCourse.creationDate;
     item.topRated = newCourse.topRated;

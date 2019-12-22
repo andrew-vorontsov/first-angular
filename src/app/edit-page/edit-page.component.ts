@@ -27,11 +27,11 @@ export class EditPageComponent implements OnInit {
     title: '',
     description: '',
     creationDate: 0,
-    duration: 0,
+    duration: null,
     topRated: false,
   };
 
-  public setCourseUpdate() {
+  private setUpdatingCourse() {
     const coursesItem = this.coursesService.getItemById(+this.id);
     this.newCourse = { ...coursesItem };
     this.newCourse.duration = this.newCourse.duration / 1000 / 60;
@@ -43,7 +43,6 @@ export class EditPageComponent implements OnInit {
 
   public isNewCourse() {
     if (!+this.id) {
-      this.newCourse.creationDate = +new Date(this.creationDate);
       return true;
     } else {
       return false;
@@ -62,15 +61,15 @@ export class EditPageComponent implements OnInit {
       return false;
     }
   }
-
-  public durationInMinutes() {
-    return +this.newCourse.duration * 1000 * 60;
+  private transformDateAndRediretion() {
+    this.newCourse.creationDate = +new Date(this.creationDate);
+    this.router.navigate(['/courses']);
   }
 
   public onSaveBtnClick() {
     if (this.isNewCourseFilled() && this.isNewCourse()) {
+      this.transformDateAndRediretion();
       this.coursesService.addCourseItem(this.newCourse);
-      this.router.navigate(['/courses']);
     } else {
       alert('Заполните все поля корректно');
     }
@@ -78,9 +77,8 @@ export class EditPageComponent implements OnInit {
 
   public onUpdateBtnClick() {
     if (this.isNewCourseFilled() && !this.isNewCourse()) {
-      this.newCourse.creationDate = +new Date(this.creationDate);
+      this.transformDateAndRediretion();
       this.coursesService.updateItem(this.newCourse);
-      this.router.navigate(['/courses']);
     } else {
       alert('Заполните все поля корректно');
     }
@@ -93,7 +91,7 @@ export class EditPageComponent implements OnInit {
   ngOnInit() {
     if (!this.isNewCourse()) {
       this.title = 'Update course';
-      this.setCourseUpdate();
+      this.setUpdatingCourse();
     }
   }
 }
