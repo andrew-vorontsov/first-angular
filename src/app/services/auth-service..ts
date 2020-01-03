@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Constants } from 'common/constants';
+import { persons } from 'common/constants';
 import { Person } from '../users/person.module';
 import { StorageService } from './local-storage.service';
 
@@ -17,7 +17,7 @@ export class AuthService {
     lastname: '',
   };
 
-  public personsStatic = new Constants();
+  public personsStatic = persons;
 
   private changeUserName(name) {
     this.user.firstname = name;
@@ -26,7 +26,7 @@ export class AuthService {
 
   public getUserInfo(name) {
     if (name) {
-      const person = this.personsStatic.persons.find(
+      const person = this.personsStatic.find(
         user => user.firstname === name.toLowerCase()
       );
       if (person) {
@@ -42,14 +42,6 @@ export class AuthService {
     } else {
       return this.auth;
     }
-  }
-
-  public isAuth() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(this.auth);
-      }, 100);
-    });
   }
 
   public login(name) {

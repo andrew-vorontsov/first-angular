@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { CoursesModule } from './courses/courses.module';
 import { UsersModule } from './users/users.module';
 import { RouterModule } from '@angular/router';
-import { ROUTES } from './app-router';
+import { ROUTES } from 'common/app-router';
 import { LoginModule } from './login-page/login.module';
 import { EditPageModule } from './edit-page/edit-page.module';
 import { SharedModule } from './shared/shared.module';
