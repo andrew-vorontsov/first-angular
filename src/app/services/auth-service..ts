@@ -2,13 +2,17 @@ import { Injectable } from '@angular/core';
 import { persons } from 'common/constants';
 import { Person } from '../users/person.module';
 import { StorageService } from './local-storage.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private locStorage: StorageService) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
+  private url = 'http://localhost:3000/persons';
   public auth = false;
 
   public user: Person = {
@@ -19,25 +23,20 @@ export class AuthService {
 
   public personsStatic = persons;
 
-  private changeUserName(name) {
-    this.user.firstname = name;
-    return this.user.firstname;
+  public getUsers(): Observable<Person[]> {
+    return this.http.get<Person[]>(`${this.url}/persons`);
   }
 
-  public getUserInfo(name) {
-    if (name) {
-      const person = this.personsStatic.find(
-        user => user.firstname === name.toLowerCase()
-      );
-      if (person) {
-        return person.firstname;
-      }
-    }
+  public getUserInfo(name): Observable<Person> {
+    return this.http.get<Person>(`${this.url}/persons?firstname=${name}`);
+  }
+
+  private getAuthToken() {
+    return this.http.get(`${this.url}/auth`);
   }
 
   public isAuthenticated() {
-    if (this.locStorage.getLocStorage('token')) {
-      this.auth = true;
+    if (this.auth) {
       return this.auth;
     } else {
       return this.auth;
@@ -45,23 +44,24 @@ export class AuthService {
   }
 
   public login(name) {
-    if (!this.getUserInfo(name) || this.isAuthenticated()) {
-      alert('Введите имя из списка пользователей (Bob, Maria, Habib)');
-      return null;
-    }
-    console.log('Login successful');
-    this.locStorage.setUserInfoToLocStorage(this.getUserInfo(name));
-    this.locStorage.setTokenToLocStorage();
-    this.changeUserName(name);
-    this.auth = true;
+    this.getUserInfo(name).subscribe(user => {
+      this.user = user[0];
+      if (this.user) {
+        this.auth = true;
+        this.http.put(`${this.url}/auth`, { token: '3jre459n9iwe02023m0' });
+        this.router.navigate(['/courses']);
+      } else {
+        alert('Введите зарегистрированное имя (Bob, Maria, Habib)');
+      }
+    });
   }
 
   public logout() {
     if (this.isAuthenticated()) {
-      console.log('Logout');
-      this.locStorage.cleanLocStorage();
       this.auth = false;
       this.user.firstname = '';
+      this.http.put(`${this.url}/auth`, { token: '' });
+      this.router.navigate(['/login']);
     }
   }
 }

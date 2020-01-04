@@ -23,7 +23,7 @@ export class EditPageComponent implements OnInit {
   private id = this.activeRoute.snapshot.params.id;
 
   public newCourse: CoursesListItem = {
-    id: -1,
+    id: null,
     title: '',
     description: '',
     creationDate: 0,
@@ -32,13 +32,14 @@ export class EditPageComponent implements OnInit {
   };
 
   private setUpdatingCourse() {
-    const coursesItem = this.coursesService.getItemById(+this.id);
-    this.newCourse = { ...coursesItem };
-    this.newCourse.duration = this.newCourse.duration / 1000 / 60;
-    this.creationDate = this.datePipe.transform(
-      this.newCourse.creationDate,
-      'yyyy-MM-dd'
-    );
+    this.coursesService.getItemById(+this.id).subscribe(course => {
+      this.newCourse = course;
+      this.newCourse.duration = Math.round(this.newCourse.duration / 1000 / 60);
+      this.creationDate = this.datePipe.transform(
+        this.newCourse.creationDate,
+        'yyyy-MM-dd'
+      );
+    });
   }
 
   public isNewCourse() {
@@ -61,15 +62,13 @@ export class EditPageComponent implements OnInit {
       return false;
     }
   }
-  private transformDateAndRediretion() {
-    this.newCourse.creationDate = +new Date(this.creationDate);
-    this.router.navigate(['/courses']);
-  }
 
   public onSaveBtnClick() {
     if (this.isNewCourseFilled()) {
-      this.transformDateAndRediretion();
-      this.coursesService.addCourseItem(this.newCourse);
+      this.newCourse.creationDate = +new Date(this.creationDate);
+      this.coursesService.addCourseItem(this.newCourse).subscribe(() => {
+        this.router.navigate(['/courses']);
+      });
     } else {
       alert('Заполните все поля корректно');
     }
@@ -77,8 +76,10 @@ export class EditPageComponent implements OnInit {
 
   public onUpdateBtnClick() {
     if (this.isNewCourseFilled()) {
-      this.transformDateAndRediretion();
-      this.coursesService.updateItem(this.newCourse);
+      this.newCourse.creationDate = +new Date(this.creationDate);
+      this.coursesService.updateItem(this.newCourse).subscribe(() => {
+        this.router.navigate(['/courses']);
+      });
     } else {
       alert('Заполните все поля корректно');
     }

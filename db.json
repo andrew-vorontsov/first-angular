@@ -1,0 +1,52 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "title": "first course",
+      "creationDate": 1575793111111,
+      "duration": 12000011,
+      "description": "This is an awesome video!",
+      "topRated": true
+    },
+    {
+      "id": 3,
+      "title": "Third course",
+      "creationDate": 1577145600000,
+      "duration": 6720000,
+      "description": "This is an awesome video!",
+      "topRated": false
+    },
+    {
+      "id": 4,
+      "title": "four course",
+      "creationDate": 1574941122222,
+      "duration": 1250000,
+      "description": "This is an awesome video!",
+      "topRated": true
+    },
+    {
+      "id": 5,
+      "title": "five course",
+      "creationDate": 1572841122222,
+      "duration": 120000,
+      "description": "This is an awesome video!",
+      "topRated": false
+    },
+    {
+      "id": 6,
+      "title": "Favorite course",
+      "description": "hello",
+      "creationDate": 1580256000000,
+      "duration": 7380000,
+      "topRated": true
+    }
+  ],
+  "persons": [
+    { "id": 1, "firstname": "bob", "lastname": "smith" },
+    { "id": 2, "firstname": "maria", "lastname": "wolf" },
+    { "id": 3, "firstname": "habib", "lastname": "nurmur" }
+  ],
+  "auth": {
+    "token": "aaa"
+  }
+}

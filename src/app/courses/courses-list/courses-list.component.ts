@@ -1,31 +1,41 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CoursesListItem } from '../courses-list-item.module';
 import { CoursesService } from '../../services/courses.service';
 import { AuthService } from '../../services/auth-service.';
-import { CoursesFilterPipe } from 'src/app/pipes/courses-filter.pipe';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-courses-list',
   templateUrl: './courses-list.component.html',
   styleUrls: ['./courses-list.component.scss'],
-  providers: [CoursesFilterPipe],
 })
-export class CoursesListComponent implements OnInit {
+export class CoursesListComponent implements OnInit, OnDestroy {
   public coursesItems: CoursesListItem[] = [];
   public auth: boolean;
 
+  private getCoursesSub: Subscription;
+
+  constructor(
+    private coursesService: CoursesService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
+
   getCourses() {
-    this.coursesItems = this.coursesService.getCoursesItems();
-    this.coursesItems = this.filteredCourses.transform(
-      this.coursesItems,
-      this.coursesService.searchValue
-    );
-    return this.coursesItems;
+    this.getCoursesSub = this.coursesService
+      .getCoursesItems()
+      .subscribe(courses => {
+        this.coursesItems = courses;
+      });
   }
 
-  onDeleteButtonClick(item) {
-    this.coursesService.deleteItem(item.id);
+  onDeleteButtonClick(course) {
+    this.coursesService.deleteItem(course.id).subscribe(() => {
+      this.coursesItems = this.coursesItems.filter(
+        item => item.id !== course.id
+      );
+    });
   }
 
   onEditButtonClick(item) {
@@ -33,18 +43,15 @@ export class CoursesListComponent implements OnInit {
   }
 
   onShowmoreClick(event) {
-    console.log('showmore click');
+    this.getCourses();
   }
 
-  constructor(
-    private coursesService: CoursesService,
-    private authService: AuthService,
-    private filteredCourses: CoursesFilterPipe,
-    private router: Router
-  ) {}
-
   ngOnInit() {
-    this.coursesItems = this.coursesService.getCoursesItems();
+    this.getCourses();
     this.auth = this.authService.isAuthenticated();
+  }
+
+  ngOnDestroy() {
+    this.getCoursesSub.unsubscribe();
   }
 }

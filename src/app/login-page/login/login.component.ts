@@ -18,8 +18,7 @@ export class LoginComponent {
 
   onLoginClick() {
     if (this.name) {
-      this.authService.login(this.name.toLowerCase());
-      this.router.navigate(['/courses']);
+      this.authService.login(this.name);
     }
   }
 }
