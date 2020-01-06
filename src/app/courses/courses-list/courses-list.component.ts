@@ -31,11 +31,13 @@ export class CoursesListComponent implements OnInit, OnDestroy {
   }
 
   onDeleteButtonClick(course) {
-    this.coursesService.deleteItem(course.id).subscribe(() => {
-      this.coursesItems = this.coursesItems.filter(
-        item => item.id !== course.id
-      );
-    });
+    if (confirm(`Удалить ${course.title}`)) {
+      this.coursesService.deleteItem(course.id).subscribe(() => {
+        this.coursesItems = this.coursesItems.filter(
+          item => item.id !== course.id
+        );
+      });
+    }
   }
 
   onEditButtonClick(item) {

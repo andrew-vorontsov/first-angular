@@ -11,9 +11,7 @@ export class LoginComponent {
   public name: string;
 
   constructor(private authService: AuthService, private router: Router) {
-    if (this.authService.isAuthenticated()) {
-      this.router.navigate(['/courses']);
-    }
+    this.authService.hasAuthToken();
   }
 
   onLoginClick() {

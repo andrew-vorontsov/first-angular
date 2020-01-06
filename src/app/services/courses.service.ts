@@ -16,13 +16,13 @@ export class CoursesService {
     this.searchValue = value;
   }
 
-  public getCoursesItems(): Observable<CoursesListItem[]> {
-    return this.http.get<CoursesListItem[]>(this.urlCourses);
-  }
-
   public getItemById(id): Observable<CoursesListItem> {
     const ItemById = this.http.get<CoursesListItem>(`${this.urlCourses}/${id}`);
     return ItemById;
+  }
+
+  public getCoursesItems(): Observable<CoursesListItem[]> {
+    return this.http.get<CoursesListItem[]>(this.urlCourses);
   }
 
   public addCourseItem(newCourse): Observable<CoursesListItem> {
@@ -39,8 +39,6 @@ export class CoursesService {
   }
 
   public deleteItem(id): Observable<void> {
-    if (confirm(`Удалить ?`)) {
-      return this.http.delete<void>(`${this.urlCourses}/${id}`);
-    }
+    return this.http.delete<void>(`${this.urlCourses}/${id}`);
   }
 }

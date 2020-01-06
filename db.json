@@ -27,26 +27,45 @@
     {
       "id": 5,
       "title": "five course",
-      "creationDate": 1572841122222,
-      "duration": 120000,
+      "creationDate": 1572825600000,
+      "duration": 1320000,
       "description": "This is an awesome video!",
       "topRated": false
     },
     {
       "id": 6,
-      "title": "Favorite course",
-      "description": "hello",
-      "creationDate": 1580256000000,
+      "title": "favorite course",
+      "description": "la-la-la",
+      "creationDate": 1580342400000,
       "duration": 7380000,
       "topRated": true
     }
   ],
   "persons": [
-    { "id": 1, "firstname": "bob", "lastname": "smith" },
-    { "id": 2, "firstname": "maria", "lastname": "wolf" },
-    { "id": 3, "firstname": "habib", "lastname": "nurmur" }
+    {
+      "id": 1,
+      "firstname": "bob",
+      "lastname": "smith"
+    },
+    {
+      "id": 2,
+      "firstname": "maria",
+      "lastname": "wolf"
+    },
+    {
+      "id": 33,
+      "firstname": "habib",
+      "lastname": "nurmur"
+    },
+    {
+      "id": 4,
+      "firstname": "bobbi",
+      "lastname": "fff"
+    }
   ],
-  "auth": {
-    "token": "aaa"
-  }
+  "auth": [
+    {
+      "id": 1
+    }
+  ]
 }
