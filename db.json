@@ -63,9 +63,5 @@
       "lastname": "fff"
     }
   ],
-  "auth": [
-    {
-      "id": 1
-    }
-  ]
+  "auth": []
 }
