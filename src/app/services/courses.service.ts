@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CoursesListItem } from '../courses/courses-list-item.module';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,10 +10,25 @@ export class CoursesService {
   constructor(private http: HttpClient) {}
 
   private urlCourses = 'http://localhost:3000/courses';
-  public searchValue = '';
+  private searchValue = '';
+  private countOfCourses = 2;
 
   public changeSearchValue(value) {
     this.searchValue = value;
+  }
+
+  public searchRun(value): Observable<CoursesListItem[]> {
+    return this.http.get<CoursesListItem[]>(this.urlCourses, {
+      params: new HttpParams().set('q', value),
+    });
+  }
+
+  public setCountOfCourses() {
+    return this.countOfCourses++;
+  }
+
+  public getCountOfCourses() {
+    return this.countOfCourses;
   }
 
   public getItemById(id): Observable<CoursesListItem> {
@@ -21,8 +36,10 @@ export class CoursesService {
     return ItemById;
   }
 
-  public getCoursesItems(): Observable<CoursesListItem[]> {
-    return this.http.get<CoursesListItem[]>(this.urlCourses);
+  public getCoursesItems(first, last): Observable<CoursesListItem[]> {
+    return this.http.get<CoursesListItem[]>(this.urlCourses, {
+      params: new HttpParams().set('_page', first).set('_limit', last),
+    });
   }
 
   public addCourseItem(newCourse): Observable<CoursesListItem> {

@@ -2,42 +2,42 @@
   "courses": [
     {
       "id": 1,
-      "title": "first course",
+      "title": "Garage",
       "creationDate": 1577145600000,
-      "duration": 12000000,
-      "description": "This is an awesome video!",
+      "duration": 2700000,
+      "description": "Do you think garage descriptions are boring?",
       "topRated": true
     },
     {
       "id": 3,
-      "title": "Third course",
+      "title": "orange",
       "creationDate": 1577577600000,
       "duration": 6720000,
-      "description": "This is an awesome video!",
+      "description": "Orange propose des solutions de téléphonie mobile, d'internet mobile, de télévision numérique et d'internet fixe.",
       "topRated": false
     },
     {
       "id": 4,
-      "title": "four course",
-      "creationDate": 1574941122222,
-      "duration": 1250000,
-      "description": "This is an awesome video!",
+      "title": "billie eilish",
+      "creationDate": 1580256000000,
+      "duration": 1260000,
+      "description": "Billie eilish is an american singer and songwriter.",
       "topRated": true
     },
     {
       "id": 5,
-      "title": "five course",
+      "title": "saint-petersburg",
       "creationDate": 1579132800000,
       "duration": 1320000,
-      "description": "This is an awesome video!",
+      "description": "About saint petersburg. st. petersburg is recognized as one of the largest economic, cultural and scientific centers of russia, europe and the whole world.",
       "topRated": false
     },
     {
       "id": 6,
-      "title": "favorite courseeee",
-      "description": "la-la-la",
+      "title": "friends",
+      "description": "Friends is an American sitcom television series, created by David Crane and Marta Kauffman, which aired on NBC",
       "creationDate": 1580342400000,
-      "duration": 7380000,
+      "duration": 4680000,
       "topRated": true
     }
   ],
@@ -56,12 +56,12 @@
       "id": 33,
       "firstname": "habib",
       "lastname": "nurmur"
-    },
-    {
-      "id": 4,
-      "firstname": "bobbi",
-      "lastname": "fff"
     }
   ],
-  "AUTH_TOKENS": []
+  "AUTH_TOKENS": [
+    {
+      "token": "33881",
+      "id": 1
+    }
+  ]
 }

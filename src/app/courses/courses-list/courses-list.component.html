@@ -1,10 +1,10 @@
 <app-breadcrumbs></app-breadcrumbs>
-<app-search-panel></app-search-panel>
+<app-search-panel (onSearchClick) = 'onSearchClicked($event)'></app-search-panel>
 <app-courses-list-item 
     *ngFor='let item of coursesItems | orderBy'
     [coursesItem] = 'item'
     (onDeleteButtonItemClick) = 'onDeleteButtonClick(item)'
     (onEditButtonItemClick) = 'onEditButtonClick(item)'>
 </app-courses-list-item>
-<div *ngIf='coursesItems.length' class="courses__showmore-button" (click)='onShowmoreClick($event)'>Show more</div>
-<div *ngIf='!coursesItems.length' class="courses__showmore-button" (click)='onShowmoreClick($event)'>No data</div>
+<div *ngIf='coursesItems.length' class="courses__showmore-button" (click)='onShowmoreClick()'>Show more</div>
+<div *ngIf='!coursesItems.length' class="courses__showmore-button">No data</div>

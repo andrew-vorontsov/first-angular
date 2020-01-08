@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { CoursesService } from '../../services/courses.service';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,12 +7,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./search-panel.component.scss'],
 })
 export class SearchPanelComponent {
-  public searchValue: string;
+  @Output() public onSearchClick = new EventEmitter<string>();
+  public searchValue = '';
 
-  constructor(private coursesService: CoursesService, private router: Router) {}
+  constructor(private router: Router) {}
 
-  onSearchButtonClick() {
-    this.coursesService.changeSearchValue(this.searchValue);
+  onSearchButtonClick(value) {
+    if (value.length >= 3 || !value) {
+      this.onSearchClick.emit(value);
+    }
   }
 
   onAddCourseButtonClick() {

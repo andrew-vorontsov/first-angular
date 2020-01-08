@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CoursesListItem } from '../courses-list-item.module';
 import { CoursesService } from '../../services/courses.service';
-import { AuthService } from '../../services/auth-service.';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -12,26 +11,34 @@ import { Subscription } from 'rxjs';
 })
 export class CoursesListComponent implements OnInit, OnDestroy {
   public coursesItems: CoursesListItem[] = [];
-  public auth: boolean;
+  private lastCourse = this.coursesService.getCountOfCourses();
 
   private getCoursesSub: Subscription;
 
-  constructor(
-    private coursesService: CoursesService,
-    private authService: AuthService,
-    private router: Router
-  ) {}
+  constructor(private coursesService: CoursesService, private router: Router) {}
 
-  getCourses() {
+  getCourses(first, last) {
     this.getCoursesSub = this.coursesService
-      .getCoursesItems()
+      .getCoursesItems(first, last)
       .subscribe(courses => {
         this.coursesItems = courses;
       });
   }
 
+  onSearchClicked(value) {
+    if (!value) {
+      this.getCourses(0, this.coursesService.setCountOfCourses());
+    } else {
+      this.getCoursesSub = this.coursesService
+        .searchRun(value)
+        .subscribe(courses => {
+          this.coursesItems = courses;
+        });
+    }
+  }
+
   onDeleteButtonClick(course) {
-    if (confirm(`Удалить ${course.title}`)) {
+    if (confirm(`Удалить ${course.title}?`)) {
       this.coursesService.deleteItem(course.id).subscribe(() => {
         this.coursesItems = this.coursesItems.filter(
           item => item.id !== course.id
@@ -44,13 +51,12 @@ export class CoursesListComponent implements OnInit, OnDestroy {
     this.router.navigate(['/courses/' + item.id]);
   }
 
-  onShowmoreClick(event) {
-    this.getCourses();
+  onShowmoreClick() {
+    this.getCourses(0, this.coursesService.setCountOfCourses());
   }
 
   ngOnInit() {
-    this.getCourses();
-    this.auth = this.authService.isAuthenticated();
+    this.getCourses(0, this.lastCourse);
   }
 
   ngOnDestroy() {
