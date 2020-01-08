@@ -3,15 +3,15 @@
     {
       "id": 1,
       "title": "first course",
-      "creationDate": 1575793111111,
-      "duration": 12000011,
+      "creationDate": 1577145600000,
+      "duration": 12000000,
       "description": "This is an awesome video!",
       "topRated": true
     },
     {
       "id": 3,
       "title": "Third course",
-      "creationDate": 1577145600000,
+      "creationDate": 1577577600000,
       "duration": 6720000,
       "description": "This is an awesome video!",
       "topRated": false
@@ -27,14 +27,14 @@
     {
       "id": 5,
       "title": "five course",
-      "creationDate": 1572825600000,
+      "creationDate": 1579132800000,
       "duration": 1320000,
       "description": "This is an awesome video!",
       "topRated": false
     },
     {
       "id": 6,
-      "title": "favorite course",
+      "title": "favorite courseeee",
       "description": "la-la-la",
       "creationDate": 1580342400000,
       "duration": 7380000,
@@ -63,5 +63,5 @@
       "lastname": "fff"
     }
   ],
-  "auth": []
+  "AUTH_TOKENS": []
 }

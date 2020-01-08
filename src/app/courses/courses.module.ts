@@ -9,5 +9,6 @@ import { CoreModule } from '../core/core.module';
   declarations: [CoursesListComponent, CoursesListItemComponent],
   imports: [CommonModule, SharedModule, CoreModule],
   exports: [CoursesListComponent],
+  providers: [],
 })
 export class CoursesModule {}

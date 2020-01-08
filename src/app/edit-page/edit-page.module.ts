@@ -9,5 +9,6 @@ import { CoreModule } from '../core/core.module';
   declarations: [EditPageComponent],
   imports: [CommonModule, SharedModule, FormsModule, CoreModule],
   exports: [EditPageComponent],
+  providers: [],
 })
 export class EditPageModule {}
