@@ -46,9 +46,3 @@ export const courses: CoursesListItem[] = [
     topRated: false,
   },
 ];
-
-export const persons: Person[] = [
-  { id: 1, firstname: 'bob', lastname: 'smith' },
-  { id: 2, firstname: 'maria', lastname: 'wolf' },
-  { id: 3, firstname: 'habib', lastname: 'nurmur' },
-];

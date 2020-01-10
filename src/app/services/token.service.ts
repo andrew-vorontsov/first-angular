@@ -8,19 +8,23 @@ import { TOKEN } from '../shared/token.module';
 export class TokenService {
   constructor(private http: HttpClient) {}
   private TOKEN = '';
-  private url = 'http://localhost:3000/AUTH_TOKENS';
+  private url = 'http://localhost:3000';
+
+  loginAndGetToken(user) {
+    return this.http.post(`${this.url}/login`, user);
+  }
 
   getToken() {
     return this.TOKEN;
   }
 
   getTokenHttp(id) {
-    return this.http.get<TOKEN>(`${this.url}/${id}`);
+    return this.http.get<TOKEN>(`${this.url}/AUTH_TOKENS/${id}`);
   }
 
   removeToken(id) {
     this.TOKEN = '';
-    return this.http.delete(`${this.url}/${id}`);
+    return this.http.delete(`${this.url}/AUTH_TOKENS/${id}`);
   }
 
   setToken(ID) {

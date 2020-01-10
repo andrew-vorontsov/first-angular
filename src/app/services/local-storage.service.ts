@@ -14,6 +14,14 @@ export class StorageService {
     localStorage.setItem('userinfo', user);
   }
 
+  public setToken(token) {
+    localStorage.setItem('token', token);
+  }
+
+  public getToken() {
+    return localStorage.getItem('token');
+  }
+
   public cleanLocStorage() {
     localStorage.clear();
   }

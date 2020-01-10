@@ -10,12 +10,7 @@ export class CoursesService {
   constructor(private http: HttpClient) {}
 
   private urlCourses = 'http://localhost:3000/courses';
-  private searchValue = '';
   private countOfCourses = 2;
-
-  public changeSearchValue(value) {
-    this.searchValue = value;
-  }
 
   public searchRun(value): Observable<CoursesListItem[]> {
     return this.http.get<CoursesListItem[]>(this.urlCourses, {
@@ -23,8 +18,8 @@ export class CoursesService {
     });
   }
 
-  public setCountOfCourses() {
-    return this.countOfCourses++;
+  public setCountOfCourses(): number {
+    return ++this.countOfCourses;
   }
 
   public getCountOfCourses() {

@@ -10,6 +10,7 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class LoginComponent {
   public name: string;
+  public password: string;
 
   constructor(
     private authService: AuthService,
@@ -21,7 +22,7 @@ export class LoginComponent {
 
   onLoginClick() {
     if (this.name) {
-      this.authService.login(this.name.toLowerCase());
+      this.authService.login(this.name.toLowerCase(), this.password);
     }
   }
 }

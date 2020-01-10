@@ -41,27 +41,28 @@
       "topRated": true
     }
   ],
-  "persons": [
+  "users": [
     {
-      "id": 1,
-      "firstname": "bob",
-      "lastname": "smith"
+      "email": "andrew@mail.com",
+      "password": "$2a$10$0k3J0Ybn.KjFa9SCLp0xFuyiAnIvaOqYxPEfASNbHwsAApCCvuLSy",
+      "firstname": "andrew",
+      "lastname": "whatever",
+      "id": 4
     },
     {
-      "id": 2,
-      "firstname": "maria",
-      "lastname": "wolf"
+      "email": "olga@mail.com",
+      "password": "$2a$10$/sGnm7TXb1Jmgwlt0LLCp.7meVxchuhKSTRkh4tJXRfb0Y7Trc6Le",
+      "firstname": "olga",
+      "lastname": "whatever",
+      "id": 5
     },
     {
-      "id": 33,
-      "firstname": "habib",
-      "lastname": "nurmur"
+      "email": "dima@mail.com",
+      "password": "$2a$10$saxJC.AoWbzC0HCHG9zX5.iLcPNVisQ/WJynd4jkjFlmWJ/zZuc6W",
+      "firstname": "dima",
+      "lastname": "whatever",
+      "id": 6
     }
   ],
-  "AUTH_TOKENS": [
-    {
-      "token": "33881",
-      "id": 1
-    }
-  ]
+  "AUTH_TOKENS": []
 }

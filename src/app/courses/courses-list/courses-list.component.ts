@@ -11,7 +11,6 @@ import { Subscription } from 'rxjs';
 })
 export class CoursesListComponent implements OnInit, OnDestroy {
   public coursesItems: CoursesListItem[] = [];
-  private lastCourse = this.coursesService.getCountOfCourses();
 
   private getCoursesSub: Subscription;
 
@@ -27,7 +26,7 @@ export class CoursesListComponent implements OnInit, OnDestroy {
 
   onSearchClicked(value) {
     if (!value) {
-      this.getCourses(0, this.coursesService.setCountOfCourses());
+      this.getCourses(0, this.coursesService.getCountOfCourses());
     } else {
       this.getCoursesSub = this.coursesService
         .searchRun(value)
@@ -56,7 +55,7 @@ export class CoursesListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.getCourses(0, this.lastCourse);
+    this.getCourses(0, this.coursesService.getCountOfCourses());
   }
 
   ngOnDestroy() {

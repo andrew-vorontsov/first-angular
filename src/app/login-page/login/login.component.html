@@ -8,7 +8,13 @@
             [value]='name'
             [(ngModel)]='name'>
         <br>
-        <input type="password" class="login-form__input login-form__input_password" placeholder="Пока без пароля"><br>
+        <input 
+            type="password" 
+            class="login-form__input login-form__input_password" 
+            placeholder="Пароль"
+            [value]='password'
+            [(ngModel)]='password'>
+        <br>
         <button (click)='onLoginClick()' class="login-form__button">Login</button>
     </div>
 </div>

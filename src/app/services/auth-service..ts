@@ -23,6 +23,8 @@ export class AuthService {
 
   public user: Person = {
     id: -1,
+    email: '',
+    password: '',
     firstname: '',
     lastname: '',
   };
@@ -32,9 +34,9 @@ export class AuthService {
     this.router.navigate(['/courses']);
   }
 
-  private getUserInfo(name): Observable<Person> {
-    return this.http.get<Person>(`${this.url}/persons`, {
-      params: new HttpParams().set('firstname', name),
+  private getUserInfo(email): Observable<Person[]> {
+    return this.http.get<Person[]>(`${this.url}/users`, {
+      params: new HttpParams().set('email', email),
     });
   }
 
@@ -47,50 +49,33 @@ export class AuthService {
   }
 
   public hasAuthToken() {
-    const savedUser = this.storageService.getLocStorageUser();
-    if (!savedUser) {
+    const token = this.storageService.getToken();
+    if (!token) {
       return null;
+    } else {
+      this.router.navigate(['/courses']);
     }
-    this.tokenService.getTokenHttp(savedUser.id).subscribe(
-      authUser => {
-        if (authUser.id === savedUser.id) {
-          this.user = savedUser;
-          this.logger();
-        } else {
-          alert('Ошибка запроса');
-        }
-      },
-      error => alert('Токен истек')
-    );
   }
 
-  public login(name) {
-    this.getUserInfo(name).subscribe(user => {
-      this.user = user[0];
-      if (!this.user) {
-        alert('Введите зарегистрированное имя (Bob, Maria, Habib)');
-        return null;
-      }
-      this.storageService.setUserToLocStorage(this.user);
-      this.logger();
-      this.tokenService.setToken(this.user.id).subscribe(
-        () => {},
-        error => {
-          const prove = confirm(
-            'Вы уже зашли с другого устройства. Выйти со всех устройств?'
-          );
-          if (prove) {
-            this.logout();
-          }
-        }
+  public login(name, pass) {
+    this.tokenService
+      .loginAndGetToken({ email: name, password: pass })
+      .subscribe(
+        data => {
+          console.log(data);
+          this.storageService.setToken(data);
+          this.getUserInfo(name).subscribe(user => {
+            console.log(user);
+            this.storageService.setUserToLocStorage(user[0]);
+            this.router.navigate(['/courses']);
+          });
+        },
+        error => alert(error.error)
       );
-    });
   }
 
   public logout() {
-    this.auth = false;
     this.storageService.cleanLocStorage();
     this.router.navigate(['/login']);
-    this.tokenService.removeToken(this.user.id).subscribe();
   }
 }
