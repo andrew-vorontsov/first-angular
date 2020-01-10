@@ -15,6 +15,8 @@ export class SearchPanelComponent {
   onSearchButtonClick(value) {
     if (value.length >= 3 || !value) {
       this.onSearchClick.emit(value);
+    } else {
+      alert('Введите 3 или более символов');
     }
   }
 

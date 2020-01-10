@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class CoursesService {
   constructor(private http: HttpClient) {}
 
-  private urlCourses = 'http://localhost:3000/courses';
+  private urlCourses = 'http://localhost:3000/660/courses';
   private countOfCourses = 2;
 
   public searchRun(value): Observable<CoursesListItem[]> {
@@ -19,7 +19,7 @@ export class CoursesService {
   }
 
   public setCountOfCourses(): number {
-    return ++this.countOfCourses;
+    return (this.countOfCourses = this.countOfCourses + 2);
   }
 
   public getCountOfCourses() {

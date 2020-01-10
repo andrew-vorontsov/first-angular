@@ -8,12 +8,12 @@ import { StorageService } from './local-storage.service';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router, private storageService: StorageService) {}
+  constructor(private router: Router, private authService: AuthService) {}
   canActivate(
     route: import('@angular/router').ActivatedRouteSnapshot,
     state: import('@angular/router').RouterStateSnapshot
   ) {
-    const auth = this.storageService.getToken();
+    const auth = this.authService.isAuth();
     if (auth) {
       return true;
     } else {

@@ -7,13 +7,10 @@ import { StorageService } from 'src/app/services/local-storage.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  constructor(
-    private authService: AuthService,
-    private storageService: StorageService
-  ) {}
+  constructor(private authService: AuthService) {}
 
   isAuth() {
-    if (this.storageService.getToken()) {
+    if (this.authService.isAuth()) {
       return true;
     } else {
       return false;
@@ -21,8 +18,8 @@ export class HeaderComponent {
   }
 
   setUserName() {
-    if (this.storageService.getLocStorageUser()) {
-      return this.storageService.getLocStorageUser().firstname;
+    if (this.authService.isAuth()) {
+      return this.authService.user.firstname;
     }
   }
 

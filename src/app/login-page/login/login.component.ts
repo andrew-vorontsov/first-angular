@@ -12,16 +12,13 @@ export class LoginComponent {
   public name: string;
   public password: string;
 
-  constructor(
-    private authService: AuthService,
-    private tokenService: TokenService
-  ) {
-    // this.authService.hasStorageInfo();
-    this.authService.hasAuthToken();
+  constructor(private authService: AuthService) {
+    this.authService.isAuth();
+    this.authService.setAuth();
   }
 
   onLoginClick() {
-    if (this.name) {
+    if (this.name && this.password) {
       this.authService.login(this.name.toLowerCase(), this.password);
     }
   }

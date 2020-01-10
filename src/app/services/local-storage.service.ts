@@ -6,7 +6,9 @@ import { Person } from '../users/person.module';
 })
 export class StorageService {
   public getLocStorageUser(): Person {
-    return JSON.parse(localStorage.getItem('userinfo'));
+    if (localStorage.getItem('userinfo')) {
+      return JSON.parse(localStorage.getItem('userinfo'));
+    }
   }
 
   public setUserToLocStorage(user) {
@@ -19,7 +21,9 @@ export class StorageService {
   }
 
   public getToken() {
-    return localStorage.getItem('token');
+    if (localStorage.getItem('token')) {
+      return localStorage.getItem('token');
+    }
   }
 
   public cleanLocStorage() {

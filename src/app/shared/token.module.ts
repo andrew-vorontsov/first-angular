@@ -1,4 +1,3 @@
 export interface TOKEN {
-  id: number;
-  token: string;
+  accessToken: string;
 }

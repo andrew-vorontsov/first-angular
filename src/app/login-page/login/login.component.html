@@ -1,17 +1,17 @@
-<div *ngIf='!authService.isAuthenticated()' class="login-form">
+<div class="login-form">
     <div class="login-form__header">Login</div>
     <div class="login-form__input-container">
         <input 
-            type="text" 
+            type="email" 
             class="login-form__input login-form__input_name" 
-            placeholder="Your name"
+            placeholder="andrew@mail.com"
             [value]='name'
             [(ngModel)]='name'>
         <br>
         <input 
             type="password" 
             class="login-form__input login-form__input_password" 
-            placeholder="Пароль"
+            placeholder="Пароль: 000000"
             [value]='password'
             [(ngModel)]='password'>
         <br>
