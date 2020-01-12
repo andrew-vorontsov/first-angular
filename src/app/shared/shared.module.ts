@@ -1,6 +1,4 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { CoreModule } from '../core/core.module';
 import { CoursesBorderDirective } from '../directives/courses-border.directive';
 import { DurationPipe } from '../pipes/duration.pipe';
 import { OrderByPipe } from '../pipes/order-by.pipe';

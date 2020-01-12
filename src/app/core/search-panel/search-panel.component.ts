@@ -13,10 +13,11 @@ export class SearchPanelComponent {
   constructor(private router: Router) {}
 
   onSearchButtonClick(value) {
-    if (value.length >= 3 || !value) {
-      this.onSearchClick.emit(value);
-    } else {
+    if (value.length < 3) {
       alert('Введите 3 или более символов');
+    } else {
+      this.onSearchClick.emit(value);
+      this.searchValue = '';
     }
   }
 

@@ -3,6 +3,7 @@ import { CoursesListItem } from '../courses-list-item.module';
 import { CoursesService } from '../../services/courses.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-courses-list',
@@ -13,6 +14,8 @@ export class CoursesListComponent implements OnInit, OnDestroy {
   public coursesItems: CoursesListItem[] = [];
 
   private getCoursesSub: Subscription;
+  private getMaxCountSub: Subscription;
+  private maxCountOfCourses;
 
   constructor(private coursesService: CoursesService, private router: Router) {}
 
@@ -51,14 +54,24 @@ export class CoursesListComponent implements OnInit, OnDestroy {
   }
 
   onShowmoreClick() {
-    this.getCourses(0, this.coursesService.setCountOfCourses());
+    if (this.coursesService.getCountOfCourses() < this.maxCountOfCourses) {
+      this.getCourses(0, this.coursesService.setCountOfCourses());
+    } else {
+      alert('Все курсы показаны');
+    }
   }
 
   ngOnInit() {
     this.getCourses(0, this.coursesService.getCountOfCourses());
+    this.getMaxCountSub = this.coursesService
+      .getMaxCountOFCourses()
+      .subscribe(response => {
+        this.maxCountOfCourses = response.headers.get('X-Total-Count');
+      });
   }
 
   ngOnDestroy() {
+    this.getMaxCountSub.unsubscribe();
     this.getCoursesSub.unsubscribe();
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { AuthService } from 'src/app/services/auth-service.';
 import { StorageService } from 'src/app/services/local-storage.service';
 @Component({
@@ -10,11 +10,8 @@ export class HeaderComponent {
   constructor(private authService: AuthService) {}
 
   isAuth() {
-    if (this.authService.isAuth()) {
-      return true;
-    } else {
-      return false;
-    }
+    console.log('a');
+    return this.authService.isAuth();
   }
 
   setUserName() {

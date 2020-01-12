@@ -8,13 +8,15 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { TokenService } from './token.service';
 import { StorageService } from './local-storage.service';
 import { AuthService } from './auth-service.';
 
 @Injectable()
 export class AuthInterceptorService implements HttpInterceptor {
-  constructor(private storageService: StorageService) {}
+  constructor(
+    private storageService: StorageService,
+    private authService: AuthService
+  ) {}
 
   intercept(
     req: HttpRequest<any>,
@@ -30,7 +32,10 @@ export class AuthInterceptorService implements HttpInterceptor {
     return next.handle(cloned).pipe(
       tap(
         () => {},
-        error => alert(error.error)
+        error => {
+          this.authService.logout();
+          alert(error.error);
+        }
       )
     );
   }
