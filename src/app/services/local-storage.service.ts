@@ -11,9 +11,9 @@ export class StorageService {
     }
   }
 
-  public setUserToLocStorage(user) {
-    user = JSON.stringify(user);
-    localStorage.setItem('userinfo', user);
+  public setUserToLocStorage(user: Person) {
+    user.password = '';
+    localStorage.setItem('userinfo', JSON.stringify(user));
   }
 
   public setToken(token) {

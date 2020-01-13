@@ -28,15 +28,8 @@ export class CoursesListComponent implements OnInit, OnDestroy {
   }
 
   onSearchClicked(value) {
-    if (!value) {
-      this.getCourses(0, this.coursesService.getCountOfCourses());
-    } else {
-      this.getCoursesSub = this.coursesService
-        .searchRun(value)
-        .subscribe(courses => {
-          this.coursesItems = courses;
-        });
-    }
+    this.coursesService.countOfCourses = 2;
+    this.coursesItems = this.coursesService.searchRunner(value);
   }
 
   onDeleteButtonClick(course) {
@@ -54,15 +47,20 @@ export class CoursesListComponent implements OnInit, OnDestroy {
   }
 
   onShowmoreClick() {
-    if (this.coursesService.getCountOfCourses() < this.maxCountOfCourses) {
+    if (this.coursesService.countOfCourses < this.maxCountOfCourses) {
       this.getCourses(0, this.coursesService.setCountOfCourses());
     } else {
       alert('Все курсы показаны');
     }
   }
 
+  onNoDataClick() {
+    this.coursesService.countOfCourses = 2;
+    this.getCourses(0, 2);
+  }
+
   ngOnInit() {
-    this.getCourses(0, this.coursesService.getCountOfCourses());
+    this.getCourses(0, this.coursesService.countOfCourses);
     this.getMaxCountSub = this.coursesService
       .getMaxCountOFCourses()
       .subscribe(response => {

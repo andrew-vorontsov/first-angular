@@ -7,4 +7,4 @@
     (onEditButtonItemClick) = 'onEditButtonClick(item)'>
 </app-courses-list-item>
 <div *ngIf='coursesItems.length' class="courses__showmore-button" (click)='onShowmoreClick()'>Show more</div>
-<div *ngIf='!coursesItems.length' class="courses__showmore-button" (click)='onShowmoreClick()'>No data</div>
+<div *ngIf='!coursesItems.length' class="courses__showmore-button" (click)='onNoDataClick()'>No data</div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Person } from '../users/person.module';
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { StorageService } from './local-storage.service';
@@ -20,14 +20,7 @@ export class AuthService {
   ) {}
 
   private auth = false;
-
-  public user: Person = {
-    id: -1,
-    email: '',
-    password: '',
-    firstname: '',
-    lastname: '',
-  };
+  public user: Person;
 
   private getUserInfo(email): Observable<Person[]> {
     return this.http.get<Person[]>(`${protectedUrl}/users`, {

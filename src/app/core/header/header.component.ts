@@ -1,6 +1,5 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth-service.';
-import { StorageService } from 'src/app/services/local-storage.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -8,14 +7,14 @@ import { StorageService } from 'src/app/services/local-storage.service';
 })
 export class HeaderComponent {
   constructor(private authService: AuthService) {}
+  public firstname = '';
 
   isAuth() {
-    console.log('a');
     return this.authService.isAuth();
   }
 
   setUserName() {
-    if (this.authService.isAuth()) {
+    if (this.isAuth()) {
       return this.authService.user.firstname;
     }
   }
