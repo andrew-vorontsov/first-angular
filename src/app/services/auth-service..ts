@@ -52,15 +52,20 @@ export class AuthService {
   }
 
   public login(name, pass) {
-    this.loginAndGetToken({ email: name, password: pass }).subscribe(data => {
-      this.storageService.setToken(data.accessToken);
-      this.auth = true;
-      this.getUserInfo(name).subscribe(user => {
-        this.user = user[0];
-        this.storageService.setUserToLocStorage(user[0]);
-        this.router.navigate(['/courses']);
-      });
-    });
+    this.loginAndGetToken({ email: name, password: pass }).subscribe(
+      data => {
+        this.storageService.setToken(data.accessToken);
+        this.auth = true;
+        this.getUserInfo(name).subscribe(user => {
+          this.user = user[0];
+          this.storageService.setUserToLocStorage(user[0]);
+          this.router.navigate(['/courses']);
+        });
+      },
+      error => {
+        // console.log(error.error);
+      }
+    );
   }
 
   public logout() {

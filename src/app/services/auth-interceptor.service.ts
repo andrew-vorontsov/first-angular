@@ -32,8 +32,14 @@ export class AuthInterceptorService implements HttpInterceptor {
       tap(
         () => {},
         error => {
-          this.authService.logout();
-          alert(error.error);
+          if (!req.url.includes('login')) {
+            this.authService.logout();
+            alert(error.statusText);
+          } else if (error.status === 400) {
+            alert('Неправильный логин или пароль');
+          } else {
+            alert('Сервер недоступен');
+          }
         }
       )
     );

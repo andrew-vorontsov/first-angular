@@ -43,24 +43,16 @@ export class EditPageComponent implements OnInit {
   }
 
   public isNewCourse() {
-    if (!+this.id) {
-      return true;
-    } else {
-      return false;
-    }
+    return !+this.id ? true : false;
   }
 
   private isNewCourseFilled() {
-    if (
-      this.newCourse.title &&
+    return this.newCourse.title &&
       this.creationDate &&
       this.newCourse.description &&
       +this.newCourse.duration
-    ) {
-      return true;
-    } else {
-      return false;
-    }
+      ? true
+      : false;
   }
 
   public onSaveBtnClick() {
