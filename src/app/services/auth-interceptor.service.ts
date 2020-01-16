@@ -6,7 +6,7 @@ import {
   HttpInterceptor,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap, delay } from 'rxjs/operators';
 import { StorageService } from './local-storage.service';
 import { AuthService } from './auth-service.';
 
@@ -41,7 +41,8 @@ export class AuthInterceptorService implements HttpInterceptor {
             alert('Сервер недоступен');
           }
         }
-      )
+      ),
+      delay(500)
     );
   }
 }

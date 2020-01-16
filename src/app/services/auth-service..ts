@@ -63,7 +63,7 @@ export class AuthService {
         });
       },
       error => {
-        // console.log(error.error);
+        console.log(error);
       }
     );
   }
