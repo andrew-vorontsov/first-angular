@@ -1,4 +1,5 @@
-<div class="login-form">
+<app-header [auth] = "!auth"></app-header>
+<div class="login-form" *ngIf = "!auth">
     <div class="login-form__header">Login</div>
     <div class="login-form__input-container">
         <input 

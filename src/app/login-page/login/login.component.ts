@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth-service.';
 
 @Component({
@@ -9,9 +9,11 @@ import { AuthService } from 'src/app/services/auth-service.';
 export class LoginComponent {
   public name: string;
   public password: string;
+  public auth = false;
 
   constructor(private authService: AuthService) {
-    this.authService.setAuth();
+    this.authService.checkAuth();
+    this.auth = this.authService.isAuth();
   }
 
   onLoginClick() {

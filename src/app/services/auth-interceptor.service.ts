@@ -42,7 +42,7 @@ export class AuthInterceptorService implements HttpInterceptor {
           }
         }
       ),
-      delay(500)
+      delay(300)
     );
   }
 }

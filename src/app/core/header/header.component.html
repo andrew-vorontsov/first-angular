@@ -1,7 +1,7 @@
 <header class="header">
     <div class="header__logo">Logo</div>
-    <div *ngIf="isAuth()" class="header__authorization">
-        <div  class="header__user-name">{{ setUserName() }}</div>
+    <div *ngIf="!auth" class="header__authorization">
+        <div  class="header__user-name">{{ name  }}</div>
         <button (click) = "onLogoffClick()" class="header__log-off">Log off</button>
     </div>
 </header>
