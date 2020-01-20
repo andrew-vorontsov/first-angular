@@ -5,6 +5,7 @@ import { FooterComponent } from './footer/footer.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { SearchPanelComponent } from './search-panel/search-panel.component';
 import { FormsModule } from '@angular/forms';
+import { LoadSpinnerComponent } from './load-spinner/load-spinner.component';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     BreadcrumbsComponent,
     SearchPanelComponent,
+    LoadSpinnerComponent,
   ],
   imports: [CommonModule, FormsModule],
   exports: [
@@ -19,6 +21,7 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     BreadcrumbsComponent,
     SearchPanelComponent,
+    LoadSpinnerComponent,
   ],
 })
 export class CoreModule {}

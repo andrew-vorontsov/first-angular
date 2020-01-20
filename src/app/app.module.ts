@@ -14,6 +14,7 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { LoadingService } from './services/loading-service';
 
 @NgModule({
   declarations: [AppComponent, NotFoundComponent],

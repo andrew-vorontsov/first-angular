@@ -9,12 +9,14 @@ import { Observable } from 'rxjs';
 import { tap, delay } from 'rxjs/operators';
 import { StorageService } from './local-storage.service';
 import { AuthService } from './auth-service.';
+import { LoadingService } from './loading-service';
 
 @Injectable()
 export class AuthInterceptorService implements HttpInterceptor {
   constructor(
     private storageService: StorageService,
-    private authService: AuthService
+    private authService: AuthService,
+    private loadingService: LoadingService
   ) {}
 
   intercept(
@@ -30,7 +32,9 @@ export class AuthInterceptorService implements HttpInterceptor {
 
     return next.handle(cloned).pipe(
       tap(
-        () => {},
+        () => {
+          console.log(this.loadingService.loading);
+        },
         error => {
           if (!req.url.includes('login')) {
             this.authService.logout();
@@ -40,9 +44,11 @@ export class AuthInterceptorService implements HttpInterceptor {
           } else {
             alert('Сервер недоступен');
           }
+        },
+        () => {
+          console.log(this.loadingService.loading);
         }
-      ),
-      delay(300)
+      )
     );
   }
 }

@@ -1,3 +1,5 @@
-<router-outlet></router-outlet>
+<router-outlet *ngIf = '!loading()'></router-outlet>
+
+<app-load-spinner *ngIf = 'loading()'></app-load-spinner>
 
 <app-footer></app-footer>
