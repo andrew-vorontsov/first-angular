@@ -3,6 +3,7 @@ import { CoursesListItem } from '../courses/courses-list-item.module';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable, forkJoin } from 'rxjs';
 import { coursesUrl } from 'common/constants';
+import { delay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',

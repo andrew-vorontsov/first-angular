@@ -18,7 +18,7 @@ export class SearchPanelComponent implements OnInit, OnDestroy {
   @Output() public onSearchClick = new EventEmitter();
   public searchValue;
   private sub: Subscription;
-  public stream$: Subject<string> = new Subject<string>();
+  private stream$: Subject<string> = new Subject<string>();
 
   constructor(private router: Router) {}
 

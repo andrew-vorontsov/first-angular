@@ -5,8 +5,8 @@ import {
   HttpEvent,
   HttpInterceptor,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { tap, delay } from 'rxjs/operators';
+import { Observable, interval } from 'rxjs';
+import { tap, delay, debounceTime } from 'rxjs/operators';
 import { StorageService } from './local-storage.service';
 import { AuthService } from './auth-service.';
 import { LoadingService } from './loading-service';
@@ -29,11 +29,12 @@ export class AuthInterceptorService implements HttpInterceptor {
         'Bearer ' + this.storageService.getToken()
       ),
     });
+    this.loadingService.loading = true;
 
     return next.handle(cloned).pipe(
       tap(
         () => {
-          console.log(this.loadingService.loading);
+          // this.loadingService.loading.next(true);
         },
         error => {
           if (!req.url.includes('login')) {
@@ -46,7 +47,7 @@ export class AuthInterceptorService implements HttpInterceptor {
           }
         },
         () => {
-          console.log(this.loadingService.loading);
+          this.loadingService.loading = false;
         }
       )
     );
