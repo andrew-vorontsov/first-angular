@@ -25,6 +25,8 @@ export class AuthGuard implements CanActivate {
         if (response) {
           this.authService.setAuth(true);
           return response.ok;
+        } else {
+          return false;
         }
       })
     );

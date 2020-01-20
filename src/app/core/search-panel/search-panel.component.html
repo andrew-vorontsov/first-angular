@@ -6,12 +6,8 @@
             placeholder="Search.." 
             [value]='searchValue'
             [(ngModel)]='searchValue'
+            (keyup)='onSearchButtonClick(searchValue)'
             #searchPanel>
-        <button 
-            class="search-panel__button search-panel__button_search" 
-            (click)='onSearchButtonClick(searchValue)'>
-                Search
-        </button>
     </div>
     <button 
         class="search-panel__button search-panel__button_add-course"
