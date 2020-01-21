@@ -29,14 +29,14 @@ export class AuthInterceptorService implements HttpInterceptor {
         'Bearer ' + this.storageService.getToken()
       ),
     });
-    this.loadingService.loading = true;
+    this.loadingService.start();
 
     return next.handle(cloned).pipe(
+      delay(500),
       tap(
-        () => {
-          // this.loadingService.loading.next(true);
-        },
+        () => {},
         error => {
+          this.loadingService.stop();
           if (!req.url.includes('login')) {
             this.authService.logout();
             alert(error.statusText);
@@ -47,7 +47,7 @@ export class AuthInterceptorService implements HttpInterceptor {
           }
         },
         () => {
-          this.loadingService.loading = false;
+          this.loadingService.stop();
         }
       )
     );

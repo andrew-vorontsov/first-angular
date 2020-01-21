@@ -6,5 +6,13 @@ import { delay, debounceTime } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class LoadingService {
-  public loading = false;
+  public load = new Subject<boolean>();
+
+  public start() {
+    this.load.next(true);
+  }
+
+  public stop() {
+    this.load.next(false);
+  }
 }

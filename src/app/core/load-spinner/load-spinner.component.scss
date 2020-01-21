@@ -1,8 +1,14 @@
 .loading {
   background: rgba($color: #000000, $alpha: 0.5);
   color: #ffffff;
-  width: 100%;
+  width: 700px;
+  text-align: center;
   min-height: 100%;
-  position: absolute;
-  top: 0;
+  position: fixed;
+  justify-content: center;
+  display: flex;
+  font-size: 30px;
+}
+.loading-text {
+  align-self: center;
 }
