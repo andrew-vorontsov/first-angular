@@ -20,14 +20,9 @@ export class AuthGuard implements CanActivate {
     route: import('@angular/router').ActivatedRouteSnapshot,
     state: import('@angular/router').RouterStateSnapshot
   ): Observable<boolean> {
-    return this.authService.guardAuth().pipe(
+    return this.authService.isAuth().pipe(
       map(response => {
-        if (response) {
-          this.authService.setAuth(true);
-          return response.ok;
-        } else {
-          return false;
-        }
+        return response;
       })
     );
   }
