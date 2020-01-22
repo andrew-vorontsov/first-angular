@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CoursesListItem } from '../courses/courses-list-item.module';
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import { Observable, forkJoin } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable, forkJoin, of } from 'rxjs';
 import { coursesUrl } from 'common/constants';
 import { delay } from 'rxjs/operators';
 
@@ -10,8 +10,6 @@ import { delay } from 'rxjs/operators';
 })
 export class CoursesService {
   constructor(private http: HttpClient) {}
-
-  public countOfCourses = 2;
 
   private searchTitle(value): Observable<CoursesListItem[]> {
     return this.http.get<CoursesListItem[]>(coursesUrl, {
@@ -25,32 +23,15 @@ export class CoursesService {
     });
   }
 
-  public searchRunner(value) {
-    const coursesItems: CoursesListItem[] = [];
-    const fork = forkJoin([
-      this.searchTitle(value),
-      this.searchDescription(value),
-    ]);
-    fork.subscribe(result => {
-      const commonResult = result[0].concat(result[1]);
-      for (let i = 0; i < commonResult.length; i++) {
-        if (!coursesItems.find(item => item.id === commonResult[i].id)) {
-          coursesItems.push(commonResult[i]);
-        }
-      }
-    });
-    return coursesItems;
+  public searchRunner(value): Observable<any> {
+    return forkJoin([this.searchTitle(value), this.searchDescription(value)]);
   }
 
-  public getMaxCountOFCourses() {
-    return this.http.head(coursesUrl, {
+  public getMaxCountOFCourses(): Observable<any> {
+    return this.http.head<any>(coursesUrl, {
       params: new HttpParams().set('_start', '0').set('_end', '1'),
       observe: 'response',
     });
-  }
-
-  public setCountOfCourses() {
-    return (this.countOfCourses += 2);
   }
 
   public getItemById(id): Observable<CoursesListItem> {

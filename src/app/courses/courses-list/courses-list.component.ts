@@ -12,7 +12,7 @@ import { tap } from 'rxjs/operators';
 })
 export class CoursesListComponent implements OnInit, OnDestroy {
   public coursesItems: CoursesListItem[] = [];
-
+  private countOfShowedCourses = 2;
   private getCoursesSub: Subscription;
   private getMaxCountSub: Subscription;
   private maxCountOfCourses;
@@ -28,8 +28,17 @@ export class CoursesListComponent implements OnInit, OnDestroy {
   }
 
   onSearchClicked(value) {
-    this.coursesService.countOfCourses = 2;
-    this.coursesItems = this.coursesService.searchRunner(value);
+    const courses: CoursesListItem[] = [];
+    this.countOfShowedCourses = 2;
+    this.coursesService.searchRunner(value).subscribe(result => {
+      const commonResult = result[0].concat(result[1]);
+      for (let i = 0; i < commonResult.length; i++) {
+        if (!courses.find(item => item.id === commonResult[i].id)) {
+          courses.push(commonResult[i]);
+        }
+      }
+      this.coursesItems = courses;
+    });
   }
 
   onDeleteButtonClick(course) {
@@ -47,20 +56,21 @@ export class CoursesListComponent implements OnInit, OnDestroy {
   }
 
   onShowmoreClick() {
-    if (this.coursesService.countOfCourses < this.maxCountOfCourses) {
-      this.getCourses(0, this.coursesService.setCountOfCourses());
+    if (this.countOfShowedCourses < this.maxCountOfCourses) {
+      this.countOfShowedCourses += 2;
+      this.getCourses(0, this.countOfShowedCourses);
     } else {
       alert('Все курсы показаны');
     }
   }
 
   onNoDataClick() {
-    this.coursesService.countOfCourses = 2;
-    this.getCourses(0, 2);
+    this.countOfShowedCourses = 2;
+    this.getCourses(0, this.countOfShowedCourses);
   }
 
   ngOnInit() {
-    this.getCourses(0, this.coursesService.countOfCourses);
+    this.getCourses(0, this.countOfShowedCourses);
     this.getMaxCountSub = this.coursesService
       .getMaxCountOFCourses()
       .subscribe(response => {

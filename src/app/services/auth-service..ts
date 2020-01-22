@@ -7,7 +7,6 @@ import { StorageService } from './local-storage.service';
 import { CoursesService } from './courses.service';
 import { TOKEN } from '../shared/token.module';
 import { commonUrl, protectedUrl } from 'common/constants';
-import { tap, observeOn, delay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -78,6 +77,5 @@ export class AuthService {
     this.storageService.cleanLocStorage();
     this.router.navigate(['/login']);
     this.setAuth(false);
-    this.coursesService.countOfCourses = 2;
   }
 }
