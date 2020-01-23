@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) {}
 
   @Input() public auth = true;
+  public email = '';
   public name = '';
   private sub: Subscription = empty().subscribe();
   private logoutSub: Subscription = empty().subscribe();
@@ -23,16 +24,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   getUserName() {
-    return this.authService
-      .getUserInfo(this.storageService.getLocStorageUser().email)
-      .subscribe(
-        user => {
-          this.name = user.firstname;
-        },
-        error => {
-          this.auth = false;
-        }
-      );
+    this.authService.getUserEmail().subscribe(email => {
+      this.email = email;
+    });
+    return this.authService.getUserInfo(this.email).subscribe(user => {
+      this.name = user.firstname;
+    });
   }
 
   ngOnInit() {

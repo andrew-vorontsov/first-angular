@@ -10,12 +10,13 @@ import { tap, delay, debounceTime } from 'rxjs/operators';
 import { StorageService } from './local-storage.service';
 import { AuthService } from './auth-service.';
 import { LoadingService } from './loading-service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptorService implements HttpInterceptor {
   constructor(
     private storageService: StorageService,
-    private authService: AuthService,
+    private router: Router,
     private loadingService: LoadingService
   ) {}
 
@@ -38,7 +39,7 @@ export class AuthInterceptorService implements HttpInterceptor {
         error => {
           this.loadingService.stop();
           if (!req.url.includes('login')) {
-            this.authService.logout();
+            this.router.navigate(['/login']);
             alert(error.statusText);
           } else if (error.status === 400) {
             alert('Неправильный логин или пароль');

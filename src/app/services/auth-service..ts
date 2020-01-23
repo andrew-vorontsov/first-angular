@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Person } from '../users/person.module';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, of, concat } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { StorageService } from './local-storage.service';
-import { CoursesService } from './courses.service';
 import { TOKEN } from '../shared/token.module';
 import { commonUrl, protectedUrl } from 'common/constants';
-import { map, tap, concatMap, delay } from 'rxjs/operators';
+import { map, concatMap, delay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +18,10 @@ export class AuthService {
     private storageService: StorageService
   ) {}
 
+  public getUserEmail(): Observable<string> {
+    return of(this.storageService.getLocStorageUser().email);
+  }
+
   public getUserInfo(email): Observable<Person> {
     return this.http
       .get<Person>(`${protectedUrl}/users`, {
@@ -26,6 +29,7 @@ export class AuthService {
       })
       .pipe(
         map(user => {
+          this.storageService.setUserToLocStorage(user[0]);
           return user[0];
         })
       );

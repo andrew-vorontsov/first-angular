@@ -10,12 +10,7 @@ import { StorageService } from './local-storage.service';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(
-    private router: Router,
-    private authService: AuthService,
-    private storageService: StorageService,
-    private http: HttpClient
-  ) {}
+  constructor(private authService: AuthService) {}
   canActivate(
     route: import('@angular/router').ActivatedRouteSnapshot,
     state: import('@angular/router').RouterStateSnapshot
