@@ -5,10 +5,9 @@ import {
   HttpEvent,
   HttpInterceptor,
 } from '@angular/common/http';
-import { Observable, interval } from 'rxjs';
-import { tap, delay, debounceTime } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { tap, delay } from 'rxjs/operators';
 import { StorageService } from './local-storage.service';
-import { AuthService } from './auth-service.';
 import { LoadingService } from './loading-service';
 import { Router } from '@angular/router';
 

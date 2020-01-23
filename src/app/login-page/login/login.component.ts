@@ -1,6 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { AuthService } from 'src/app/services/auth-service.';
-import { StorageService } from 'src/app/services/local-storage.service';
 import { Router } from '@angular/router';
 import { Subscription, empty } from 'rxjs';
 
@@ -12,7 +11,6 @@ import { Subscription, empty } from 'rxjs';
 export class LoginComponent implements OnDestroy {
   public name: string;
   public password: string;
-  public auth = false;
   private sub: Subscription = empty().subscribe();
 
   constructor(private authService: AuthService, private router: Router) {
@@ -24,7 +22,6 @@ export class LoginComponent implements OnDestroy {
       this.sub = this.authService
         .login(this.name.toLowerCase(), this.password)
         .subscribe(() => {
-          this.auth = true;
           this.router.navigate(['/courses']);
         });
     }
