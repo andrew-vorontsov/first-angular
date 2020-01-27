@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Person } from '../users/person.module';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, from } from 'rxjs';
 import { Router } from '@angular/router';
 import { StorageService } from './local-storage.service';
 import { TOKEN } from '../shared/token.module';
@@ -18,6 +18,10 @@ export class AuthService {
     private storageService: StorageService
   ) {}
 
+  public test() {
+    return of([1, 2, 3, 4]);
+  }
+
   public getUserEmail(): Observable<string> {
     return of(this.storageService.getLocStorageUser().email);
   }
@@ -29,7 +33,6 @@ export class AuthService {
       })
       .pipe(
         map(user => {
-          this.storageService.setUserToLocStorage(user[0]);
           return user[0];
         })
       );
@@ -63,7 +66,11 @@ export class AuthService {
       .pipe(
         concatMap(token => {
           this.storageService.setToken(token.accessToken);
-          return this.getUserInfo(email);
+          return this.getUserInfo(email).pipe(
+            map(user => {
+              this.storageService.setUserToLocStorage(user[0]);
+            })
+          );
         })
       );
   }
