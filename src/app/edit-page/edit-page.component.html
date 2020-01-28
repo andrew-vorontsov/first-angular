@@ -1,34 +1,30 @@
 <app-load-spinner></app-load-spinner>
 <app-header></app-header>
 <app-breadcrumbs></app-breadcrumbs>
-<div class="edit-page">
+<form class="edit-page" [formGroup] = "form" (ngSubmit) = "submit()">
   <h3>{{ title }}</h3>
   <input 
     required
     type="text" 
     placeholder="title" 
     class="edit-page__input-title"
-    [value] = 'newCourse.title'
-    [(ngModel)] = 'newCourse.title'><br>
+    [value] = 'newCourse.title'><br>
   <textarea 
     placeholder="description" 
     class="edit-page__description" 
-    rows="5"
-    [(ngModel)] = 'newCourse.description'>
+    rows="5">
     {{ newCourse.description }}
   </textarea><br>
   <input 
     required
     type="date" 
     class="edit-page__input-date"
-    [value] = 'creationDate'
-    [(ngModel)] = 'creationDate'><br>
+    [value] = 'creationDate'><br>
   <input 
     required
     type="text" 
     class="edit-page__input-duration"
-    [value] = 'newCourse.duration' 
-    [(ngModel)] = 'newCourse.duration'>
+    [value] = 'newCourse.duration'>
   <span 
     class="edit-page__duration-value">
     {{ newCourse.duration * 1000 * 60 | duration }}
@@ -37,27 +33,29 @@
     Top Rate
     <input 
       type="checkbox" 
-      [checked] = "newCourse.topRated" 
-      [(ngModel)] = "newCourse.topRated">
+      [checked] = "newCourse.topRated">
   </p>
   <div class="edit-page__authors">authors</div>
   <div class="edit-page__buttons">
     <button 
-      *ngIf = 'isNewCourse()' 
+      *ngIf = 'isNewCourse()'
+      type = "submit"
       class="edit-page__save-btn" 
       (click) = 'onSaveBtnClick()'>
       {{ title }}
     </button>
     <button 
       *ngIf = '!isNewCourse()' 
+      type = "submit"
       class="edit-page__save-btn" 
       (click) = 'onUpdateBtnClick()'>
       {{ title }}
     </button>
     <button 
       class="edit-page__close-btn" 
+      type = "button"
       (click) = 'onCloseBtnClick()'>
       Cancel
     </button>
   </div>
-</div>
+</form>

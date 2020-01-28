@@ -3,6 +3,7 @@ import { CoursesService } from '../services/courses.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CoursesListItem } from '../courses/courses-list-item.module';
 import { DatePipe } from '@angular/common';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-page',
@@ -18,6 +19,7 @@ export class EditPageComponent implements OnInit {
     private router: Router
   ) {}
 
+  public form: FormGroup;
   public title = 'Add course';
   public creationDate = '';
   private id = this.activeRoute.snapshot.params.id;
@@ -81,10 +83,15 @@ export class EditPageComponent implements OnInit {
     this.router.navigate(['/courses']);
   }
 
+  submit() {
+    console.log(this.form);
+  }
+
   ngOnInit() {
     if (!this.isNewCourse()) {
       this.title = 'Update course';
       this.setUpdatingCourse();
     }
+    this.form = new FormGroup({});
   }
 }
