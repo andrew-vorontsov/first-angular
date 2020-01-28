@@ -4,24 +4,23 @@
 <form class="edit-page" [formGroup] = "form" (ngSubmit) = "submit()">
   <h3>{{ title }}</h3>
   <input 
-    required
+    formControlName="title"
     type="text" 
     placeholder="title" 
-    class="edit-page__input-title"
-    [value] = 'newCourse.title'><br>
+    class="edit-page__input-title"><br>
   <textarea 
+    formControlName="description"
     placeholder="description" 
-    class="edit-page__description" 
-    rows="5">
-    {{ newCourse.description }}
+    class="edit-page__description"
+    [value] = 'newCourse.description'>
   </textarea><br>
   <input 
-    required
-    type="date" 
+    formControlName="creationDate"
+    type="text" 
     class="edit-page__input-date"
     [value] = 'creationDate'><br>
   <input 
-    required
+    formControlName="duration"
     type="text" 
     class="edit-page__input-duration"
     [value] = 'newCourse.duration'>
@@ -32,6 +31,7 @@
   <p>
     Top Rate
     <input 
+      formControlName="topRated"
       type="checkbox" 
       [checked] = "newCourse.topRated">
   </p>
@@ -40,15 +40,13 @@
     <button 
       *ngIf = 'isNewCourse()'
       type = "submit"
-      class="edit-page__save-btn" 
-      (click) = 'onSaveBtnClick()'>
+      class="edit-page__save-btn">
       {{ title }}
     </button>
     <button 
       *ngIf = '!isNewCourse()' 
       type = "submit"
-      class="edit-page__save-btn" 
-      (click) = 'onUpdateBtnClick()'>
+      class="edit-page__save-btn" >
       {{ title }}
     </button>
     <button 

@@ -3,7 +3,7 @@ import { CoursesService } from '../services/courses.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CoursesListItem } from '../courses/courses-list-item.module';
 import { DatePipe } from '@angular/common';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-page',
@@ -19,7 +19,6 @@ export class EditPageComponent implements OnInit {
     private router: Router
   ) {}
 
-  public form: FormGroup;
   public title = 'Add course';
   public creationDate = '';
   private id = this.activeRoute.snapshot.params.id;
@@ -33,13 +32,15 @@ export class EditPageComponent implements OnInit {
     topRated: false,
   };
 
+  public form: FormGroup;
+
   private setUpdatingCourse() {
     this.coursesService.getItemById(+this.id).subscribe(course => {
       this.newCourse = course;
       this.newCourse.duration = Math.round(this.newCourse.duration / 1000 / 60);
       this.creationDate = this.datePipe.transform(
         this.newCourse.creationDate,
-        'yyyy-MM-dd'
+        'dd.MM.yyyy'
       );
     });
   }
@@ -48,35 +49,18 @@ export class EditPageComponent implements OnInit {
     return !+this.id;
   }
 
-  private isNewCourseFilled() {
-    return (
-      this.newCourse.title &&
-      this.creationDate &&
-      this.newCourse.description &&
-      +this.newCourse.duration
-    );
-  }
-
   public onSaveBtnClick() {
-    if (this.isNewCourseFilled()) {
-      this.newCourse.creationDate = +new Date(this.creationDate);
-      this.coursesService.addCourseItem(this.newCourse).subscribe(() => {
-        this.router.navigate(['/courses']);
-      });
-    } else {
-      alert('Заполните все поля корректно');
-    }
+    this.newCourse.creationDate = +new Date(this.creationDate);
+    this.coursesService.addCourseItem(this.newCourse).subscribe(() => {
+      this.router.navigate(['/courses']);
+    });
   }
 
   public onUpdateBtnClick() {
-    if (this.isNewCourseFilled()) {
-      this.newCourse.creationDate = +new Date(this.creationDate);
-      this.coursesService.updateItem(this.newCourse).subscribe(() => {
-        this.router.navigate(['/courses']);
-      });
-    } else {
-      alert('Заполните все поля корректно');
-    }
+    this.newCourse.creationDate = +new Date(this.creationDate);
+    this.coursesService.updateItem(this.newCourse).subscribe(() => {
+      this.router.navigate(['/courses']);
+    });
   }
 
   public onCloseBtnClick() {
@@ -88,10 +72,20 @@ export class EditPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.form = new FormGroup({
+      title: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(50),
+      ]),
+      description: new FormControl(),
+      creationDate: new FormControl(),
+      duration: new FormControl(),
+      topRated: new FormControl(),
+      authors: new FormControl(),
+    });
     if (!this.isNewCourse()) {
       this.title = 'Update course';
       this.setUpdatingCourse();
     }
-    this.form = new FormGroup({});
   }
 }
