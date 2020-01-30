@@ -3,22 +3,38 @@
 <app-breadcrumbs></app-breadcrumbs>
 <form class="edit-page" [formGroup] = "form" (ngSubmit) = "submit()">
   <h3>{{ title }}</h3>
+  <label class = "edit-page__label">
+    Title:<br>
   <input 
     formControlName="title"
     type="text" 
     placeholder="title" 
     class="edit-page__input-title"><br>
-  <textarea 
-    formControlName="description"
-    placeholder="description" 
-    class="edit-page__description">
-  </textarea><br>
-  <app-date-input formControlName = "creationDate"></app-date-input><br>
-  <app-duration-input formControlName = "duration"></app-duration-input>
-  <app-authors-select 
-    formControlName = "authors"
-    (onSearch) = "searchRun($event)">
-  </app-authors-select>
+  </label>
+  <label class = "edit-page__label">
+    Description:<br>
+    <textarea 
+      formControlName="description"
+      placeholder="description" 
+      class="edit-page__description">
+    </textarea><br>
+  </label>
+  <label class = "edit-page__label">
+    Creation date:<br>
+    <app-date-input formControlName = "creationDate"></app-date-input><br>
+  </label>
+  <label class = "edit-page__label">
+    Duration:<br>
+    <app-duration-input formControlName = "duration"></app-duration-input>
+  </label>
+  <label class = "edit-page__label">
+    Authors:<br>
+    <app-authors-select 
+      formControlName = "authors"
+      (onSearch) = "searchRun($event)"
+      [authorsList] = "usersList">
+    </app-authors-select>
+  </label>
   <div class="edit-page__buttons">
     <button 
       *ngIf = 'isNewCourse()'

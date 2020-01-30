@@ -1,17 +1,23 @@
 .edit-page {
   padding: 5px 10px;
 }
+.edit-page__label {
+  font-size: 14px;
+  font-weight: bold;
+}
 .edit-page__input-title {
   width:200px;
+  padding:3px 10px;
+  margin-bottom:10px;
 }
 .edit-page__description {
+  padding:3px 10px;
   font-family: sans-serif;
-  margin-top: 10px;
   height:100px;
-  width:600px;
+  width:580px;
 }
 .edit-page__buttons {
-  margin-top: 10px;
+  margin-bottom:10px;
 }
 .edit-page__save-btn {
   margin-right: 15px;

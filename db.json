@@ -60,21 +60,21 @@
       "email": "andrew@mail.com",
       "password": "$2a$10$0k3J0Ybn.KjFa9SCLp0xFuyiAnIvaOqYxPEfASNbHwsAApCCvuLSy",
       "firstname": "andrew",
-      "lastname": "whatever",
+      "lastname": "vorontsov",
       "id": 4
     },
     {
       "email": "olga@mail.com",
       "password": "$2a$10$/sGnm7TXb1Jmgwlt0LLCp.7meVxchuhKSTRkh4tJXRfb0Y7Trc6Le",
       "firstname": "olga",
-      "lastname": "whatever",
+      "lastname": "otinova",
       "id": 5
     },
     {
       "email": "dima@mail.com",
       "password": "$2a$10$saxJC.AoWbzC0HCHG9zX5.iLcPNVisQ/WJynd4jkjFlmWJ/zZuc6W",
       "firstname": "dima",
-      "lastname": "whatever",
+      "lastname": "lukin",
       "id": 6
     }
   ]

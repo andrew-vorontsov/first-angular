@@ -5,6 +5,13 @@
   [value] = "value"
   [(ngModel)] = "value"
   (keyup)='onSearchKeyUp(value)'>
+<div class = "edit-page__option-group">
+  <div 
+    class = "edit-page__option" 
+    *ngFor = "let user of authorsList">
+    {{ user }}
+  </div>
+</div>
 <div class="edit-page__authors">
   <div
     *ngFor = "let author of authors" 
