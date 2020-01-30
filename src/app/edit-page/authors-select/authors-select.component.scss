@@ -1,0 +1,30 @@
+.edit-page__select-author {
+  width:200px;
+  margin-top:10px;
+}
+.edit-page__authors {
+  display: flex;
+  flex-wrap: wrap;
+  width:580px;
+  margin-top:10px;
+  padding:0 10px;
+  border: 1px solid #bbb;
+}
+.edit-page__author-cloud {
+  text-transform: capitalize;
+  padding:4px 10px;
+  color: white;
+  background: #333;
+  font-weight: bold;
+  font-size: 14px;
+  margin:5px 10px 5px 0;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.author-cloud__cross {
+  margin-left: 10px;
+  &:hover {
+    color: red;
+  }
+}

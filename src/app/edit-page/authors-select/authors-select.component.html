@@ -1,0 +1,14 @@
+<input
+  class = "edit-page__select-author"
+  placeholder="search authors"
+  type = "text"
+  [value] = "value"
+  [(ngModel)] = "value"
+  (keyup)='onSearchKeyUp(value)'>
+<div class="edit-page__authors">
+  <div
+    *ngFor = "let author of authors" 
+    class = "edit-page__author-cloud">{{ author }}
+    <i class="author-cloud__cross fa fa-times"></i>
+  </div>
+</div>

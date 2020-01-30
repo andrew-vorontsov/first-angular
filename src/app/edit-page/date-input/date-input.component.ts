@@ -1,5 +1,13 @@
-import { Component, OnInit, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, forwardRef } from '@angular/core';
+import {
+  ControlValueAccessor,
+  NG_VALUE_ACCESSOR,
+  NG_VALIDATORS,
+  Validator,
+  ValidationErrors,
+  FormControl,
+} from '@angular/forms';
+import { CustomValidators } from '../custom-validators';
 
 @Component({
   selector: 'app-date-input',
@@ -11,10 +19,21 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
       useExisting: forwardRef(() => DateInputComponent),
       multi: true,
     },
+    {
+      provide: NG_VALIDATORS,
+      useExisting: forwardRef(() => DateInputComponent),
+      multi: true,
+    },
   ],
 })
-export class DateInputComponent implements ControlValueAccessor {
+export class DateInputComponent implements ControlValueAccessor, Validator {
+  constructor(private customValidators: CustomValidators) {}
   public value = '';
+
+  validate(control: FormControl): ValidationErrors {
+    return this.customValidators.correctDate(control);
+  }
+
   public inputOnChange = (value: any) => {};
 
   writeValue(value: string): void {
@@ -29,5 +48,4 @@ export class DateInputComponent implements ControlValueAccessor {
   onChange() {
     this.inputOnChange(this.value);
   }
-  constructor() {}
 }

@@ -1,37 +1,29 @@
 import { FormControl } from '@angular/forms';
+import { Injectable } from '@angular/core';
+import { isExists } from 'date-fns';
 
+@Injectable()
 export class CustomValidators {
-  static correctDate(control: FormControl): { [key: string]: boolean } {
-    const regexp = /^[0-3]\d\.[01][0-2]\.20[0-2]\d$/;
-    const validDate = (num, dateType) => {
-      switch (dateType) {
-        case 'day': {
-          return 0 < num && num < 32 ? true : false;
-        }
-        case 'month': {
-          return 0 < num && num < 13 ? true : false;
-        }
-        case 'year': {
-          return 1999 < num && num < 2021 ? true : false;
-        }
-      }
-    };
-
+  correctDate(control: FormControl): { [key: string]: boolean } {
+    const regexp = /^\d{1,2}\.\d{1,2}\.20[0-2]\d$/;
     if (control.value.match(regexp)) {
-      const day = control.value.match(/\d\d/g)[0];
-      const month = control.value.match(/\d\d/g)[1];
-      const year = control.value.match(/\d\d\d\d/)[0];
-      if (
-        validDate(day, 'day') &&
-        validDate(month, 'month') &&
-        validDate(year, 'year')
-      ) {
+      const day = +control.value.match(/^\d{1,2}/)[0];
+      const month = +control.value.match(/\d{1,2}/g)[1] - 1;
+      const year = +control.value.match(/20[0-2]\d$/)[0];
+      if (isExists(year, month, day)) {
         return null;
       } else {
         return { validDateNumbers: true };
       }
-    } else {
-      return { validDateFormat: true };
     }
+    return { validDateFormat: true };
+  }
+
+  correctDuration(control: FormControl): { [key: string]: boolean } {
+    return +control.value ? null : { validDuration: true };
+  }
+
+  correctAuthors(control: FormControl): { [key: string]: boolean } {
+    return null;
   }
 }

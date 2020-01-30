@@ -6,9 +6,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from '../core/core.module';
 import { DateInputComponent } from './date-input/date-input.component';
 import { DurationInputComponent } from './duration-input/duration-input.component';
+import { AuthorsSelectComponent } from './authors-select/authors-select.component';
 
 @NgModule({
-  declarations: [EditPageComponent, DateInputComponent, DurationInputComponent],
+  declarations: [
+    EditPageComponent,
+    DateInputComponent,
+    DurationInputComponent,
+    AuthorsSelectComponent,
+  ],
   imports: [
     CommonModule,
     SharedModule,

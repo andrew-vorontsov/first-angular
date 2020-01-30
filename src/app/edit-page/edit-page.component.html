@@ -15,14 +15,10 @@
   </textarea><br>
   <app-date-input formControlName = "creationDate"></app-date-input><br>
   <app-duration-input formControlName = "duration"></app-duration-input>
-  <p>
-    Top Rate
-    <input 
-      formControlName="topRated"
-      type="checkbox" 
-      [checked] = "newCourse.topRated">
-  </p>
-  <div class="edit-page__authors">authors</div>
+  <app-authors-select 
+    formControlName = "authors"
+    (onSearch) = "searchRun($event)">
+  </app-authors-select>
   <div class="edit-page__buttons">
     <button 
       *ngIf = 'isNewCourse()'

@@ -10,7 +10,7 @@ import { CustomValidators } from './custom-validators';
   selector: 'app-edit-page',
   templateUrl: './edit-page.component.html',
   styleUrls: ['./edit-page.component.scss'],
-  providers: [DatePipe],
+  providers: [DatePipe, CustomValidators],
 })
 export class EditPageComponent implements OnInit {
   constructor(
@@ -31,6 +31,7 @@ export class EditPageComponent implements OnInit {
     creationDate: 0,
     duration: null,
     topRated: false,
+    authors: [],
   };
 
   public form: FormGroup;
@@ -42,11 +43,13 @@ export class EditPageComponent implements OnInit {
       creationDate: this.creationDate,
       duration: this.newCourse.duration,
       topRated: this.newCourse.topRated,
+      authors: this.newCourse.authors,
     });
   }
 
   private setUpdatingCourse() {
     this.coursesService.getItemById(+this.id).subscribe(course => {
+      console.log(course);
       this.newCourse = course;
       this.newCourse.duration = Math.round(this.newCourse.duration / 1000 / 60);
       this.creationDate = this.datePipe.transform(
@@ -79,6 +82,10 @@ export class EditPageComponent implements OnInit {
     this.router.navigate(['/courses']);
   }
 
+  public searchRun(value) {
+    console.log(value);
+  }
+
   submit() {
     console.log(this.form);
   }
@@ -93,11 +100,8 @@ export class EditPageComponent implements OnInit {
         Validators.required,
         Validators.maxLength(500),
       ]),
-      creationDate: new FormControl('', [
-        Validators.required,
-        CustomValidators.correctDate,
-      ]),
-      duration: new FormControl(),
+      creationDate: new FormControl('', [Validators.required]),
+      duration: new FormControl('', [Validators.required]),
       topRated: new FormControl(),
       authors: new FormControl(),
     });
@@ -105,5 +109,8 @@ export class EditPageComponent implements OnInit {
       this.title = 'Update course';
       this.setUpdatingCourse();
     }
+    this.coursesService.getAuthors().subscribe(authors => {
+      console.log(authors);
+    });
   }
 }
