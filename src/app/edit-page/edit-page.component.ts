@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CoursesListItem } from '../courses/courses-list-item.module';
 import { DatePipe } from '@angular/common';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CustomValidators } from './custom-validators';
 
 @Component({
   selector: 'app-edit-page',
@@ -34,6 +35,16 @@ export class EditPageComponent implements OnInit {
 
   public form: FormGroup;
 
+  private patchForm() {
+    this.form.patchValue({
+      title: this.newCourse.title,
+      description: this.newCourse.description,
+      creationDate: this.creationDate,
+      duration: this.newCourse.duration,
+      topRated: this.newCourse.topRated,
+    });
+  }
+
   private setUpdatingCourse() {
     this.coursesService.getItemById(+this.id).subscribe(course => {
       this.newCourse = course;
@@ -42,6 +53,7 @@ export class EditPageComponent implements OnInit {
         this.newCourse.creationDate,
         'dd.MM.yyyy'
       );
+      this.patchForm();
     });
   }
 
@@ -77,8 +89,14 @@ export class EditPageComponent implements OnInit {
         Validators.required,
         Validators.maxLength(50),
       ]),
-      description: new FormControl(),
-      creationDate: new FormControl(),
+      description: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(500),
+      ]),
+      creationDate: new FormControl('', [
+        Validators.required,
+        CustomValidators.correctDate,
+      ]),
       duration: new FormControl(),
       topRated: new FormControl(),
       authors: new FormControl(),

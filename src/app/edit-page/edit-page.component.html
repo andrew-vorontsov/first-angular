@@ -11,23 +11,10 @@
   <textarea 
     formControlName="description"
     placeholder="description" 
-    class="edit-page__description"
-    [value] = 'newCourse.description'>
+    class="edit-page__description">
   </textarea><br>
-  <input 
-    formControlName="creationDate"
-    type="text" 
-    class="edit-page__input-date"
-    [value] = 'creationDate'><br>
-  <input 
-    formControlName="duration"
-    type="text" 
-    class="edit-page__input-duration"
-    [value] = 'newCourse.duration'>
-  <span 
-    class="edit-page__duration-value">
-    {{ newCourse.duration * 1000 * 60 | duration }}
-  </span><br>
+  <app-date-input formControlName = "creationDate"></app-date-input><br>
+  <app-duration-input formControlName = "duration"></app-duration-input>
   <p>
     Top Rate
     <input 
@@ -40,13 +27,14 @@
     <button 
       *ngIf = 'isNewCourse()'
       type = "submit"
-      class="edit-page__save-btn">
+      class="edit-page__save-btn"
+      [disabled] = form.invalid>
       {{ title }}
     </button>
     <button 
       *ngIf = '!isNewCourse()' 
       type = "submit"
-      class="edit-page__save-btn" >
+      class="edit-page__save-btn">
       {{ title }}
     </button>
     <button 

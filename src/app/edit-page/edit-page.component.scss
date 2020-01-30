@@ -4,14 +4,6 @@
 .edit-page__input-title {
   width:200px;
 }
-.edit-page__input-date {
-  width:200px;
-  margin-top:10px;
-}
-.edit-page__input-duration {
-  width:200px;
-  margin-top:10px;
-}
 .edit-page__authors {
   margin-top:10px;
   padding:5px 10px;
@@ -42,9 +34,4 @@
   cursor: pointer;
   background-color:#333333;
   color:hsl(0, 0%, 100%);
-}
-.edit-page__duration-value {
-  margin-left: 15px;
-  font-size:14px;
-  font-weight: bold;
 }
