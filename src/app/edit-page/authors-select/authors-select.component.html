@@ -4,7 +4,15 @@
   type = "text"
   [value] = "value"
   [(ngModel)] = "value"
-  (keyup)='onSearchKeyUp(value)'>
+  (keyup)='onSearchKeyUp(value)'
+  (blur)='blurSearchInput()'>
+<div class = "edit-page__option-group">
+  <div 
+    class = "edit-page__option" 
+    *ngFor = "let user of authorsList">
+    {{ user }}
+  </div>
+</div>
 <div class="edit-page__authors">
   <div
     *ngFor = "let author of authors" 

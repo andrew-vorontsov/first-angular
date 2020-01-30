@@ -4,6 +4,9 @@ import {
   forwardRef,
   OnDestroy,
   Output,
+  EventEmitter,
+  Input,
+  OnChanges,
 } from '@angular/core';
 import {
   NG_VALUE_ACCESSOR,
@@ -15,8 +18,7 @@ import {
 } from '@angular/forms';
 import { CustomValidators } from '../custom-validators';
 import { Subject, Subscription } from 'rxjs';
-import { EventEmitter } from 'events';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-authors-select',
@@ -39,11 +41,12 @@ export class AuthorsSelectComponent
   implements ControlValueAccessor, Validator, OnInit, OnDestroy {
   constructor(private customValidators: CustomValidators) {}
 
+  @Input() public authorsList;
+  @Output() public onSearch = new EventEmitter();
   public value = '';
   public authors = [];
   private sub: Subscription;
   private stream$: Subject<string> = new Subject<string>();
-  @Output() public onSearch = new EventEmitter();
 
   validate(control: FormControl): ValidationErrors {
     return this.customValidators.correctAuthors(control);
@@ -52,7 +55,6 @@ export class AuthorsSelectComponent
   public inputOnChange = (value: any) => {};
 
   writeValue(value): void {
-    console.log(value);
     this.authors = value;
   }
   registerOnChange(fn: any): void {
@@ -65,12 +67,22 @@ export class AuthorsSelectComponent
     this.inputOnChange(this.authors);
   }
   onSearchKeyUp(value) {
-    this.stream$.next(value);
+    if (value) {
+      this.stream$.next(value);
+    } else {
+      this.authorsList = [];
+    }
+  }
+  blurSearchInput() {
+    this.authorsList = [];
+    this.value = '';
   }
   ngOnInit() {
-    this.sub = this.stream$.pipe(debounceTime(1000)).subscribe(value => {
-      this.onSearch.emit(value);
-    });
+    this.sub = this.stream$
+      .pipe(debounceTime(300), distinctUntilChanged())
+      .subscribe(value => {
+        this.onSearch.emit(value);
+      });
   }
   ngOnDestroy() {
     this.sub.unsubscribe();

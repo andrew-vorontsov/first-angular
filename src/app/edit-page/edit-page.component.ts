@@ -20,6 +20,7 @@ export class EditPageComponent implements OnInit {
     private router: Router
   ) {}
 
+  public usersList = [];
   public title = 'Add course';
   public creationDate = '';
   private id = this.activeRoute.snapshot.params.id;
@@ -49,7 +50,6 @@ export class EditPageComponent implements OnInit {
 
   private setUpdatingCourse() {
     this.coursesService.getItemById(+this.id).subscribe(course => {
-      console.log(course);
       this.newCourse = course;
       this.newCourse.duration = Math.round(this.newCourse.duration / 1000 / 60);
       this.creationDate = this.datePipe.transform(
@@ -83,7 +83,16 @@ export class EditPageComponent implements OnInit {
   }
 
   public searchRun(value) {
-    console.log(value);
+    const users = [];
+    this.coursesService.getAuthors(value).subscribe(authors => {
+      const result = authors[0].concat(authors[1]);
+      for (let i = 0; i < result.length; i++) {
+        if (!users.find(item => item === result[i])) {
+          users.push(result[i]);
+        }
+      }
+      this.usersList = users;
+    });
   }
 
   submit() {
@@ -109,8 +118,5 @@ export class EditPageComponent implements OnInit {
       this.title = 'Update course';
       this.setUpdatingCourse();
     }
-    this.coursesService.getAuthors().subscribe(authors => {
-      console.log(authors);
-    });
   }
 }

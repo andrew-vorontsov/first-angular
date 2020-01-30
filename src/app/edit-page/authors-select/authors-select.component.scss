@@ -1,12 +1,13 @@
 .edit-page__select-author {
   width:200px;
-  margin-top:10px;
+  padding:3px 10px;
 }
 .edit-page__authors {
   display: flex;
   flex-wrap: wrap;
   width:580px;
   margin-top:10px;
+  margin-bottom:10px;
   padding:0 10px;
   border: 1px solid #bbb;
 }
@@ -26,5 +27,22 @@
   margin-left: 10px;
   &:hover {
     color: red;
+  }
+}
+.edit-page__option-group {
+  position: absolute;
+  background:white;
+}
+.edit-page__option {
+  width:202px;
+  font-size: 13px;
+  padding: 3px 10px;
+  text-transform: capitalize;
+  border-bottom: 1px solid #bbb;
+  border-left: 1px solid #bbb;
+  border-right: 1px solid #bbb;
+  &:hover {
+    cursor: pointer;
+    background: #bbb;
   }
 }
