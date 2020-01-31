@@ -6,6 +6,7 @@ import {
   Output,
   EventEmitter,
   Input,
+  OnChanges,
 } from '@angular/core';
 import {
   NG_VALUE_ACCESSOR,
