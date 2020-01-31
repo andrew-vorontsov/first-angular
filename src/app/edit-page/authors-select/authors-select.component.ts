@@ -72,6 +72,7 @@ export class AuthorsSelectComponent
     } else {
       this.authorsList = [];
     }
+<<<<<<< HEAD
   }
   blurSearchInput() {
     this.authorsList = [];
@@ -80,6 +81,12 @@ export class AuthorsSelectComponent
   ngOnInit() {
     this.sub = this.stream$
       .pipe(debounceTime(300), distinctUntilChanged())
+=======
+  }
+  ngOnInit() {
+    this.sub = this.stream$
+      .pipe(debounceTime(500), distinctUntilChanged())
+>>>>>>> 172e48daed4f9a05d8d7d301aa2a331be1fd3139
       .subscribe(value => {
         this.onSearch.emit(value);
       });
