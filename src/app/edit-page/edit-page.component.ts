@@ -24,6 +24,7 @@ export class EditPageComponent implements OnInit {
   public title = 'Add course';
   public creationDate = '';
   private id = this.activeRoute.snapshot.params.id;
+  public form: FormGroup;
 
   public newCourse: CoursesListItem = {
     id: null,
@@ -34,8 +35,6 @@ export class EditPageComponent implements OnInit {
     topRated: false,
     authors: [],
   };
-
-  public form: FormGroup;
 
   private patchForm() {
     this.form.patchValue({
@@ -83,15 +82,10 @@ export class EditPageComponent implements OnInit {
   }
 
   public searchRun(value) {
-    const users = [];
     this.coursesService.getAuthors(value).subscribe(authors => {
-      const result = authors[0].concat(authors[1]);
-      for (let i = 0; i < result.length; i++) {
-        if (!users.find(item => item === result[i])) {
-          users.push(result[i]);
-        }
+      if (value.length > 2) {
+        this.usersList = authors;
       }
-      this.usersList = users;
     });
   }
 
@@ -112,7 +106,7 @@ export class EditPageComponent implements OnInit {
       creationDate: new FormControl('', [Validators.required]),
       duration: new FormControl('', [Validators.required]),
       topRated: new FormControl(),
-      authors: new FormControl(),
+      authors: new FormControl('', [Validators.required]),
     });
     if (!this.isNewCourse()) {
       this.title = 'Update course';

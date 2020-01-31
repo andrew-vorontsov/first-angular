@@ -13,6 +13,13 @@ import { CustomValidators } from '../custom-validators';
   selector: 'app-date-input',
   templateUrl: './date-input.component.html',
   styleUrls: ['./date-input.component.scss'],
+  styles: [
+    `
+      :host {
+        border: 1px solid #000;
+      }
+    `,
+  ],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -35,6 +42,7 @@ export class DateInputComponent implements ControlValueAccessor, Validator {
   }
 
   public inputOnChange = (value: any) => {};
+  public inputOnTouch = (value: any) => {};
 
   writeValue(value: string): void {
     this.value = value;
@@ -47,5 +55,8 @@ export class DateInputComponent implements ControlValueAccessor, Validator {
   }
   onChange() {
     this.inputOnChange(this.value);
+  }
+  reg() {
+    this.inputOnTouch(null);
   }
 }

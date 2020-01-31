@@ -5,6 +5,7 @@ import { Observable, forkJoin, of, from } from 'rxjs';
 import { coursesUrl, protectedUrl } from 'common/constants';
 import { Person } from '../users/person.module';
 import { map } from 'rxjs/operators';
+import { Authors } from '../shared/author.module';
 
 @Injectable({
   providedIn: 'root',
@@ -63,35 +64,16 @@ export class CoursesService {
   }
 
   public getAuthors(value): Observable<any> {
-    if (!value) {
-      return from([]);
-    }
-    const names = this.http
-      .get<Person[]>(`${protectedUrl}/users`, {
-        params: new HttpParams().set('firstname_like', value),
+    return this.http
+      .get<any[]>(`${protectedUrl}/authors`, {
+        params: new HttpParams().set('name_like', value),
       })
       .pipe(
-        map(user => {
-          const name = [];
-          user.map(item => {
-            name.push(item.firstname + ' ' + item.lastname);
+        map(authors => {
+          return authors.map(author => {
+            return author.name;
           });
-          return name;
         })
       );
-    const lastNames = this.http
-      .get<Person[]>(`${protectedUrl}/users`, {
-        params: new HttpParams().set('lastname_like', value),
-      })
-      .pipe(
-        map(user => {
-          const name = [];
-          user.map(item => {
-            name.push(item.firstname + ' ' + item.lastname);
-          });
-          return name;
-        })
-      );
-    return forkJoin(names, lastNames);
   }
 }

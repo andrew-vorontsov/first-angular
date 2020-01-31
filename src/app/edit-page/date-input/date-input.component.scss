@@ -2,4 +2,7 @@
   width:200px;
   margin-bottom:10px;
   padding:3px 10px;
+  &.ng-invalid.ng-touched {
+    border: 2px solid red;
+  }
 }

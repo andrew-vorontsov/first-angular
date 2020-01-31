@@ -32,7 +32,7 @@ export class AuthInterceptorService implements HttpInterceptor {
     this.loadingService.start();
 
     return next.handle(cloned).pipe(
-      delay(300),
+      delay(100),
       tap(
         () => {},
         error => {

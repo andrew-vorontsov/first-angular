@@ -6,7 +6,6 @@ import {
   Output,
   EventEmitter,
   Input,
-  OnChanges,
 } from '@angular/core';
 import {
   NG_VALUE_ACCESSOR,
@@ -48,38 +47,55 @@ export class AuthorsSelectComponent
   private sub: Subscription;
   private stream$: Subject<string> = new Subject<string>();
 
+  public inputOnChange = (value: any) => {};
+
   validate(control: FormControl): ValidationErrors {
     return this.customValidators.correctAuthors(control);
   }
 
-  public inputOnChange = (value: any) => {};
-
-  writeValue(value): void {
-    this.authors = value;
+  writeValue(authors): void {
+    this.authors = authors;
   }
+
   registerOnChange(fn: any): void {
     this.inputOnChange = fn;
   }
+
   registerOnTouched(fn: any): void {
     // throw new Error('Method not implemented.');
   }
-  onChange() {
-    this.inputOnChange(this.authors);
-  }
+
   onSearchKeyUp(value) {
-    if (value) {
+    if (value.length > 2) {
       this.stream$.next(value);
-    } else {
-      this.authorsList = [];
     }
   }
-  ngOnInit() {
-    this.sub = this.stream$
-      .pipe(debounceTime(500), distinctUntilChanged())
-      .subscribe(value => {
-        this.onSearch.emit(value);
-      });
+
+  searchBlur() {
+    setTimeout(() => {
+      this.authorsList = [];
+      this.value = '';
+    }, 300);
   }
+
+  setAuthorToInput(user) {
+    if (!this.authors.find(item => item === user)) {
+      this.authors.push(user);
+      this.inputOnChange(this.authors);
+    }
+  }
+
+  deleteAuthorFromInput(index) {
+    this.authors.splice(index, 1);
+    this.inputOnChange(this.authors);
+  }
+
+  ngOnInit() {
+    this.sub = this.stream$.pipe(debounceTime(300)).subscribe(value => {
+      this.onSearch.emit(value);
+    });
+  }
+
   ngOnDestroy() {
     this.sub.unsubscribe();
   }

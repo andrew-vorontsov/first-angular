@@ -1,13 +1,14 @@
 .edit-page__select-author {
-  width:200px;
+  border: none;
+  outline: none;
+  width: 150px;
+  height:28px;
   padding:3px 10px;
 }
 .edit-page__authors {
   display: flex;
   flex-wrap: wrap;
-  width:580px;
-  margin-top:10px;
-  margin-bottom:10px;
+  width:500px;
   padding:0 10px;
   border: 1px solid #bbb;
 }
@@ -34,9 +35,9 @@
   background:white;
 }
 .edit-page__option {
-  width:202px;
+  width:300px;
   font-size: 13px;
-  padding: 3px 10px;
+  padding: 5px 15px;
   text-transform: capitalize;
   border-bottom: 1px solid #bbb;
   border-left: 1px solid #bbb;

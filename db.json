@@ -7,7 +7,7 @@
       "duration": 2700000,
       "description": "Do you think garage descriptions are boring?",
       "topRated": true,
-      "authors": ["andrew"]
+      "authors": ["andrew vorontsov"]
     },
     {
       "id": 2,
@@ -16,7 +16,7 @@
       "creationDate": 1580947200000,
       "duration": 6000000,
       "topRated": true,
-      "authors": ["olga"]
+      "authors": ["olga otinova"]
     },
     {
       "id": 3,
@@ -25,7 +25,7 @@
       "duration": 6720000,
       "description": "Orange propose des solutions de téléphonie mobile, d'internet mobile, de télévision numérique et d'internet fixe.",
       "topRated": false,
-      "authors": ["dima"]
+      "authors": ["dima lukin"]
     },
     {
       "id": 4,
@@ -34,7 +34,7 @@
       "duration": 1260000,
       "description": "Billie eilish is an american singer and songwriter.",
       "topRated": true,
-      "authors": ["andrew"]
+      "authors": ["andrew vorontsov"]
     },
     {
       "id": 5,
@@ -43,7 +43,7 @@
       "duration": 1320000,
       "description": "About saint petersburg. st. petersburg is recognized as one of the largest economic, cultural and scientific centers of russia, europe and the whole world.",
       "topRated": false,
-      "authors": ["olga"]
+      "authors": ["olga otinova"]
     },
     {
       "id": 6,
@@ -52,7 +52,7 @@
       "creationDate": 1580342400000,
       "duration": 4680000,
       "topRated": false,
-      "authors": ["dima"]
+      "authors": ["dima lukin"]
     }
   ],
   "users": [
@@ -76,6 +76,32 @@
       "firstname": "dima",
       "lastname": "lukin",
       "id": 6
+    }
+  ],
+  "authors": [
+    {
+      "id": 1,
+      "name": "andrew vorontsov"
+    },
+    {
+      "id": 2,
+      "name": "olga otinova"
+    },
+    {
+      "id": 3,
+      "name": "dima lukin"
+    },
+    {
+      "id": 4,
+      "name": "ivan gustenev"
+    },
+    {
+      "id": 5,
+      "name": "nickolay nick"
+    },
+    {
+      "id": 6,
+      "name": "andrew reshetos"
     }
   ]
 }

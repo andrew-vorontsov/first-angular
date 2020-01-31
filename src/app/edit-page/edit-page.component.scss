@@ -9,15 +9,22 @@
   width:200px;
   padding:3px 10px;
   margin-bottom:10px;
+  &.ng-invalid.ng-touched {
+    border: 2px solid red;
+  }
 }
 .edit-page__description {
   padding:3px 10px;
   font-family: sans-serif;
   height:100px;
   width:580px;
+  border-width: 2px;
+  &.ng-invalid.ng-touched {
+    border-color: red;
+  }
 }
 .edit-page__buttons {
-  margin-bottom:10px;
+  margin-top:10px;
 }
 .edit-page__save-btn {
   margin-right: 15px;
