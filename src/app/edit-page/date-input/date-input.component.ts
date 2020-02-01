@@ -1,4 +1,4 @@
-import { Component, forwardRef } from '@angular/core';
+import { Component, forwardRef, Input } from '@angular/core';
 import {
   ControlValueAccessor,
   NG_VALUE_ACCESSOR,
@@ -13,13 +13,6 @@ import { CustomValidators } from '../custom-validators';
   selector: 'app-date-input',
   templateUrl: './date-input.component.html',
   styleUrls: ['./date-input.component.scss'],
-  styles: [
-    `
-      :host {
-        border: 1px solid #000;
-      }
-    `,
-  ],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -36,13 +29,20 @@ import { CustomValidators } from '../custom-validators';
 export class DateInputComponent implements ControlValueAccessor, Validator {
   constructor(private customValidators: CustomValidators) {}
   public value = '';
+  public validState = {
+    valid: false,
+    touched: false,
+  };
 
   validate(control: FormControl): ValidationErrors {
+    setTimeout(() => {
+      this.validState.valid = control.status === 'VALID' ? true : false;
+    }, 0);
     return this.customValidators.correctDate(control);
   }
 
   public inputOnChange = (value: any) => {};
-  public inputOnTouch = (value: any) => {};
+  public inputOnTouch = () => {};
 
   writeValue(value: string): void {
     this.value = value;
@@ -51,12 +51,13 @@ export class DateInputComponent implements ControlValueAccessor, Validator {
     this.inputOnChange = fn;
   }
   registerOnTouched(fn: any): void {
-    // throw new Error('Method not implemented.');
+    this.inputOnTouch = fn;
   }
   onChange() {
     this.inputOnChange(this.value);
   }
-  reg() {
-    this.inputOnTouch(null);
+  onBlur() {
+    this.inputOnTouch();
+    this.validState.touched = true;
   }
 }

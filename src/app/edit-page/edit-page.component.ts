@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CoursesService } from '../services/courses.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CoursesListItem } from '../courses/courses-list-item.module';
@@ -38,6 +38,7 @@ export class EditPageComponent implements OnInit {
 
   private patchForm() {
     this.form.patchValue({
+      id: this.newCourse.id,
       title: this.newCourse.title,
       description: this.newCourse.description,
       creationDate: this.creationDate,
@@ -64,15 +65,13 @@ export class EditPageComponent implements OnInit {
   }
 
   public onSaveBtnClick() {
-    this.newCourse.creationDate = +new Date(this.creationDate);
-    this.coursesService.addCourseItem(this.newCourse).subscribe(() => {
+    this.coursesService.addCourseItem(this.form.value).subscribe(() => {
       this.router.navigate(['/courses']);
     });
   }
 
   public onUpdateBtnClick() {
-    this.newCourse.creationDate = +new Date(this.creationDate);
-    this.coursesService.updateItem(this.newCourse).subscribe(() => {
+    this.coursesService.updateItem(this.form.value).subscribe(() => {
       this.router.navigate(['/courses']);
     });
   }
@@ -81,20 +80,23 @@ export class EditPageComponent implements OnInit {
     this.router.navigate(['/courses']);
   }
 
-  public searchRun(value) {
+  public searchAuthor(value) {
     this.coursesService.getAuthors(value).subscribe(authors => {
-      if (value.length > 2) {
-        this.usersList = authors;
-      }
+      this.usersList = authors;
     });
   }
 
-  submit() {
-    console.log(this.form);
+  public submit() {
+    if (this.isNewCourse()) {
+      this.onSaveBtnClick();
+    } else {
+      this.onUpdateBtnClick();
+    }
   }
 
   ngOnInit() {
     this.form = new FormGroup({
+      id: new FormControl(),
       title: new FormControl('', [
         Validators.required,
         Validators.maxLength(50),
@@ -111,6 +113,8 @@ export class EditPageComponent implements OnInit {
     if (!this.isNewCourse()) {
       this.title = 'Update course';
       this.setUpdatingCourse();
+    } else {
+      this.patchForm();
     }
   }
 }

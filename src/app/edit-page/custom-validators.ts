@@ -1,11 +1,10 @@
-import { FormControl, AbstractControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { isExists } from 'date-fns';
 
 @Injectable()
 export class CustomValidators {
   correctDate(control: FormControl): { [key: string]: boolean } {
-    console.log(control);
     const regexp = /^\d{1,2}\.\d{1,2}\.20[0-2]\d$/;
     if (control.value.match(regexp)) {
       const day = +control.value.match(/^\d{1,2}/)[0];
@@ -25,7 +24,6 @@ export class CustomValidators {
   }
 
   correctAuthors(control: FormControl): { [key: string]: boolean } {
-    console.log(control.value);
     return control.value.length ? null : { validAuthors: true };
   }
 }

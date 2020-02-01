@@ -6,6 +6,7 @@ import { coursesUrl, protectedUrl } from 'common/constants';
 import { Person } from '../users/person.module';
 import { map } from 'rxjs/operators';
 import { Authors } from '../shared/author.module';
+import { parse, getTime } from 'date-fns';
 
 @Injectable({
   providedIn: 'root',
@@ -48,11 +49,17 @@ export class CoursesService {
 
   public addCourseItem(newCourse): Observable<CoursesListItem> {
     newCourse.duration *= 1000 * 60;
+    newCourse.creationDate = getTime(
+      parse(newCourse.creationDate, 'dd.MM.yyyy', new Date())
+    );
     return this.http.post<CoursesListItem>(coursesUrl, newCourse);
   }
 
   public updateItem(newCourse): Observable<CoursesListItem> {
     newCourse.duration *= 1000 * 60;
+    newCourse.creationDate = getTime(
+      parse(newCourse.creationDate, 'dd.MM.yyyy', new Date())
+    );
     return this.http.put<CoursesListItem>(
       `${coursesUrl}/${newCourse.id}`,
       newCourse

@@ -2,9 +2,10 @@
   type="text" 
   class="edit-page__input-duration"
   placeholder="Course duration"
-  [value] = "value"
+  [ngClass] = "{ valid:!validState.valid, touched:validState.touched }"
   [(ngModel)] = "value"
-  (input) = onChange()>
+  (keyup) = onChange()
+  (blur) = "onBlur()">
 <span 
   class="edit-page__duration-value">
   {{ value * 1000 * 60 | duration }}

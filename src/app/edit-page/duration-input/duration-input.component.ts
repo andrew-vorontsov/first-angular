@@ -30,10 +30,19 @@ export class DurationInputComponent implements ControlValueAccessor, Validator {
   constructor(private customValidators: CustomValidators) {}
 
   public value = '';
+  public validState = {
+    valid: false,
+    touched: false,
+  };
+
   validate(control: FormControl): ValidationErrors {
+    setTimeout(() => {
+      this.validState.valid = control.status === 'VALID' ? true : false;
+    }, 0);
     return this.customValidators.correctDuration(control);
   }
   public inputOnChange = (value: any) => {};
+  public inputOnTouch = () => {};
 
   writeValue(value: string): void {
     this.value = value;
@@ -42,9 +51,13 @@ export class DurationInputComponent implements ControlValueAccessor, Validator {
     this.inputOnChange = fn;
   }
   registerOnTouched(fn: any): void {
-    // throw new Error('Method not implemented.');
+    this.inputOnTouch = fn;
   }
   onChange() {
     this.inputOnChange(this.value);
+  }
+  onBlur() {
+    this.validState.touched = true;
+    this.inputOnTouch();
   }
 }

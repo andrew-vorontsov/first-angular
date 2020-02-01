@@ -1,7 +1,9 @@
 <input 
-  type="text" 
+  #dateInput
+  type="text"
   class="edit-page__input-date"
   placeholder="Creation date"
-  [value] = "value"
+  [ngClass] = "{ valid:!validState.valid, touched:validState.touched }"
   [(ngModel)] = "value"
-  (input) = onChange()>
+  (keyup) = "onChange()"
+  (blur) = "onBlur()">

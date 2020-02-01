@@ -11,6 +11,9 @@
   width:500px;
   padding:0 10px;
   border: 1px solid #bbb;
+  &.valid.touched {
+    border-color: red;
+  }
 }
 .edit-page__author-cloud {
   text-transform: capitalize;

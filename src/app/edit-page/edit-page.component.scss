@@ -9,16 +9,17 @@
   width:200px;
   padding:3px 10px;
   margin-bottom:10px;
+  border: 1px solid #bbb;
   &.ng-invalid.ng-touched {
-    border: 2px solid red;
+    border-color: red;
   }
 }
 .edit-page__description {
   padding:3px 10px;
   font-family: sans-serif;
+  margin-bottom:10px;
   height:100px;
-  width:580px;
-  border-width: 2px;
+  width:500px;
   &.ng-invalid.ng-touched {
     border-color: red;
   }
@@ -34,6 +35,10 @@
   cursor: pointer;
   background-color:green;
   color:hsl(0, 0%, 100%);
+  &:disabled {
+    background-color:#888;
+    cursor: default;
+  }
 }
 .edit-page__close-btn {
   margin-right: 15px;
@@ -43,4 +48,9 @@
   cursor: pointer;
   background-color:#333333;
   color:hsl(0, 0%, 100%);
+}
+.edit-page__error-messages {
+  margin-bottom: 10px;
+  color: red;
+  font-weight: bold;
 }

@@ -46,10 +46,18 @@ export class AuthorsSelectComponent
   public authors = [];
   private sub: Subscription;
   private stream$: Subject<string> = new Subject<string>();
+  public validState = {
+    valid: false,
+    touched: false,
+  };
 
   public inputOnChange = (value: any) => {};
+  public inputOnTouch = () => {};
 
   validate(control: FormControl): ValidationErrors {
+    setTimeout(() => {
+      this.validState.valid = control.status === 'VALID' ? true : false;
+    }, 0);
     return this.customValidators.correctAuthors(control);
   }
 
@@ -62,11 +70,11 @@ export class AuthorsSelectComponent
   }
 
   registerOnTouched(fn: any): void {
-    // throw new Error('Method not implemented.');
+    this.inputOnTouch = fn;
   }
 
   onSearchKeyUp(value) {
-    if (value.length > 2) {
+    if (value.length > 1) {
       this.stream$.next(value);
     }
   }
@@ -75,6 +83,8 @@ export class AuthorsSelectComponent
     setTimeout(() => {
       this.authorsList = [];
       this.value = '';
+      this.validState.touched = true;
+      this.inputOnTouch();
     }, 300);
   }
 
@@ -91,7 +101,7 @@ export class AuthorsSelectComponent
   }
 
   ngOnInit() {
-    this.sub = this.stream$.pipe(debounceTime(300)).subscribe(value => {
+    this.sub = this.stream$.pipe(debounceTime(500)).subscribe(value => {
       this.onSearch.emit(value);
     });
   }

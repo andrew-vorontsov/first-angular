@@ -1,4 +1,6 @@
-<div class="edit-page__authors">
+<div 
+  class="edit-page__authors"   
+  [ngClass] = "{ valid:!validState.valid, touched:validState.touched }">
   <div
     *ngFor = "let author of authors; let i = index" 
     class = "edit-page__author-cloud">{{ author }}
@@ -11,7 +13,6 @@
     class = "edit-page__select-author"
     placeholder="search authors"
     type = "text"
-    [value] = "value"
     [(ngModel)] = "value"
     (keyup)='onSearchKeyUp(value)'
     (blur) = "searchBlur()">

@@ -7,16 +7,20 @@
       "duration": 2700000,
       "description": "Do you think garage descriptions are boring?",
       "topRated": true,
-      "authors": ["andrew vorontsov"]
+      "authors": [
+        "andrew vorontsov"
+      ]
     },
     {
       "id": 2,
       "title": "win course",
       "description": "I did it",
-      "creationDate": 1580947200000,
+      "creationDate": 1580932800000,
       "duration": 6000000,
       "topRated": true,
-      "authors": ["olga otinova"]
+      "authors": [
+        "olga otinova"
+      ]
     },
     {
       "id": 3,
@@ -25,16 +29,21 @@
       "duration": 6720000,
       "description": "Orange propose des solutions de téléphonie mobile, d'internet mobile, de télévision numérique et d'internet fixe.",
       "topRated": false,
-      "authors": ["dima lukin"]
+      "authors": [
+        "dima lukin"
+      ]
     },
     {
       "id": 4,
       "title": "billie eilish",
-      "creationDate": 1580256000000,
-      "duration": 1260000,
       "description": "Billie eilish is an american singer and songwriter.",
+      "creationDate": 1580241600000,
+      "duration": 1260000,
       "topRated": true,
-      "authors": ["andrew vorontsov"]
+      "authors": [
+        "andrew vorontsov",
+        "olga otinova"
+      ]
     },
     {
       "id": 5,
@@ -43,7 +52,9 @@
       "duration": 1320000,
       "description": "About saint petersburg. st. petersburg is recognized as one of the largest economic, cultural and scientific centers of russia, europe and the whole world.",
       "topRated": false,
-      "authors": ["olga otinova"]
+      "authors": [
+        "olga otinova"
+      ]
     },
     {
       "id": 6,
@@ -52,7 +63,20 @@
       "creationDate": 1580342400000,
       "duration": 4680000,
       "topRated": false,
-      "authors": ["dima lukin"]
+      "authors": [
+        "dima lukin"
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Third try",
+      "description": "It must be correct",
+      "creationDate": 1582920000000,
+      "duration": 6000000,
+      "topRated": false,
+      "authors": [
+        "dima lukin"
+      ]
     }
   ],
   "users": [
