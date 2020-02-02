@@ -4,7 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { SearchPanelComponent } from './search-panel/search-panel.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoadSpinnerComponent } from './load-spinner/load-spinner.component';
 
 @NgModule({
@@ -15,7 +15,7 @@ import { LoadSpinnerComponent } from './load-spinner/load-spinner.component';
     SearchPanelComponent,
     LoadSpinnerComponent,
   ],
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   exports: [
     HeaderComponent,
     FooterComponent,

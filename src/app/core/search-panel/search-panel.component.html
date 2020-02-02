@@ -1,14 +1,13 @@
 <div class="search-panel">
-    <div class="search-panel__search-items">
+    <form [formGroup] = "form" class="search-panel__search-items">
         <input 
             type="search" 
             class="search-panel__input" 
             placeholder="Search.." 
-            [value]='searchValue'
-            [(ngModel)]='searchValue'
-            (keyup)='onSearchButtonClick(searchValue)'
+            formControlName = "searchValue"
+            (keyup)='onSearchButtonClick()'
             #searchPanel>
-    </div>
+    </form>
     <button 
         class="search-panel__button search-panel__button_add-course"
         (click) = 'onAddCourseButtonClick()'>

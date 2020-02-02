@@ -8,6 +8,7 @@ import {
 import { Router } from '@angular/router';
 import { Subscription, Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-search-panel',
@@ -16,15 +17,15 @@ import { debounceTime } from 'rxjs/operators';
 })
 export class SearchPanelComponent implements OnInit, OnDestroy {
   @Output() public onSearchClick = new EventEmitter();
-  public searchValue;
+  public form: FormGroup;
   private sub: Subscription;
   private stream$: Subject<string> = new Subject<string>();
 
   constructor(private router: Router) {}
 
-  onSearchButtonClick(value) {
-    if (value.length >= 3) {
-      this.stream$.next(value);
+  onSearchButtonClick() {
+    if (this.form.value.searchValue.length >= 3) {
+      this.stream$.next(this.form.value.searchValue);
     }
   }
 
@@ -33,6 +34,9 @@ export class SearchPanelComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.form = new FormGroup({
+      searchValue: new FormControl(),
+    });
     this.sub = this.stream$.pipe(debounceTime(1000)).subscribe(value => {
       this.onSearchClick.emit(value);
     });
