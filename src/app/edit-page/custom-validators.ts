@@ -5,7 +5,7 @@ import { isExists } from 'date-fns';
 @Injectable()
 export class CustomValidators {
   correctDate(control: FormControl): { [key: string]: boolean } {
-    const regexp = /^\d{1,2}\.\d{1,2}\.20[0-2]\d$/;
+    const regexp = /^\d{1,2}\.\d{1,2}\.20\d\d$/;
     if (control.value.match(regexp)) {
       const day = +control.value.match(/^\d{1,2}/)[0];
       const month = +control.value.match(/\d{1,2}/g)[1] - 1;
@@ -20,7 +20,7 @@ export class CustomValidators {
   }
 
   correctDuration(control: FormControl): { [key: string]: boolean } {
-    return +control.value > 0 ? null : { validDuration: true };
+    return +Math.ceil(control.value) > 0 ? null : { validDuration: true };
   }
 
   correctAuthors(control: FormControl): { [key: string]: boolean } {

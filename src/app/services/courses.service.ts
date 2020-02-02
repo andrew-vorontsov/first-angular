@@ -48,6 +48,7 @@ export class CoursesService {
   }
 
   public addCourseItem(newCourse): Observable<CoursesListItem> {
+    newCourse.duration = Math.ceil(newCourse.duration);
     newCourse.duration *= 1000 * 60;
     newCourse.creationDate = getTime(
       parse(newCourse.creationDate, 'dd.MM.yyyy', new Date())
@@ -56,6 +57,7 @@ export class CoursesService {
   }
 
   public updateItem(newCourse): Observable<CoursesListItem> {
+    newCourse.duration = Math.ceil(newCourse.duration);
     newCourse.duration *= 1000 * 60;
     newCourse.creationDate = getTime(
       parse(newCourse.creationDate, 'dd.MM.yyyy', new Date())

@@ -16,7 +16,7 @@
       "title": "win course",
       "description": "I did it",
       "creationDate": 1580932800000,
-      "duration": 6000000,
+      "duration": 60000,
       "topRated": true,
       "authors": [
         "olga otinova"
@@ -60,7 +60,7 @@
       "id": 6,
       "title": "friends",
       "description": "Friends is an American sitcom television series, created by David Crane and Marta Kauffman, which aired on NBC",
-      "creationDate": 1580342400000,
+      "creationDate": 1580328000000,
       "duration": 4680000,
       "topRated": false,
       "authors": [

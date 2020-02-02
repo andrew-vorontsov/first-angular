@@ -10,6 +10,7 @@ export class DurationPipe implements PipeTransform {
     }
 
     duration = duration / 1000 / 60;
+    duration = Math.ceil(duration);
 
     if (duration >= 60) {
       const durationHours = Math.floor(duration / 60);

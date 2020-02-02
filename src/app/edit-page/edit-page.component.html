@@ -69,8 +69,8 @@
     <small *ngIf = "form.get('duration').errors.required">
       Duration field is empty
     </small>
-    <small *ngIf = "form.get('duration').errors.validDuration">
-      Duration field must contain numbers only
+    <small *ngIf = "form.get('duration').errors.validDuration && !form.get('duration').errors.required">
+      Duration field must contain positive numbers only
     </small>
   </div>
 

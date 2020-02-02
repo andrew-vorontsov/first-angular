@@ -2,21 +2,22 @@
 <app-header [auth] = "false"></app-header>
 <div class="login-form" *ngIf = "!auth">
     <div class="login-form__header">Login</div>
-    <div class="login-form__input-container">
+    <form 
+        class="login-form__input-container" 
+        [formGroup] = "form" 
+        (ngSubmit) = onLoginClick()>
         <input 
             type="email" 
             class="login-form__input login-form__input_name" 
             placeholder="andrew@mail.com"
-            [value]='name'
-            [(ngModel)]='name'>
+            formControlName = "login">
         <br>
         <input 
             type="password" 
             class="login-form__input login-form__input_password" 
             placeholder="Пароль: 000000"
-            [value]='password'
-            [(ngModel)]='password'>
+            formControlName = "password">
         <br>
-        <button (click)='onLoginClick()' class="login-form__button">Login</button>
-    </div>
+        <button class="login-form__button" type="submit">Login</button>
+    </form>
 </div>
