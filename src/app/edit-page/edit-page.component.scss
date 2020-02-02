@@ -1,31 +1,46 @@
+@import '../../../common/styles.scss';
+
 .edit-page {
+  width:350px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 90%;
+}
+.edit-page__form {
   padding: 5px 10px;
+  color:white;
 }
 .edit-page__label {
   font-size: 14px;
   font-weight: bold;
 }
 .edit-page__input-title {
-  width:200px;
-  padding:3px 10px;
+  box-sizing: border-box;
+  width:350px;
+  padding:6px;
+  font-size:15px;
+  margin-top:5px;
   margin-bottom:10px;
-  border: 1px solid #bbb;
+  border: 1px solid #333;
   &.ng-invalid.ng-touched {
     border-color: red;
   }
 }
 .edit-page__description {
-  padding:3px 10px;
+  padding:6px;
+  box-sizing: border-box;
+  font-size:12px;
   font-family: sans-serif;
   margin-bottom:10px;
   height:100px;
-  width:500px;
+  width:350px;
   &.ng-invalid.ng-touched {
     border-color: red;
   }
 }
 .edit-page__buttons {
-  margin-top:10px;
+  margin-top:20px;
 }
 .edit-page__save-btn {
   margin-right: 15px;
@@ -33,7 +48,7 @@
   padding:10px 15px;
   font-weight: bold;
   cursor: pointer;
-  background-color:green;
+  background-color:$greeny;
   color:hsl(0, 0%, 100%);
   &:disabled {
     background-color:#888;
@@ -46,8 +61,8 @@
   padding:10px 15px;
   font-weight: bold;
   cursor: pointer;
-  background-color:#333333;
-  color:hsl(0, 0%, 100%);
+  background-color:white;
+  color:#000;
 }
 .edit-page__error-messages {
   margin-bottom: 10px;

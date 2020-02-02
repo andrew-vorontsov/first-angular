@@ -1,29 +1,38 @@
+@import '../../../../common/styles.scss';
+
 .header {
-    border-bottom: 2px solid #000000;
-    padding: 25px 10px;
-    display: flex;
-    justify-content: space-between;
+    background-color: $biruz;
+    padding: 10px 0px;
 
     .header__logo {
         font-weight: bold;
-        font-size:25px;
+        font-size:16px;
+        color: white;
     }
     .header__authorization {
         text-align: right;
-        display: flex;
         align-items: center;
+        display: flex;
         margin-left: auto;
     }
     .header__user-name {
+        color:white;
         margin-right:20px;
         text-transform: capitalize;
     }
     .header__log-off {
-        background-color: cadetblue;
+        background-color: $dgrey;
         border: none;
         color:#ffffff;
         padding:10px 15px;
         font-weight: bold;
         cursor: pointer;
+    }
+    .header__container {
+        margin: 0 auto;
+        width:700px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 }

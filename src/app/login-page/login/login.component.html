@@ -1,7 +1,7 @@
 <app-load-spinner></app-load-spinner>
 <app-header [auth] = "false"></app-header>
 <div class="login-form" *ngIf = "!auth">
-    <div class="login-form__header">Login</div>
+    <h3 class="login-form__header">Login</h3>
     <form 
         class="login-form__input-container" 
         [formGroup] = "form" 
@@ -20,4 +20,5 @@
         <br>
         <button class="login-form__button" type="submit">Login</button>
     </form>
+    <app-footer></app-footer>
 </div>

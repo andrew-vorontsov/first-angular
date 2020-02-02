@@ -1,18 +1,18 @@
 @import '../../../../common/styles.scss';
 .courses__elem {
-    border-style: solid;
-    border-width: 2px;
-    border-color: grey;
+    border-left: 6px solid white;
     margin: 0px 10px 5px 10px;
     padding: 10px 15px;
     display: flex;
+    background-color: white;
 }
 .courses__base-course-group {
     flex-grow: 3;
 }
 .courses__title {
     margin-right:auto;
-    font-size:22px;
+    font-weight: bold;
+    font-size:16px;
 }
 .courses__creation-date {
     font-weight: bold;
@@ -27,7 +27,7 @@
 .courses__description {
     width:380px;
     margin-top:7px;
-    font-size:14px;
+    font-size:12px;
 }
 .courses__header {
     display: flex;
@@ -38,13 +38,12 @@
     margin-left: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
 }
 .courses__button_edit-button {
-    background-color:green;
+    background-color:$biruz;
 }
 .courses__button_delete-button {
-    background-color: tomato;
+    background-color: $dgrey;
 }
 .courses__button {
     margin: 3px 0;
@@ -55,8 +54,8 @@
     color: #ffffff;
 }
 .courses__star {
-    color: $dgrey;
+    color: $biruz;
 }
 .courses__topRated {
-    background-color: #e6f8ff;
+    background-color: white;
 }

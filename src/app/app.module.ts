@@ -5,7 +5,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoursesModule } from './courses/courses.module';
-import { UsersModule } from './users/users.module';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from 'common/app-router';
 import { LoginModule } from './login-page/login.module';
@@ -14,7 +13,6 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
-import { LoadingService } from './services/loading-service';
 
 @NgModule({
   declarations: [AppComponent, NotFoundComponent],
@@ -25,7 +23,6 @@ import { LoadingService } from './services/loading-service';
     CoursesModule,
     EditPageModule,
     LoginModule,
-    UsersModule,
     SharedModule,
     CoreModule,
     RouterModule.forRoot(ROUTES),

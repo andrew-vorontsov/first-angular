@@ -1,120 +1,123 @@
 <app-load-spinner></app-load-spinner>
 <app-header></app-header>
-<app-breadcrumbs></app-breadcrumbs>
-<form class="edit-page" [formGroup] = "form" (ngSubmit) = "submit()">
-  <h3>{{ title }}</h3>
-
-  <div 
-    class = "edit-page__error-messages"
-    *ngIf = "form.get('title').invalid && form.get('title').touched">
-    <small *ngIf = "form.get('title').errors.required">
-      Title field is empty
-    </small>
-    <small *ngIf = "form.get('title').errors.maxlength">
-      Title field must be less than {{ form.get('title').errors.maxlength.requiredLength }} symbols. {{ form.get('title').errors.maxlength.actualLength }} now.
-    </small>
-  </div>
-
-  <label class = "edit-page__label">
-    Title:<br>
-  <input
-    formControlName="title"
-    type="text" 
-    placeholder="title" 
-    class="edit-page__input-title"><br>
-  </label>
-
-  <div 
-    class = "edit-page__error-messages"
-    *ngIf = "form.get('description').invalid && form.get('description').touched">
-    <small *ngIf = "form.get('description').errors.required">
-      Description field is empty
-    </small>
-    <small *ngIf = "form.get('description').errors.maxlength">
-      Description field must be less than {{ form.get('description').errors.maxlength.requiredLength }} symbols. {{ form.get('description').errors.maxlength.actualLength }} now.
-    </small>
-  </div>
-
-  <label class = "edit-page__label">
-    Description:<br>
-    <textarea 
-      formControlName="description"
-      placeholder="description" 
-      class="edit-page__description">
-    </textarea><br>
-  </label>
-
-  <div 
-    class = "edit-page__error-messages"
-    *ngIf = "form.get('creationDate').invalid && form.get('creationDate').touched">
-    <small *ngIf = "form.get('creationDate').errors.required">
-      Date creation field is empty
-    </small>
-    <small *ngIf = "form.get('creationDate').errors.validDateFormat && !form.get('creationDate').errors.required">
-      Date creation field must be like "dd.MM.yyyy"
-    </small>
-    <small *ngIf = "form.get('creationDate').errors.validDateNumbers">
-      Date creation field must contain real date
-    </small>
-  </div>
-
-  <label class = "edit-page__label">
-    Creation date:<br>
-    <app-date-input formControlName = "creationDate"></app-date-input><br>
-  </label>
-
-  <div 
-    class = "edit-page__error-messages"
-    *ngIf = "form.get('duration').invalid && form.get('duration').touched">
-    <small *ngIf = "form.get('duration').errors.required">
-      Duration field is empty
-    </small>
-    <small *ngIf = "form.get('duration').errors.validDuration && !form.get('duration').errors.required">
-      Duration field must contain positive numbers only
-    </small>
-  </div>
-
-  <label class = "edit-page__label">
-    Duration:<br>
-    <app-duration-input formControlName = "duration"></app-duration-input>
-  </label>
-
-  <div 
-    class = "edit-page__error-messages"
-    *ngIf = "form.get('authors').invalid && form.get('authors').touched">
-    <small *ngIf = "form.get('authors').errors.validAuthors">
-      Authors field must contain at least one value
-    </small>
-  </div>
-
-  <label class = "edit-page__label">
-    Authors:<br>
-    <app-authors-select 
-      formControlName = "authors"
-      (onSearch) = "searchAuthor($event)"
-      [authorsList] = "usersList">
-    </app-authors-select>
-  </label>
-  <div class="edit-page__buttons">
-    <button 
-      *ngIf = 'isNewCourse()'
-      type = "submit"
-      class="edit-page__save-btn"
-      [disabled] = form.invalid>
-      {{ title }}
-    </button>
-    <button 
-      *ngIf = '!isNewCourse()' 
-      type = "submit"
-      class="edit-page__save-btn"
-      [disabled] = form.invalid>
-      {{ title }}
-    </button>
-    <button 
-      class="edit-page__close-btn" 
-      type = "button"
-      (click) = 'onCloseBtnClick()'>
-      Cancel
-    </button>
-  </div>
-</form>
+<div class="edit-page">
+  <app-breadcrumbs></app-breadcrumbs>
+  <form class="edit-page__form" [formGroup] = "form" (ngSubmit) = "submit()">
+    <h3>{{ title }}</h3>
+  
+    <div 
+      class = "edit-page__error-messages"
+      *ngIf = "form.get('title').invalid && form.get('title').touched">
+      <small *ngIf = "form.get('title').errors.required">
+        Title field is empty
+      </small>
+      <small *ngIf = "form.get('title').errors.maxlength">
+        Title field must be less than {{ form.get('title').errors.maxlength.requiredLength }} symbols. {{ form.get('title').errors.maxlength.actualLength }} now.
+      </small>
+    </div>
+  
+    <label class = "edit-page__label">
+      Title:<br>
+    <input
+      formControlName="title"
+      type="text" 
+      placeholder="title" 
+      class="edit-page__input-title"><br>
+    </label>
+  
+    <div 
+      class = "edit-page__error-messages"
+      *ngIf = "form.get('description').invalid && form.get('description').touched">
+      <small *ngIf = "form.get('description').errors.required">
+        Description field is empty
+      </small>
+      <small *ngIf = "form.get('description').errors.maxlength">
+        Description field must be less than {{ form.get('description').errors.maxlength.requiredLength }} symbols. {{ form.get('description').errors.maxlength.actualLength }} now.
+      </small>
+    </div>
+  
+    <label class = "edit-page__label">
+      Description:<br>
+      <textarea 
+        formControlName="description"
+        placeholder="description" 
+        class="edit-page__description">
+      </textarea><br>
+    </label>
+  
+    <div 
+      class = "edit-page__error-messages"
+      *ngIf = "form.get('creationDate').invalid && form.get('creationDate').touched">
+      <small *ngIf = "form.get('creationDate').errors.required">
+        Date creation field is empty
+      </small>
+      <small *ngIf = "form.get('creationDate').errors.validDateFormat && !form.get('creationDate').errors.required">
+        Date creation field must be like "dd.MM.yyyy"
+      </small>
+      <small *ngIf = "form.get('creationDate').errors.validDateNumbers">
+        Date creation field must contain real date
+      </small>
+    </div>
+  
+    <label class = "edit-page__label">
+      Creation date:<br>
+      <app-date-input formControlName = "creationDate"></app-date-input><br>
+    </label>
+  
+    <div 
+      class = "edit-page__error-messages"
+      *ngIf = "form.get('duration').invalid && form.get('duration').touched">
+      <small *ngIf = "form.get('duration').errors.required">
+        Duration field is empty
+      </small>
+      <small *ngIf = "form.get('duration').errors.validDuration && !form.get('duration').errors.required">
+        Duration field must contain positive numbers only
+      </small>
+    </div>
+  
+    <label class = "edit-page__label">
+      Duration:<br>
+      <app-duration-input formControlName = "duration"></app-duration-input>
+    </label>
+  
+    <div 
+      class = "edit-page__error-messages"
+      *ngIf = "form.get('authors').invalid && form.get('authors').touched">
+      <small *ngIf = "form.get('authors').errors.validAuthors">
+        Authors field must contain at least one value
+      </small>
+    </div>
+  
+    <label class = "edit-page__label">
+      Authors:<br>
+      <app-authors-select 
+        formControlName = "authors"
+        (onSearch) = "searchAuthor($event)"
+        [authorsList] = "usersList">
+      </app-authors-select>
+    </label>
+    <div class="edit-page__buttons">
+      <button 
+        *ngIf = 'isNewCourse()'
+        type = "submit"
+        class="edit-page__save-btn"
+        [disabled] = form.invalid>
+        {{ title }}
+      </button>
+      <button 
+        *ngIf = '!isNewCourse()' 
+        type = "submit"
+        class="edit-page__save-btn"
+        [disabled] = form.invalid>
+        {{ title }}
+      </button>
+      <button 
+        class="edit-page__close-btn" 
+        type = "button"
+        (click) = 'onCloseBtnClick()'>
+        Cancel
+      </button>
+    </div>
+  </form>
+  <app-footer></app-footer>
+</div>

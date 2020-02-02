@@ -1,12 +1,15 @@
 <app-load-spinner></app-load-spinner>
 <app-header></app-header>
-<app-breadcrumbs></app-breadcrumbs>
-<app-search-panel (onSearchClick) = 'onSearchClicked($event)'></app-search-panel>
-<app-courses-list-item 
-    *ngFor='let item of coursesItems | orderBy'
-    [coursesItem] = 'item'
-    (onDeleteButtonItemClick) = 'onDeleteButtonClick(item)'
-    (onEditButtonItemClick) = 'onEditButtonClick(item)'>
-</app-courses-list-item>
-<div *ngIf='coursesItems.length' class="courses__showmore-button" (click)='onShowmoreClick()'>Show more</div>
-<div *ngIf='!coursesItems.length' class="courses__showmore-button" (click)='onNoDataClick()'>No data</div>
+<div class = "courses-list">
+    <app-breadcrumbs></app-breadcrumbs>
+    <app-search-panel (onSearchClick) = 'onSearchClicked($event)'></app-search-panel>
+    <app-courses-list-item 
+        *ngFor='let item of coursesItems | orderBy'
+        [coursesItem] = 'item'
+        (onDeleteButtonItemClick) = 'onDeleteButtonClick(item)'
+        (onEditButtonItemClick) = 'onEditButtonClick(item)'>
+    </app-courses-list-item>
+    <div *ngIf='coursesItems.length' class="courses__showmore-button" (click)='onShowmoreClick()'>Show more</div>
+    <div *ngIf='!coursesItems.length' class="courses__showmore-button" (click)='onNoDataClick()'>No data</div>
+    <app-footer></app-footer>
+</div>

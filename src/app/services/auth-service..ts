@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Person } from '../users/person.module';
+import { Person } from '../shared/person.module';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of, from } from 'rxjs';
 import { Router } from '@angular/router';

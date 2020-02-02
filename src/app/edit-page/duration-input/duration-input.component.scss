@@ -4,10 +4,12 @@
   font-weight: bold;
 }
 .edit-page__input-duration {
+  box-sizing: border-box;
   width:200px;
+  font-size:15px;
   margin-bottom:10px;
-  padding:3px 10px;
-  border: 1px solid #bbb;
+  padding:6px;
+  border: 1px solid #333;
   &.valid.touched {
     border-color: red;
   }

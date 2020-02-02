@@ -17,14 +17,14 @@ export class CoursesBorderDirective implements OnInit {
       this.renderer.setStyle(
         this.element.nativeElement,
         'border-color',
-        'green'
+        'rgb(0, 109, 67)'
       );
     }
     if (this.creationDate > currentDate) {
       this.renderer.setStyle(
         this.element.nativeElement,
         'border-color',
-        'blue'
+        'rgb(0, 103, 151)'
       );
     }
   }

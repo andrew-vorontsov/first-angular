@@ -3,9 +3,9 @@
     {
       "id": 1,
       "title": "Garage",
-      "creationDate": 1575849600000,
-      "duration": 2700000,
       "description": "Do you think garage descriptions are boring?",
+      "creationDate": 1580241600000,
+      "duration": 2700000,
       "topRated": true,
       "authors": [
         "andrew vorontsov"
@@ -14,7 +14,7 @@
     {
       "id": 2,
       "title": "win course",
-      "description": "I did it",
+      "description": "Orange propose des solutions de téléphonie mobile, d'internet mobile, de télévision numérique et d'internet fixe.Orange propose des solutions de téléphonie mobile, d'internet mobile, de télévision numérique et d'internet fixe.Orange propose des solutions de téléphonie mobile, d'internet mobile, de télévision numérique et d'internet fixe.",
       "creationDate": 1580932800000,
       "duration": 600000,
       "topRated": true,
@@ -25,9 +25,9 @@
     {
       "id": 3,
       "title": "oranges",
-      "creationDate": 1579132800000,
+      "description": "Orange propose des solutions de téléphonie mobile, d'internet mobile, de télévision numérique et d'internet fixe.Orange propose des solutions de téléphonie mobile, d'internet mobile, de télévision numérique et d'internet fixe.Orange propose des solutions de téléphonie mobile, d'internet mobile, de télévision numérique et d'internet fixe.",
+      "creationDate": 1579118400000,
       "duration": 6720000,
-      "description": "Orange propose des solutions de téléphonie mobile, d'internet mobile, de télévision numérique et d'internet fixe.",
       "topRated": false,
       "authors": [
         "dima lukin"
@@ -37,7 +37,7 @@
       "id": 4,
       "title": "billie eilish",
       "description": "Billie eilish is an american singer and songwriter.",
-      "creationDate": 1580241600000,
+      "creationDate": 1582920000000,
       "duration": 1260000,
       "topRated": true,
       "authors": [

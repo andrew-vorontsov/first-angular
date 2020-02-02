@@ -1,8 +1,13 @@
 .footer {
-    margin: 10px;
+    width:100%;
     .footer__copyright {
+        color:white;
+        margin:0 auto;
         text-align: right;
-        padding: 15px 0;
+        padding: 30px 0px 15px;
         font-size:12px;
     }
+}
+:host {
+    margin-top: auto;
 }

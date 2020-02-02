@@ -1,15 +1,20 @@
+@import '../../../../common/styles.scss';
+
 .edit-page__select-author {
   border: none;
   outline: none;
-  width: 150px;
+  width:30%;
   height:28px;
-  padding:3px 10px;
+  padding:3px 6px;
+  font-size:15px;
 }
 .edit-page__authors {
+  box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
-  width:500px;
+  width:350px;
   padding:0 10px;
+  background-color: white;
   border: 1px solid #bbb;
   &.valid.touched {
     border-color: red;
@@ -17,11 +22,11 @@
 }
 .edit-page__author-cloud {
   text-transform: capitalize;
-  padding:4px 10px;
+  padding:6px 10px 4px;
   color: white;
-  background: #333;
+  background: $biruz;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 12px;
   margin:5px 10px 5px 0;
   &:hover {
     cursor: pointer;
@@ -34,11 +39,13 @@
   }
 }
 .edit-page__option-group {
+  color:#000;
   position: absolute;
   background:white;
 }
 .edit-page__option {
-  width:300px;
+  box-sizing: border-box;
+  width:350px;
   font-size: 13px;
   padding: 5px 15px;
   text-transform: capitalize;
