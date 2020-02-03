@@ -9,7 +9,7 @@ export class CustomValidators {
     if (control.value.match(regexp)) {
       const day = +control.value.match(/^\d{1,2}/)[0];
       const month = +control.value.match(/\d{1,2}/g)[1] - 1;
-      const year = +control.value.match(/20[0-2]\d$/)[0];
+      const year = +control.value.match(/20\d\d$/)[0];
       if (isExists(year, month, day)) {
         return null;
       } else {

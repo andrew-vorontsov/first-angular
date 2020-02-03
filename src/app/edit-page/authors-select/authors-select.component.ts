@@ -17,7 +17,7 @@ import {
 } from '@angular/forms';
 import { CustomValidators } from '../custom-validators';
 import { Subject, Subscription } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-authors-select',
