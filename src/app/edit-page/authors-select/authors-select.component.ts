@@ -73,6 +73,10 @@ export class AuthorsSelectComponent
     this.inputOnTouch = fn;
   }
 
+  sliceAuthorName(name) {
+    return name.match(/^\S+/)[0];
+  }
+
   onSearchKeyUp(value) {
     if (value.length > 1) {
       this.stream$.next(value);
@@ -101,6 +105,7 @@ export class AuthorsSelectComponent
   }
 
   ngOnInit() {
+    this.sliceAuthorName('andrew vorn');
     this.sub = this.stream$.pipe(debounceTime(500)).subscribe(value => {
       this.onSearch.emit(value);
     });
