@@ -105,7 +105,6 @@ export class AuthorsSelectComponent
   }
 
   ngOnInit() {
-    this.sliceAuthorName('andrew vorn');
     this.sub = this.stream$.pipe(debounceTime(500)).subscribe(value => {
       this.onSearch.emit(value);
     });
