@@ -45,6 +45,7 @@ export class AuthorsSelectComponent
   public value = '';
   public authors = [];
   private sub: Subscription;
+  private controlSub: Subscription;
   private stream$: Subject<string> = new Subject<string>();
   public validState = {
     valid: false,
@@ -55,9 +56,9 @@ export class AuthorsSelectComponent
   public inputOnTouch = () => {};
 
   validate(control: FormControl): ValidationErrors {
-    setTimeout(() => {
-      this.validState.valid = control.status === 'VALID' ? true : false;
-    }, 0);
+    this.controlSub = control.statusChanges.subscribe(valid => {
+      this.validState.valid = valid === 'VALID' ? true : false;
+    });
     return this.customValidators.correctAuthors(control);
   }
 
@@ -112,5 +113,6 @@ export class AuthorsSelectComponent
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+    this.controlSub.unsubscribe();
   }
 }
