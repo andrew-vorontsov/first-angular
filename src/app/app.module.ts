@@ -20,8 +20,6 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    CoursesModule,
-    EditPageModule,
     LoginModule,
     SharedModule,
     CoreModule,

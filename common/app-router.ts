@@ -15,21 +15,24 @@ const Paths = {
 
 export const ROUTES: Route[] = [
   {
+    path: Paths.login,
+    component: LoginComponent,
+  },
+  {
     path: Paths.courses,
-    component: CoursesListComponent,
+    loadChildren: 'src/app/courses/courses.module#CoursesModule',
     canActivate: [AuthGuard],
   },
   {
     path: Paths.courses + Paths.id,
-    component: EditPageComponent,
+    loadChildren: 'src/app/edit-page/edit-page.module#EditPageModule',
     canActivate: [AuthGuard],
   },
   {
     path: Paths.courses + Paths.new,
-    component: EditPageComponent,
+    loadChildren: 'src/app/edit-page/edit-page.module#EditPageModule',
     canActivate: [AuthGuard],
   },
-  { path: Paths.login, component: LoginComponent },
   { path: Paths.notFound, component: NotFoundComponent },
   { path: '', redirectTo: Paths.login, pathMatch: 'full' },
   { path: '**', redirectTo: Paths.notFound, pathMatch: 'full' },

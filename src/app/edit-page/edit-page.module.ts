@@ -7,6 +7,7 @@ import { CoreModule } from '../core/core.module';
 import { DateInputComponent } from './date-input/date-input.component';
 import { DurationInputComponent } from './duration-input/duration-input.component';
 import { AuthorsSelectComponent } from './authors-select/authors-select.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -21,8 +22,9 @@ import { AuthorsSelectComponent } from './authors-select/authors-select.componen
     FormsModule,
     CoreModule,
     ReactiveFormsModule,
+    RouterModule.forChild([{ path: '', component: EditPageComponent }]),
   ],
-  exports: [EditPageComponent],
+  exports: [EditPageComponent, RouterModule],
   providers: [],
 })
 export class EditPageModule {}
